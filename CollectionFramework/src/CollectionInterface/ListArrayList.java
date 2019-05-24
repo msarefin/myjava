@@ -112,6 +112,12 @@ public class ListArrayList {
 			System.out.println(e);
 		}
 		
+		System.out.println(alg);
+		System.out.println("888888888888888888888888888888");
+		
+		for(Students student: stl) {
+			System.out.println(student.roll+" "+student.name+" "+student.age);
+		}
 		
 		System.out.println("\nAddingElements");
 		
@@ -128,8 +134,48 @@ public class ListArrayList {
 		al2.add("benjamin"); 
 		
 		
+		alg.addAll(al2);
 		
+		System.out.println(alg);
 		
+		 ArrayList<String> al3 = new ArrayList<String>(); 
+		 al3.add("Jenny"); 
+		 al3.add("Mickey"); 
+		 al3.add("James");
+		 
+		 
+		 alg.addAll(1,al3);
+		 
+		 alg.set(0, "Daniella");
+		 
+		 System.out.println(alg);
+		 
+		 alg.remove("James");
+		 
+		 System.out.println(alg);
+		 
+		 alg.remove(6);
+		 
+		 System.out.println(alg);
+		 
+		 alg.removeAll(al2);
+		 
+		 System.out.println(alg);
+		 
+		 alg.removeIf(str -> str.contains("Mickey"));
+		 
+		 System.out.println(alg);
+		 
+		 alg.retainAll(al3); 
+		 
+		 System.out.println(alg);
+		 
+		 alg.clear();
+		 
+		 System.out.println(alg);
+		 
+		 System.out.println(alg.isEmpty());
+		 
 		 
 
 	}
