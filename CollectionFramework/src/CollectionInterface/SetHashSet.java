@@ -61,8 +61,22 @@ public class SetHashSet {
 		
 		System.out.println(hs1);
 		
+		System.out.println();
 		
+		Bookhs bk1 = new Bookhs(101,"Let us C","Yashwant Kanetkar","BPB",8);
+		Bookhs bk2 = new Bookhs(102,"Data Communications & Networking","Forouzan","Mc Graw Hill",4);
+		Bookhs bk3 = new Bookhs(103,"Operating System","Galvin","Wiley",6);
 		
+		HashSet<Bookhs> books = new HashSet<Bookhs>(); 
+		
+		books.add(bk1); 
+		books.add(bk2); 
+		books.add(bk3); 
+		books.add(bk1); 
+		
+		for(Bookhs bk: books) {
+			System.out.println(bk.id+" "+bk.name+" "+bk.author+" "+bk.publisher+" "+bk.quanity);
+		}
 		
 	}
 	
@@ -75,6 +89,12 @@ class Bookhs{
 	int quanity; 
 	
 	Bookhs(int id, String name, String author, String publisher, int quantity){
+		
+		this.id = id; 
+		this.name = name; 
+		this.author= author; 
+		this.publisher = publisher; 
+		this.quanity = quantity; 
 		
 	}
 	
