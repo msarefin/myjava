@@ -26,6 +26,7 @@ public class MapHashMap {
 			System.out.println(entry.getKey() + " | " + entry.getValue());
 
 		}
+		
 
 		System.out.println();
 
@@ -42,6 +43,8 @@ public class MapHashMap {
 		}
 		
 	
+		
+		
 		
 	}
 }
