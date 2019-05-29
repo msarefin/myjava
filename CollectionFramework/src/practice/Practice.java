@@ -1,5 +1,7 @@
 package practice;
 
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Comparator;
 import java.util.HashMap;
 import java.util.Iterator;
@@ -10,49 +12,40 @@ public class Practice {
 
 	public static void main(String[] args) {
 
-		Map map = new HashMap(); 
+		ArrayList<stdnt> at = new ArrayList<stdnt>(); 
+		at.add(new stdnt(101, "Vijay", 23));
+		at.add(new stdnt(106, "ajay", 27)); 
+		at.add(new stdnt(105, "jai", 21)); 
 		
-	
-		map.put(1,"Alex");
-		map.put(2, "James"); 
-		map.put(3,"Ali");
-		map.put(4,"Joanne");
-		map.put(5,"Jenny");
+		Collections.sort(at);
 		
-		
-		Set set = map.entrySet(); 
-		
-		System.out.println(set);
-		
-		Iterator it = set.iterator(); 
-		
+		for(stdnt st:at) {
+			System.out.println(st.rollno+" "+st.name+" "+st.age);
+		}
+	}
+}
 
-		while(it.hasNext()) {
-			Map.Entry m = (Map.Entry)it.next();
-			System.out.println(m.getKey()+" | "+m.getValue());
-			
-		}
-	
-		Map<Integer, String> gmap = map; 
-		
-		Set gSet = gmap.entrySet(); 
-		
-		Iterator gIt = gSet.iterator(); 
-		
-		System.out.println();
-	
-		while(gIt.hasNext()) {
-			Map.Entry me = (Map.Entry)gIt.next(); 
-			
-			System.out.println(me.getKey()+" "+me.getValue());
-		}
-		
-		System.out.println();
-		
-		for(Map.Entry e: gmap.entrySet()) {
-			System.out.println(e.getKey()+"::"+e.getValue());
-		}
-		
+class stdnt implements Comparable<stdnt> {
+	int rollno;
+	String name;
+	int age;
+
+	public stdnt(int rollno, String name, int age) {
+		// TODO Auto-generated constructor stub
+
+		this.rollno = rollno;
+		this.name = name;
+		this.age = age;
+
 	}
 
+	@Override
+	public int compareTo(stdnt st) {
+		if (age == st.age)
+			return 0;
+		else if (age < st.age)
+			return 1;
+		else
+			return -1;
+	}
 }
