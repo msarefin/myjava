@@ -66,6 +66,19 @@ class AgeComparator implements Comparator {
 
 }
 
+class AgeComparatorG implements Comparator<student3>{
+	
+	public int compare(student3 s1, student3 s2) {
+		
+		if (s1.age == s2.age)
+			return 0;
+		else if (s1.age > s2.age)
+			return 1;
+		else
+			return -1;
+	}
+}
+
 class NameComparator implements Comparator{
 
 	@Override
@@ -77,4 +90,10 @@ class NameComparator implements Comparator{
 		return s1.name.compareTo(s2.name);
 	}
 	
+}
+
+class NameComparatorG implements Comparator<student3>{
+	public int compare(student3 s1, student3 s2) {
+		return s1.name.compareTo(s2.name); 
+	}
 }
