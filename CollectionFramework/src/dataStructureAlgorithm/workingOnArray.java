@@ -29,8 +29,8 @@ public class workingOnArray {
 
 		searchKey = 66;
 
-		for (j = 0; j < arr.length; j++) {
-			System.out.println(arr[j]);
+		for (j = 0; j < nElems; j++) {
+			System.out.print(arr[j] + " ");
 			if (arr[j] == searchKey) {
 				System.out.println("found " + searchKey);
 
@@ -41,6 +41,26 @@ public class workingOnArray {
 				}
 			}
 		}
+
+		// Delete elements
+
+		System.out.println("\nDelete Elements\n");
+
+		searchKey = 55;
+
+		for (j = 0; j < nElems; j++)
+			if (arr[j] == searchKey)
+				break;
+		for (int k = j; k < nElems; k++)
+			arr[k] = arr[k + 1];
+		nElems--;
+
+		for (int i = 0; i < nElems; i++)
+			System.out.print(arr[i] + " ");
+
+		System.out.println(" ");
+		
+		
 
 	}
 
