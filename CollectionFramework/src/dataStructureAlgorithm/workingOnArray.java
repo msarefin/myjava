@@ -59,8 +59,6 @@ public class workingOnArray {
 			System.out.print(arr[i] + " ");
 
 		System.out.println(" ");
-		
-		
 
 	}
 
