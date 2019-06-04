@@ -59,30 +59,38 @@ public class workingOnArray {
 			System.out.print(arr[i] + " ");
 
 		System.out.println(" ");
+		
+		
+		System.out.println(a.length);
+		
+		System.out.println(find(55));
+		
+		
+		
 
 	}
 
-	int a[] = {};
-	int nElems;
-	int searchKey;
+	static int a[] = {11,22,33,44,55,66,77,88,99,101,202,303,404};
+	static int nElems = a.length;
+	static int searchKey = 0;
 
-	public int find(long search) {
+	public static int find(long search) {
 		int lowerBound = 0;
-		int upperBound = nElems - 1;
+		int upperBound = nElems - 1; //5
 
 		int curIn;
 
 		while (true) {
-			curIn = (lowerBound + upperBound) / 2;
-			if (a[curIn] == searchKey)
+			curIn = (lowerBound + upperBound) / 2; //4
+			if (a[curIn] == searchKey) // 55 ==55
 				return curIn;
-			else if (lowerBound > upperBound)
+			else if (lowerBound > upperBound)// 0 > 2
 				return nElems;
 			else {
-				if (a[curIn] < searchKey)
-					lowerBound = curIn + 1;
+				if (a[curIn] < searchKey) // 33 < 55
+					lowerBound = curIn + 1; // 3
 				else
-					upperBound = curIn - 1;
+					upperBound = curIn - 1; // 5
 
 			}
 
