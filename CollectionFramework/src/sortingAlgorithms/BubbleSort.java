@@ -36,8 +36,8 @@ public class BubbleSort {
 				arr[i+1] = temp; 
 			}
 			
-			System.out.print(arr[i]);
-			System.out.println();
+			printArray(ar);
+			
 			
 		}
 		
@@ -65,7 +65,7 @@ public class BubbleSort {
 	}
 	
 	public static void main(String[] args) {
-		ar = randomValues(10, 50, ar); 
+		ar = randomValues(10, 100, ar); 
 		
 		printArray(ar);
 		
