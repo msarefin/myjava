@@ -27,6 +27,7 @@ public class BubbleSort {
 	}
 	
 	static void rBubbleSort(int []arr, int n){
+		// recursive bubble sort
 		if(n==1) return; 
 		
 		for(int i = 0; i<n-1; i++) {
