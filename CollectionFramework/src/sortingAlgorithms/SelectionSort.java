@@ -6,7 +6,7 @@ public class SelectionSort {
 
 	static int ar[];
 
-	public SelectionSort(int arr[]) {
+	private static void SelectionSort(int arr[]) {
 		int attempt = 0;
 		for (int i = 0; i < arr.length - 1; i++) {
 			for (int j = i + 1; j < arr.length; j++) {
@@ -24,7 +24,7 @@ public class SelectionSort {
 
 	}
 
-	static int[] randomValues(int size, int range, int[] arr) {
+	private static int[] randomValues(int size, int range, int[] arr) {
 		arr = new int[size];
 
 		for (int i = 0; i < size; i++) {
@@ -34,7 +34,7 @@ public class SelectionSort {
 		return arr;
 	}
 
-	static void printArray(int arr[]) {
+	private static void printArray(int arr[]) {
 
 		for (int i = 0; i < arr.length; i++) {
 			System.out.print(arr[i] + " ");
@@ -46,12 +46,11 @@ public class SelectionSort {
 
 	public static void main(String[] args) {
 
-//		printArray(ar);
-		ar = randomValues(10, 50, ar);
 
+		ar = randomValues(10, 50, ar);
 		printArray(ar);
 
-		new SelectionSort(ar);
+		SelectionSort(ar);
 
 		printArray(ar);
 	}
