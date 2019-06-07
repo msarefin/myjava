@@ -14,8 +14,7 @@ public class SortingAlgorithum {
 
 		bubbleSort b = new bubbleSort();
 		selectionSort s = new selectionSort();
-		insertionSort is = new insertionSort(); 
-		
+		insertionSort is = new insertionSort();
 
 //		arr = setupArray(arr, size, range);
 //		int []arr1 = {10, 9, 8, 7, 6, 5, 4,3, 2, 1};
@@ -33,15 +32,11 @@ public class SortingAlgorithum {
 //		s.SelectionSort(arr);
 //		displayArray(arr);
 
-		arr = setupArray(arr, size, range); 
+		arr = setupArray(arr, size, range);
 		displayArray(arr);
 		is.insertionSort(arr);
 		displayArray(arr);
-		
-		
-		
-		
-		
+
 	}
 
 	static int[] setupArray(int[] arr, int size, int range) {
@@ -140,7 +135,7 @@ class selectionSort {
 		int id = 0;
 
 		for (int i = 0; i < arr.length - 1; i++) {
-			for (int j = i+1; j < arr.length; j++) {
+			for (int j = i + 1; j < arr.length; j++) {
 				if (arr[i] > arr[j]) {
 					int temp = arr[i];
 					arr[i] = arr[j];
@@ -161,23 +156,21 @@ class selectionSort {
 
 }
 
+class insertionSort {
 
-class insertionSort{
-	
-	
-	void insertionSort(int [] arr) {
-		
-		int id  = 0; 
-		
-		for(int i =1; i<arr.length; i++) {
-			int key = arr[i]; 
-			int j = i-1; 
-			while(j>=0 && arr[j]>key) {
-				arr[j+1] = arr[j];
-				j--; 
+	void insertionSort(int[] arr) {
+
+		int id = 0;
+
+		for (int i = 1; i < arr.length; i++) {
+			int key = arr[i];
+			int j = i - 1;
+			while (j >= 0 && arr[j] > key) {
+				arr[j + 1] = arr[j];
+				j--;
 			}
-			arr[j+1] = key; 
-			
+			arr[j + 1] = key;
+
 			id++;
 			System.out.print(i + " :: " + id + " : ");
 
@@ -187,9 +180,6 @@ class insertionSort{
 
 			System.out.println();
 		}
-		
-		
+
 	}
 }
-
-
