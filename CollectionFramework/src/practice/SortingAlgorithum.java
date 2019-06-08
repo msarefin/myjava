@@ -99,7 +99,7 @@ class bubbleSort {
 
 	}
 
-	void rBubbleSort(int[] arr, int n) {
+	private static void rBubbleSort(int[] arr, int n) {
 
 		System.out.println("Recursive Bubble sort");
 
