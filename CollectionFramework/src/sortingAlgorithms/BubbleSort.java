@@ -4,7 +4,20 @@ import java.util.Random;
 
 public class BubbleSort {
 
-	private static int ar[];
+	private static int arr[];
+
+	public static void main(String[] args) {
+		arr = randomValues(10, 100, arr);
+		printArray(arr);
+		BubbleSort(arr);
+		printArray(arr);
+
+		arr = randomValues(10, 100, arr);
+		printArray(arr);
+		rBubbleSort(arr, arr.length);
+		printArray(arr);
+
+	}
 
 	private static void BubbleSort(int arr[]) {
 
@@ -38,7 +51,7 @@ public class BubbleSort {
 				arr[i + 1] = temp;
 			}
 
-			printArray(ar);
+			printArray(arr);
 
 		}
 
@@ -62,18 +75,6 @@ public class BubbleSort {
 		}
 
 		System.out.println();
-	}
-
-	public static void main(String[] args) {
-		ar = randomValues(10, 100, ar);
-		printArray(ar);
-		BubbleSort(ar);
-
-		ar = randomValues(10, 100, ar);
-		printArray(ar);
-		rBubbleSort(ar, ar.length);
-
-		
 	}
 
 }

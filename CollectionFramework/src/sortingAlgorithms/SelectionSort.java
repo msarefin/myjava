@@ -5,6 +5,18 @@ import java.util.Random;
 public class SelectionSort {
 
 	private static int ar[];
+	
+	public static void main(String[] args) {
+
+
+		ar = initializeArray(10, 50, ar);
+		printArray(ar);
+		SelectionSort(ar);
+		printArray(ar);
+		
+		
+		
+	}
 
 	private static void SelectionSort(int arr[]) {
 		int attempt = 0;
@@ -24,7 +36,7 @@ public class SelectionSort {
 
 	}
 
-	private static int[] randomValues(int size, int range, int[] arr) {
+	private static int[] initializeArray(int size, int range, int[] arr) {
 		arr = new int[size];
 
 		for (int i = 0; i < size; i++) {
@@ -44,15 +56,6 @@ public class SelectionSort {
 		System.out.println();
 	}
 
-	public static void main(String[] args) {
-
-
-		ar = randomValues(10, 50, ar);
-		printArray(ar);
-
-		SelectionSort(ar);
-
-		printArray(ar);
-	}
+	
 
 }
