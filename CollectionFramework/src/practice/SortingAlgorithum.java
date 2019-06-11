@@ -6,9 +6,9 @@ import sortingAlgorithms.BubbleSort;
 
 public class SortingAlgorithum {
 
-	static int[] arr;
-	static int size = 10;
-	static int range = 100;
+	private static int[] arr;
+	private static int size = 10;
+	private static int range = 100;
 
 	public static void main(String[] args) {
 
@@ -99,7 +99,7 @@ class bubbleSort {
 
 	}
 
-	private static void rBubbleSort(int[] arr, int n) {
+	void rBubbleSort(int[] arr, int n) {
 
 		System.out.println("Recursive Bubble sort");
 
@@ -187,26 +187,6 @@ class insertionSort{
 
 			System.out.println();
 		}
-		
-		
-	}
-	
-	
-	void rInsertionSort(int []arr , int size) {
-		
-		if(size <=1) return ; 
-		
-		rInsertionSort(arr, size-1);
-		
-		int key = arr[size-1];
-		int j = size-2; 
-		
-		while(j>=0 && arr[j]> key) {
-			arr[j+1]= arr[j];
-			j--;
-			
-		}
-		arr[j+1] = key;
 		
 		
 	}

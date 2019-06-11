@@ -4,7 +4,7 @@ import java.util.Random;
 
 public class SelectionSort {
 
-	static int ar[];
+	private static int ar[];
 
 	private static void SelectionSort(int arr[]) {
 		int attempt = 0;
