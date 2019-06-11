@@ -190,4 +190,12 @@ class insertionSort{
 		
 		
 	}
+	
+	
+	void rInsertionSort(int []arr , int size) {
+		
+		
+		
+		
+	}
 }
