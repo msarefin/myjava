@@ -67,7 +67,7 @@ public class MergeSort {
 		while (i < n1) {
 			arr[k] = L[i];
 			i++;
-			j++;
+			k++;
 		}
 
 		while (j < n2) {
@@ -84,6 +84,9 @@ public class MergeSort {
 			sort(arr, m + 1, r);
 
 			merge(arr, l, m, r);
+
+			displayArray(arr);
+
 		}
 
 	}
