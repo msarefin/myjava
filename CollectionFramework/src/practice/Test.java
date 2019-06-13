@@ -3,16 +3,16 @@ package practice;
 import java.util.Random;
 
 public class Test {
-
-	private static int arr[];
-	private static int size = 10, bound = 100;
+	private static int arr [] = {82, 65, 97, 20, 71, 79, 74, 9, 1, 65, 68 };
+	private static int size = 11;
+	private static int bound = 100;
 
 	public static void main(String[] args) {
-		arr = initializeArray(arr, size, bound);
-		displayArray(arr);
 
-		sort(arr, 0, arr.length-1);
+//		arr = initializeArray(arr, size, bound);
 		
+		displayArray(arr);
+		sort(arr, 0, arr.length - 1);
 		displayArray(arr);
 
 	}
@@ -22,81 +22,88 @@ public class Test {
 
 		for (int i = 0; i < size; i++) {
 			arr[i] = new Random().nextInt(bound);
-
 		}
 
 		return arr;
 	}
 
 	private static void displayArray(int arr[]) {
-		for (int i = 0; i < arr.length; i++) {
-			System.out.print(arr[i] + " ");
+		for (int a : arr) {
+			System.out.print(a + " ");
 		}
 		System.out.println();
 	}
 
-	private static void sort(int arr[], int li, int ri) {
+	private static void sort(int[] arr, int f, int l) {
 
-		if (li < ri) {
-			int m = (li + ri) / 2;
-			sort(arr, li, m);
-			sort(arr, m + 1, ri);
+		if (f < l) {
+			int m = (f + l) / 2;
+			sort(arr, f, m);
+			sort(arr, m + 1, l);
+			merge(arr, f, m, l);
+			displayArray(arr);
 
-			merge(arr, li, m, ri);
-
-//			displayArray(arr);
-			
 		}
 
 	}
 
-	private static void merge(int arr[], int li, int m, int ri) {
-		int n1 = m - li + 1;
-		int n2 = ri - m;
+	private static void merge(int arr[], int f, int m, int l) {
 
-		int L[] = new int[n1];
-		int R[] = new int[n2];
-		
-		for(int i = 0; i <n1; i++) {
-			L[i] = arr[li +i]; 
+		int n1 = m - f + 1;
+		int n2 = l - m; // 4-2 = 2
+
+		int left[] = new int[n1];
+		int right[] = new int[n2];
+
+		for (int i = 0; i < n1; i++) {
+			left[i] = arr[i + f];
+//			System.out.print("\tLeft : ");
+//			displayArray(left);
 		}
-		
-//		System.out.print("Left : ");
-//		displayArray(L);
+
 		
 		
-		for(int i = 0; i < n2; i++) {
-			R[i] = arr[m+1+i]; 
+		for (int i = 0; i < n2; i++) {
+			right[i] = arr[i + m + 1]; // 2+1 = 3
+//			System.out.print("\tright  : ");
+//			displayArray(right);
 		}
+
 		
-//		System.out.print("Right : ");
-//		displayArray(R);
 		
-		int i = 0 , j = 0, k = li; 
-		
-		while(i < n1 && j <n2) {
-			if(L[i]<=R[j]) {
-				arr[k] = L[i]; 
-				i++; 
-			}else {
-				arr[k] = R[j];
+		int i = 0, j = 0, k = f;
+
+		while (i < n1 && j < n2) {
+			if (left[i] < right[j]) {
+				arr[k] = left[i];
+				i++;
+			} else {
+				arr[k] = right[j];
 				j++;
+
 			}
+
 			k++;
+
 		}
 		
-		while(i<n1) {
-			arr[k] = L[i]; 
+		
+		while(i < n1) {
+			arr[k] = left[i]; 
 			i++; 
-			j++; 
+			k++; 
+			
 		}
 		
-		while(j <n2) {
-			arr[k] = R[j]; 
+		
+		while(j < n2) {
+			arr[k] = right[j]; 
 			j++; 
 			k++; 
 		}
 		
 		
+		
 	}
+
 }

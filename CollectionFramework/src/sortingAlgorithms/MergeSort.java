@@ -5,7 +5,7 @@ import java.util.Random;
 public class MergeSort {
 
 	private static int arr[];
-	private static int size = 10, bound = 100;
+	private static int size = 11, bound = 100;
 
 	public static void main(String[] args) {
 		arr = initializeArray(arr, size, bound);
@@ -48,6 +48,8 @@ public class MergeSort {
 		for (int j = 0; j < n2; ++j)
 			R[j] = arr[mid + 1 + j];
 
+//		-------------------sort and Merge----------------------------
+
 		int i = 0, j = 0;
 
 		int k = first;
@@ -64,6 +66,7 @@ public class MergeSort {
 			k++;
 		}
 
+//		-----------------copy Remaining values to the array----------------------------------
 		while (i < n1) {
 			arr[k] = L[i];
 			i++;
@@ -76,6 +79,8 @@ public class MergeSort {
 			k++;
 		}
 	}
+	
+	
 
 	static void sort(int arr[], int l, int r) {
 		if (l < r) {
