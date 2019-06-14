@@ -1,8 +1,13 @@
 package practice;
 
+import java.awt.DisplayMode;
+import java.util.Arrays;
 import java.util.Random;
 
+import org.omg.PortableInterceptor.DISCARDING;
+
 import sortingAlgorithms.BubbleSort;
+import sortingAlgorithms.QuickSort;
 
 public class SortingAlgorithum {
 
@@ -15,6 +20,7 @@ public class SortingAlgorithum {
 		bubbleSort b = new bubbleSort();
 		selectionSort s = new selectionSort();
 		insertionSort is = new insertionSort();
+		quickSort qs = new quickSort();
 
 //		arr = setupArray(arr, size, range);
 //		int []arr1 = {10, 9, 8, 7, 6, 5, 4,3, 2, 1};
@@ -32,9 +38,14 @@ public class SortingAlgorithum {
 //		s.SelectionSort(arr);
 //		displayArray(arr);
 
+//		arr = setupArray(arr, size, range);
+//		displayArray(arr);
+//		is.insertionSort(arr);
+//		displayArray(arr);
+
 		arr = setupArray(arr, size, range);
 		displayArray(arr);
-		is.insertionSort(arr);
+		qs.rQuickSort(arr, 0, arr.length - 1);
 		displayArray(arr);
 
 	}
@@ -185,8 +196,8 @@ class insertionSort {
 
 	void rInsertionSort(int[] arr, int n) {
 
-		int id = 0; 
-		
+		int id = 0;
+
 		if (n <= 0)
 			return;
 
@@ -200,21 +211,20 @@ class insertionSort {
 			j--;
 		}
 		arr[j + 1] = key;
-		
-		
-		id++; 
-		System.out.print(id+" :: ");
-		
-		for(int i = 0; i<arr.length; i++) {
-			System.out.print(arr[i]+" ");
+
+		id++;
+		System.out.print(id + " :: ");
+
+		for (int i = 0; i < arr.length; i++) {
+			System.out.print(arr[i] + " ");
 		}
 
 	}
 
 }
 
-class mergeSort{
-	
+class mergeSort {
+
 	void merge(int arr[], int l, int m, int r) {
 		int n1 = m - l + 1;
 		int n2 = r - m;
@@ -253,9 +263,9 @@ class mergeSort{
 			arr[k] = R[j];
 			j++;
 			k++;
-		} 
+		}
 	}
-	
+
 	void sort(int arr[], int l, int r) {
 		if (l < r) {
 			int m = (l + r) / 2;
@@ -264,10 +274,46 @@ class mergeSort{
 
 			merge(arr, l, m, r);
 		}
-	
+
 	}
-	
-	
-	
+
 }
 
+class quickSort {
+
+	void rQuickSort(int arr[], int l, int r) {
+		if (l < r) {
+			int p = partition(arr, l, r);
+			rQuickSort(arr, l, p - 1);
+			rQuickSort(arr, p + 1, r);
+		}
+	}
+
+	void swap(int arr[], int i1, int i2) {
+		int temp = arr[i1];
+		arr[i1] = arr[i2];
+		arr[i2] = temp;
+	}
+
+	int getPivot(int low, int high) {
+		int p = new Random().nextInt((high - low) + 1) + low;
+		System.out.println("Pivot value is: "+p);
+		return p ;
+	}
+
+	int partition(int arr[], int f, int r) {
+		int p = getPivot(f, r);
+		swap(arr, f, p);
+		System.out.println(Arrays.toString(arr));
+		int b = f + 1;
+		for (int i = b; i <= r; i++) {
+			if (arr[i] < arr[f]) {
+				swap(arr, i, b++);
+				System.out.println(Arrays.toString(arr));
+			}
+		}
+		swap(arr, f, b - 1);
+		System.out.println(Arrays.toString(arr));
+		return b - 1;
+	}
+}

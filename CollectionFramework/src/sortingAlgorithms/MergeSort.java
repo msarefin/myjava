@@ -1,5 +1,6 @@
 package sortingAlgorithms;
 
+import java.util.Arrays;
 import java.util.Random;
 
 public class MergeSort {
@@ -45,8 +46,11 @@ public class MergeSort {
 		for (int i = 0; i < n1; i++)
 			L[i] = arr[first + i];
 
+		System.out.println("Left : " + Arrays.toString(L));
 		for (int j = 0; j < n2; ++j)
 			R[j] = arr[mid + 1 + j];
+
+		System.out.println("Right : " + Arrays.toString(R));
 
 //		-------------------sort and Merge----------------------------
 
@@ -79,8 +83,6 @@ public class MergeSort {
 			k++;
 		}
 	}
-	
-	
 
 	static void sort(int arr[], int l, int r) {
 		if (l < r) {
