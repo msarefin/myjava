@@ -4,7 +4,7 @@ import java.util.Random;
 
 public class QuickSort {
 
-	static int arr[] ;
+	static int arr[];
 	static int size = 11;
 	static int bound = 100;
 
@@ -36,7 +36,7 @@ public class QuickSort {
 
 		for (int n : arr) {
 
-			System.out.print(n + " \t");
+			System.out.print(n + " ");
 		}
 
 		System.out.println();
