@@ -8,6 +8,9 @@ public class practice {
 		outer.publicOuterMethod();
 		outer.protectedOuterMethod();
 		outer.defaultOuterMethod();
+		
+		outer.oc.oc.oc.oc.oc.publicOuterMethod();
+		
 
 		outer.innerB.publicInnerMethodB();
 		outer.innerB.protectedInnerMethodB();
@@ -67,6 +70,9 @@ class outerClass {
 	publicInnerClassB innerB = new publicInnerClassB();
 	protectedInnerClassE innerE = new protectedInnerClassE();
 
+	outerClass oc = new outerClass();
+	
+	
 	public void publicOuterMethod() {
 		System.out.println("This is public outer method from outer class");
 
