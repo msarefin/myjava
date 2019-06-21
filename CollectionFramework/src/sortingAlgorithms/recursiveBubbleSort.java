@@ -20,7 +20,6 @@ public class recursiveBubbleSort {
 	private static int[] initializeArray(int arr[], int size, int bound) {
 
 		arr = new int[size];
-
 		for (int i = 0; i < size; i++) {
 
 			arr[i] = new Random().nextInt(bound);
