@@ -32,7 +32,7 @@ public class bktSort {
 			}
 		}
 
-		int ind = size / 3; // Setting the number of the buckets
+		int ind = (int) Math.sqrt(size); // Setting the number of the buckets
 		Buckets[] buckets = new Buckets[ind]; // creating an array of buckets
 
 		for (int i = 0; i < buckets.length; i++) {
@@ -82,15 +82,15 @@ public class bktSort {
 
 			}
 			System.out.println();
-			
-			for(int val : n.bkt) {
-				ar[index] =  val;
-				index++; 
+
+			for (int val : n.bkt) {
+				ar[index] = val;
+				index++;
 			}
 		}
 		System.out.println();
-		for(int num : ar) {
-			System.out.print(num+" ");
+		for (int num : ar) {
+			System.out.print(num + " ");
 		}
 
 	}

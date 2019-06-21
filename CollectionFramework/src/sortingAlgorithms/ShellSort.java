@@ -13,7 +13,7 @@ public class ShellSort {
 
 		arr = initializeArray(arr, size, bound);
 		displayArray(arr);
-		sort(arr);
+		shellSort(arr);
 		displayArray(arr);
 	}
 
@@ -29,7 +29,7 @@ public class ShellSort {
 		System.out.println(Arrays.toString(arr));
 	}
 
-	private static void sort(int arr[]) {
+	private static void shellSort(int arr[]) {
 		int n = arr.length;
 
 		for (int gap = n / 2; gap > 0; gap /= 2) {

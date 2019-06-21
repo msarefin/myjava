@@ -1,4 +1,4 @@
-package recursiveProgramming;
+package sortingAlgorithms;
 
 import java.util.Random;
 
