@@ -1,0 +1,28 @@
+Topics To Learn:
+================
+
+- OOP Concepts 
+	- Abstraction
+	- Inheritance
+	- Polymorphism
+	- Encapsulation
+- Conditional Statements
+	- if - if else - nested if
+	- switch case
+- Loops
+	- for
+	- for each
+	- while
+	- do while
+- Error handeling 
+	- try catch 
+	- throws
+- Collection Framework
+- Sorting Algorithms
+- Design pattern 
+- external data source and input from users
+	- user input 
+	- excel reader 
+	- google sheet
+	- JDBC
+	- MongoDB
