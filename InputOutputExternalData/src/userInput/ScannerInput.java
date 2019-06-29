@@ -13,8 +13,6 @@ public class ScannerInput {
 		int size = 0;
 		String name = null;
 		ArrayList<students> studentsList = new ArrayList<students>();
-		
-		
 
 		try {
 			System.out.println("How many students do you want to add");
@@ -24,18 +22,18 @@ public class ScannerInput {
 				System.out.println("Enter Student # " + (i + 1));
 				name = sc.next();
 				System.out.println("Enter Student GPA ");
-				double gpa = sc.nextDouble(); 
+				double gpa = sc.nextDouble();
 				students st = new students(name, gpa);
 				studentsList.add(st);
-				
+
 			}
 
 		} catch (InputMismatchException ex) {
 			System.out.println("Please enter valid integer");
 		}
-		
+
 		finally {
-			for(students st: studentsList) {
+			for (students st : studentsList) {
 				System.out.println(st.nameGetter());
 				System.out.println(st.gpaGetter());
 			}
@@ -45,24 +43,22 @@ public class ScannerInput {
 
 }
 
+class students {
 
-class students{
-	
-	private String name; 
-	private double gpa; 
-	
-	 students(String name, double gpa) {
-		this.name = name; 
-		this.gpa = gpa; 
+	private String name;
+	private double gpa;
+
+	students(String name, double gpa) {
+		this.name = name;
+		this.gpa = gpa;
 	}
-	
-	
-	 String nameGetter() {
-		 return name; 
-	 }
-	 
-	 double gpaGetter() {
-		 return gpa;
-	 }
-	
+
+	String nameGetter() {
+		return name;
+	}
+
+	double gpaGetter() {
+		return gpa;
+	}
+
 }

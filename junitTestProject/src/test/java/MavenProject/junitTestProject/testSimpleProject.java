@@ -2,7 +2,7 @@
 package MavenProject.junitTestProject;
 
 //import junit.framework.Assert;
-import org.testng.Assert;;
+import org.testng.Assert;
 
 public class testSimpleProject {
 

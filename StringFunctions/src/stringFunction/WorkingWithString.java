@@ -91,6 +91,12 @@ public class WorkingWithString {
 	
 		s.output(sbld.toString());
 		
+		String number = "123";
+		
+		int num = Integer.parseInt(number); 
+		
+		System.out.println(num+number);
+		System.out.println(num+num);
 		
 	}
 
