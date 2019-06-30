@@ -317,3 +317,9 @@ class quickSort {
 		return b - 1;
 	}
 }
+
+class bucketSort{
+	void bucketSort(int a[], int maxVal) {
+		
+	}
+}
