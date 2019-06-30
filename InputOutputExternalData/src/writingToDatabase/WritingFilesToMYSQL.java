@@ -16,8 +16,12 @@ public class WritingFilesToMYSQL {
 	
 	Connection myConn = DriverManager.getConnection(url, user, pass); 
 	
-	Statement myStat = myConn.createStatement(); 
+	Statement myStmt = myConn.createStatement(); 
+	
+	String sqlStatement = "insert into student (id, name, age) values (1,'Danny',24)";
+	
 	
 		
+	
 	}
 }
