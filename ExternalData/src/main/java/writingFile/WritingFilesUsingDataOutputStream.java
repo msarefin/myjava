@@ -30,9 +30,6 @@ public class WritingFilesUsingDataOutputStream {
 		FileInputStream fis = new FileInputStream(System.clearProperty("user.dir") + "/File/DataOutputStream.txt");
 		DataInputStream reader = new DataInputStream(fis);
 		result = reader.readUTF();
-		
-		System.out.println(result);
-		
 		reader.close();
 		
 		
