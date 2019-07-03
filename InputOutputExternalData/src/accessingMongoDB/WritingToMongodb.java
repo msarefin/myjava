@@ -54,18 +54,23 @@ public class WritingToMongodb {
 				.append("company", "amazon.com")
 				.append("location", "California, USA");
 		
+//		inserting single document into collection
 		collection.insertOne(document);
 		
+		
+//		updating document in collection
 		collection.updateOne(Filters.eq("id",1), Updates.set("name", "Danny"));
 		
-		collection.deleteMany(Filters.all("name", "Mohammed"));
+//		deleting documents from collection
+		collection.deleteOne(Filters.all("name", "Mohammed"));
 		
-		
+//		selecting collection
 		collection = database.getCollection("MySampleCollection");
 		System.out.println("collection selected");
 		
-//		get iterable object 
 		
+//		Retrieving documents from collection
+//		get iterable object 
 		FindIterable<Document> iterDoc = collection.find(); 
 		
 		
@@ -77,6 +82,15 @@ public class WritingToMongodb {
 			System.out.println(it.next());
 			i++; 
 		}
+		
+		for(String col: database.listCollectionNames()) {
+			System.out.println(col);
+		}
+		
+//		Dropping the collection
+		collection.drop();
+		
+		
 
 	}
 }
