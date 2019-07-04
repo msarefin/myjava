@@ -73,13 +73,11 @@
 
 		<!-- Google Sheet API -->
 
-		<!-- <dependency>
+		<dependency>
 			<groupId>com.google.apis</groupId>
 			<artifactId>google-api-services-sheets</artifactId>
 			<version>v4-rev20190508-1.30.1</version>
-		</dependency> -->
-
-
+		</dependency>
 		<dependency>
 			<groupId>com.google.api-client</groupId>
 			<artifactId>google-api-client</artifactId>
@@ -90,8 +88,8 @@
 			<artifactId>google-oauth-client</artifactId>
 			<version>1.30.1</version>
 		</dependency>
-		
-		
+
+
 
 	</dependencies>
 
