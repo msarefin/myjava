@@ -9,7 +9,7 @@ import java.sql.Statement;
 public class JDBCStatement {
 
 	private static final String jdbcDriver = "com.mysql.cj.jdbc.Driver";
-	private static final String url = "jdbc:mysql://localhost:3306/pnt";
+	private static final String url = "jdbc:mysql://localhost:3306/pnt?useTimezone=true&serverTimezone=GMT%2B8";
 	private static final String user = "arefin";
 	private static final String password = "abc123";
 

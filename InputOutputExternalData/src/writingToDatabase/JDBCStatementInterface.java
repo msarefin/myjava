@@ -13,7 +13,7 @@ import com.mysql.cj.jdbc.Driver;
 public class JDBCStatementInterface {
 
 	private final static String jdbcDriver = "com.mysql.cj.jdbc.Driver";
-	private final static String url = "jdbc:mysql://localhost:3306/pnt";
+	private final static String url = "jdbc:mysql://localhost:3306/pnt?useTimezone=true&serverTimezone=GMT%2B8";
 
 	private final static String user = "arefin";
 	private final static String password = "abc123";
