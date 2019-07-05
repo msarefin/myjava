@@ -43,7 +43,7 @@ public class WorkingWithGoogleSheets {
 		
 		Credential credentials = new AuthorizationCodeInstalledApp(flow, receiver).authorize("user");
 		
-		String applicationName = "Security Phrase"; 
+		String applicationName = "I am not whure of the purpose of this Section !!!!"; 
 		
 		Sheets sheets = new Sheets.Builder(httpTransport, jsonFactory, credentials).setApplicationName(applicationName).build(); 
 		
