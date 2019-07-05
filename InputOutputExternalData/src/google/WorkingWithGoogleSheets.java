@@ -26,7 +26,12 @@ import com.google.api.services.sheets.v4.SheetsScopes;
 public class WorkingWithGoogleSheets {
 
 	public static void main(String[] args) throws IOException, GeneralSecurityException {
-		File file = new File(System.getProperty("user.dir")+"/resources/client_secret.json"); //Locating the file
+		
+/*
+ * 		Establishing the connection to Google Sheet on Google server
+ */
+		File file = new File(System.getProperty("user.dir")+"/resources/client_secret.json"); 
+		//Locating the file
 		InputStream in = new FileInputStream(file); //
 		InputStreamReader credentialLocation = new InputStreamReader(in);
 		JsonFactory jsonFactory = JacksonFactory.getDefaultInstance(); 
