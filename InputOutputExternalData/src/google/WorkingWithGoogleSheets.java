@@ -26,9 +26,8 @@ import com.google.api.services.sheets.v4.SheetsScopes;
 public class WorkingWithGoogleSheets {
 
 	public static void main(String[] args) throws IOException, GeneralSecurityException {
-		File file = new File(System.getProperty("user.dir")+"/resources/client_secret.json");
-//		File Location
-		InputStream in = new FileInputStream(file);
+		File file = new File(System.getProperty("user.dir")+"/resources/client_secret.json"); //Locating the file
+		InputStream in = new FileInputStream(file); //
 		InputStreamReader credentialLocation = new InputStreamReader(in);
 		JsonFactory jsonFactory = JacksonFactory.getDefaultInstance(); 
 		GoogleClientSecrets clientSecrets = GoogleClientSecrets.load(jsonFactory, credentialLocation);
@@ -44,7 +43,7 @@ public class WorkingWithGoogleSheets {
 		
 		Credential credentials = new AuthorizationCodeInstalledApp(flow, receiver).authorize("user");
 		
-		String applicationName = "This is a Google Sheet!!"; 
+		String applicationName = "Security Phrase"; 
 		
 		Sheets sheets = new Sheets.Builder(httpTransport, jsonFactory, credentials).setApplicationName(applicationName).build(); 
 		
