@@ -4,8 +4,6 @@ import java.awt.DisplayMode;
 import java.util.Arrays;
 import java.util.Random;
 
-import org.omg.PortableInterceptor.DISCARDING;
-
 import sortingAlgorithms.BubbleSort;
 import sortingAlgorithms.QuickSort;
 
@@ -297,8 +295,8 @@ class quickSort {
 
 	int getPivot(int low, int high) {
 		int p = new Random().nextInt((high - low) + 1) + low;
-		System.out.println("Pivot value is: "+p);
-		return p ;
+		System.out.println("Pivot value is: " + p);
+		return p;
 	}
 
 	int partition(int arr[], int f, int r) {
@@ -318,8 +316,8 @@ class quickSort {
 	}
 }
 
-class bucketSort{
+class bucketSort {
 	void bucketSort(int a[], int maxVal) {
-		
+
 	}
 }

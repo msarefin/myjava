@@ -1,0 +1,13 @@
+System.setProperty("webdriver.chrome.driver", chromeDriver);
+
+Find Elements
+=============
+
+By ID 
+By CSS
+By Name 
+By ClassName
+By TagName
+By LinkText 
+By PartialLinkText
+By Xpath
