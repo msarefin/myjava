@@ -29,43 +29,45 @@ public class Selection {
 		System.setProperty("webdriver.chrome.driver", chromeDriver);
 
 		WebDriver driver = new ChromeDriver();
-		
+
 		driver.get("https://www.toolsqa.com/automation-practice-form/");
-		
+
 		Select select = new Select(driver.findElement(By.id("continents")));
-		
+
 		System.out.println(select.isMultiple());
-		
+
 		select.selectByIndex(6);
-		
+
+		System.out.println("*****************************************************************");
+		System.out.println();
+
 		try {
 			Thread.sleep(5000);
 		} catch (InterruptedException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		
-		
+
 		System.out.println();
-		List<WebElement> continents = select.getOptions(); 
-		
-		for(WebElement e: continents) {
+		List<WebElement> continents = select.getOptions();
+
+		for (WebElement e : continents) {
 			System.out.println(e.getText());
 		}
-		
-		driver.findElement(By.cssSelector("button[id='submit']")).click();;
-		
-		
+
+		driver.findElement(By.cssSelector("button[id='submit']")).click();
+		;
+
 		Select SeleniumCommand = new Select(driver.findElement(By.name("selenium_commands")));
-		
+
 		System.out.println(SeleniumCommand.isMultiple());
-		
+
 		List<WebElement> contrnt = SeleniumCommand.getOptions();
-		
-		for(WebElement e: contrnt) {
+
+		for (WebElement e : contrnt) {
 			System.out.println(e.getText());
 		}
-		
+
 		driver.quit();
 	}
 }

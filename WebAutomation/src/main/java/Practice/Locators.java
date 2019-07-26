@@ -30,19 +30,18 @@ public class Locators {
 
 		driver.manage().deleteAllCookies();
 		driver.get("https://demoqa.com/");
-		
+
 		List<WebElement> ancor = driver.findElements(By.tagName("a"));
-		
-		for(WebElement e: ancor) {
+
+		for (WebElement e : ancor) {
 			System.out.println(e.getText());
 		}
-		
-		
+
 		driver.navigate().to("https://www.toolsqa.com/automation-practice-form/");
 		System.out.println();
 		List<WebElement> profession = driver.findElements(By.name("profession"));
-		
-		for(WebElement e: profession) {
+
+		for (WebElement e : profession) {
 			System.out.println(e.getAttribute("value"));
 		}
 

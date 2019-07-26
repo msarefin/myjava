@@ -40,6 +40,8 @@ public class FormsPractice {
 		WebElement firstName = driver.findElement(By.name("firstname"));
 		WebElement lastName = driver.findElement(By.name("lastname"));
 
+		firstName.clear();
+		
 		firstName.sendKeys("Ali");
 		lastName.sendKeys("Ahmed");
 
@@ -50,7 +52,10 @@ public class FormsPractice {
 			System.out.println(e.isEnabled());
 			System.out.println(e.isSelected());
 			e.click();
+			
 		}
+		
+		
 
 		driver.findElement(By.cssSelector("#datepicker")).sendKeys("10222017");
 
