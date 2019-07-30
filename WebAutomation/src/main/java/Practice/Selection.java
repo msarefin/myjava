@@ -56,7 +56,7 @@ public class Selection {
 		}
 
 		driver.findElement(By.cssSelector("button[id='submit']")).click();
-		;
+		
 
 		Select SeleniumCommand = new Select(driver.findElement(By.name("selenium_commands")));
 

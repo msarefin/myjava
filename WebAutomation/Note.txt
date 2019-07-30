@@ -11,3 +11,70 @@ By TagName
 By LinkText 
 By PartialLinkText
 By Xpath
+
+WebDriver Driver = new ChromeDriver(); 
+
+driver.manage().deleteAllCookies();
+driver.manage().window().maximize();
+driver.manage().deleteAllCookies();
+driver.manage().window().maximize();
+driver.get("https://www.toolsqa.com/automation-practice-form/");
+
+WebElement firstName = driver.findElement(By.name("firstname"));
+firstName.clear();
+firstName.sendKeys("Ali");
+
+currentURL = driver.getCurrentUrl();
+title = driver.getTitle();
+DOM = driver.getPageSource();
+windowHangle = driver.getWindowHandle();
+
+driver.quit(); 
+
+List<WebElement> gender = driver.findElements(By.name("sex"));
+
+for (WebElement e : gender) {
+		System.out.println(e.isDisplayed());
+		System.out.println(e.isEnabled());
+		System.out.println(e.isSelected());
+		System.out.println(e.getText());
+		e.click();
+	}
+
+driver.navigate().to("http://www.yahoo.com");
+driver.navigate().back();
+driver.navigate().forward();
+driver.navigate().refresh();
+
+Select select = new Select(driver.findElement(By.id("continents")));
+System.out.println(select.isMultiple());
+
+Select select = new Select(driver.findElement(By.id("continents")));
+List<WebElement> continents = select.getOptions();
+	
+	for (WebElement e : continents) {
+		System.out.println(e.getText());
+	}
+	
+Tables are handled Just like any other webelements
+
+driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+
+Wait<WebDriver> Fwait = new FluentWait<WebDriver>(driver).withTimeout(10, TimeUnit.SECONDS).pollingEvery(2, TimeUnit.SECONDS).ignoring(NoSuchElementException.class);
+
+WebElement element = Fwait.until(new Function<WebDriver, WebElement>() {
+
+			public WebElement apply(WebDriver driver) {
+
+				return driver.findElement(By.cssSelector("css"));
+			}
+		});
+
+		
+new WebDriverWait(driver, 10).until(ExpectedConditions.invisibilityOf(driver.findElement(By.cssSelector("#"))));
+
+driver.manage().timeouts().pageLoadTimeout(100, TimeUnit.SECONDS);
+
+driver.manage().timeouts().setScriptTimeout(10, TimeUnit.SECONDS);
+
+

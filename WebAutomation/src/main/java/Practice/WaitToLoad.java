@@ -1,5 +1,6 @@
 package Practice;
 
+import java.awt.SecondaryLoop;
 import java.util.NoSuchElementException;
 import java.util.concurrent.TimeUnit;
 
@@ -39,35 +40,29 @@ public class WaitToLoad {
 		driver.manage().deleteAllCookies();
 		driver.get("http://shop.demoqa.com/");
 
+//		Explicitely Wait
 		WebDriverWait wdWait = new WebDriverWait(driver, 10);
 
-//		Explicitely Wait
-		wdWait.until(
-				ExpectedConditions.visibilityOfElementLocated(By.cssSelector(".tp-mask-wrap>#slide-6-layer-1>img")));
+		wdWait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector(".tp-mask-wrap>#slide-6-layer-1>img")));
 
+		new WebDriverWait(driver, 10).until(ExpectedConditions.invisibilityOf(driver.findElement(By.cssSelector("#"))));
+		
 //		FluentWait
 
-	Wait<WebDriver> wait = new FluentWait<WebDriver>(driver).withTimeout(10,TimeUnit.SECONDS).pollingEvery(1, TimeUnit.SECONDS).ignoring(NoSuchElementException.class);
+		Wait<WebDriver> Fwait = new FluentWait<WebDriver>(driver).withTimeout(10, TimeUnit.SECONDS)
+				.pollingEvery(2, TimeUnit.SECONDS).ignoring(NoSuchElementException.class);
+		WebElement element = Fwait.until(new Function<WebDriver, WebElement>() {
 
-	WebElement element = wait.until(new Function<WebDriver, WebElement>() {
-		public WebElement apply(WebDriver driver) {
-			return driver.findElement(By.cssSelector("css"));
-		}
-	}); 
-		
-//		Wait<WebDriver> wait = new FluentWait<WebDriver>(driver).withTimeout(10, TimeUnit.SECONDS)
-//				.pollingEvery(2, TimeUnit.SECONDS).ignoring(NoSuchElementException.class);
-//		
-//		WebElement element = wait.until(new Function<WebDriver, WebElement>() {
-//			public WebElement apply(WebDriver driver) {
-//				return driver.findElement(By.cssSelector("Css"));
-//			}
-//		}); 
+			public WebElement apply(WebDriver driver) {
 
-//		wait.until(ExpectedConditions.alertIsPresent());
+				return driver.findElement(By.cssSelector("css"));
+			}
+		});
 
+//		Page Load 
 		driver.manage().timeouts().pageLoadTimeout(100, TimeUnit.SECONDS);
 
+//		Script Timeout
 		driver.manage().timeouts().setScriptTimeout(10, TimeUnit.SECONDS);
 
 		driver.close();

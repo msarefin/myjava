@@ -27,40 +27,36 @@ public class united {
 	public static void main(String[] args) {
 		System.setProperty("webdriver.chrome.driver", chromeDriver);
 		WebDriver driver = new ChromeDriver();
-		
+
 		driver.manage().deleteAllCookies();
 		driver.manage().window().maximize();
 		driver.get("https://www.united.com/en/us");
-		
-		driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
-		
-		WebElement CalenderShop = driver.findElement(By.cssSelector("#flexDatesLabel"));
-		WebElement dates = driver.findElement(By.cssSelector(".app-components-FlexibleDates-flexibleDates__expandFlexMonth--3otlX"));
 
-		if(CalenderShop.isSelected()) {
+		driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+
+		WebElement CalenderShop = driver.findElement(By.cssSelector("#flexDatesLabel"));
+		WebElement dates = driver
+				.findElement(By.cssSelector(".app-components-FlexibleDates-flexibleDates__expandFlexMonth--3otlX"));
+
+		if (CalenderShop.isSelected()) {
 			System.out.println("Already Selected");
-			
-			if(dates.isEnabled()) {
+
+			if (dates.isEnabled()) {
 				System.out.println("element is displayed");
-			}else {
+			} else {
 				System.out.println("Element is not displayed");
 			}
-		}else {
-			if(dates.isEnabled()) {
+		} else {
+			if (dates.isEnabled()) {
 				System.out.println("element is displayed");
-			}else {
+			} else {
 				System.out.println("Element is not displayed");
 				CalenderShop.click();
 			}
-			
-			
+
 		}
-		
-		
-		
-		
-		
+
 		driver.quit();
-	
+
 	}
 }
