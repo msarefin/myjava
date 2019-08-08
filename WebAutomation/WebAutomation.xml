@@ -1,20 +1,11 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
 
-<suite name="Amazon Automation Script" parallel="false">
-
-	<parameter name="useCloudEnv" value="false" />
-	<parameter name="cloudEnvName" value="browserstack" />
-	<parameter name="os" value="windows" />
-	<parameter name="os_version" value="windows10" />
-	<parameter name="browserName" value="chrome" />
-	<parameter name="browserVersion" value="30" />
+<suite name="Tools QA Suite" parallel="false">
 	<parameter name="url" value="https://www.amazon.com/" />
-
-
-	<test name="Amazon Home">
+	<test name="ToolsQA">
 		<classes>
-			<class name="PageObjectModel.Test.PageObjectModelTest" />
+			<class name="Practice.PageObjectModel" />
 		</classes>
 	</test>
 

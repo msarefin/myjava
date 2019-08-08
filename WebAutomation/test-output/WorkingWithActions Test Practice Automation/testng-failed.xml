@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Failed suite [WorkingWithActions Test Practice Automation]" guice-stage="DEVELOPMENT">
+  <parameter name="url" value="https://www.toolsqa.com/automation-practice-form/"/>
+  <test thread-count="5" name="Actions Test(failed)">
+    <classes>
+      <class name="Practice.WorkingWithAction">
+        <methods>
+          <include name="close"/>
+          <include name="setup"/>
+          <include name="test"/>
+        </methods>
+      </class> <!-- Practice.WorkingWithAction -->
+    </classes>
+  </test> <!-- Actions Test(failed) -->
+</suite> <!-- Failed suite [WorkingWithActions Test Practice Automation] -->

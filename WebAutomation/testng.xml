@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Working with Tool tips" parallel="false">
+	
+	<test name="Tool Tips Test">
+		<parameter name="url" value="http://demoqa.com/tooltip/" />
+		<classes>
+			<class name="Practice.WorkingWithToolTips" />
+		</classes>
+	</test>
+
+</suite> 
