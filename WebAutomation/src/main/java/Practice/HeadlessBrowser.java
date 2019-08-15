@@ -1,21 +1,20 @@
 package Practice;
 
-import java.awt.Desktop.Action;
 import java.util.concurrent.TimeUnit;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.interactions.Actions;
-import org.seleniumhq.jetty9.util.Uptime.Impl;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Optional;
 import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
 
-public class WorkingWithToolTips {
+public class HeadlessBrowser {
 
 	private static String os;
 	private static String chromeDriver;
@@ -23,7 +22,7 @@ public class WorkingWithToolTips {
 
 	static {
 		os = System.getProperty("os.name").toLowerCase();
-		System.out.println("Test Running on " + os.toLowerCase().toUpperCase());
+		System.out.println("Test Runing on " + os.toUpperCase());
 
 		if (os.contains("win")) {
 			chromeDriver = System.getProperty("user.dir") + "/drivers/Windows/ChromeDriver/chromedriver.exe";
@@ -35,38 +34,41 @@ public class WorkingWithToolTips {
 
 	}
 
-	@Parameters({ "url" })
 	@BeforeMethod
-	private void setup(@Optional("http://demoqa.com/tooltip/") String url) {
+	@Parameters({ "url" })
+	private void setup(@Optional("http://demoqa.com/tooltip-and-double-click/") String url) {
 		System.setProperty("webdriver.chrome.driver", chromeDriver);
-		driver = new ChromeDriver();
+
+		ChromeOptions option = new ChromeOptions();
+		option.addArguments("window-size = 1400,800");
+		option.addArguments("headless");
+
+		driver = new ChromeDriver(option);
 		driver.manage().deleteAllCookies();
-		driver.manage().window().maximize();
+//		driver.manage().window().maximize();
 		driver.get(url);
+
+		driver.manage().timeouts().pageLoadTimeout(10, TimeUnit.SECONDS);
 		driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+
 	}
 
-	@Test(priority = 1)
-	private void tooltips() {
+	@Test
+	private void test() throws InterruptedException {
+		System.out.println(driver.getTitle());
 		Actions action = new Actions(driver);
-		WebElement ele = driver.findElement(By.id("age"));
-		System.out.println(ele.getAttribute("title"));
 
-	}
+		WebElement element = driver.findElement(By.id("tooltipDemo"));
+		action.moveToElement(element).perform();
+		System.out.println(element.getText());
 
-	@Test(priority = 2)
-	private void toolsTip() {
-		driver.navigate().to("http://demoqa.com/tooltip-and-double-click/");
-		Actions action = new Actions(driver); 
-		WebElement ele = driver.findElement(By.id("tooltipDemo"));
-		action.moveToElement(ele).perform();
-		WebElement el = driver.findElement(By.cssSelector(".tooltiptext"));
-		System.out.println(el.getText());
+		Thread.sleep(5000);
+
 	}
 
 	@AfterMethod
-	private void teardown() {
+	private void shudtdown() {
 		driver.quit();
-
 	}
+
 }

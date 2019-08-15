@@ -3,13 +3,13 @@
 <suite name="Failed suite [Default suite]" guice-stage="DEVELOPMENT">
   <test thread-count="5" name="Default test(failed)">
     <classes>
-      <class name="Practice.WorkingWithAction">
+      <class name="Practice.HeadlessBrowser">
         <methods>
-          <include name="mouseHover"/>
-          <include name="close"/>
           <include name="setup"/>
+          <include name="test"/>
+          <include name="shudtdown"/>
         </methods>
-      </class> <!-- Practice.WorkingWithAction -->
+      </class> <!-- Practice.HeadlessBrowser -->
     </classes>
   </test> <!-- Default test(failed) -->
 </suite> <!-- Failed suite [Default suite] -->

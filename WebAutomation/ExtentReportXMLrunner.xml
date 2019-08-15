@@ -1,0 +1,20 @@
+<?xml version = "1.0" encoding = "UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+
+<suite name="Working with Extent Report" parallel="false">
+	<test name="Tool Tip Test">
+		<parameter name="UserCloudEnv" value="false"/>
+		<parameter name="cloudEnvName" value="browserstack"/>
+		<parameter name="os" value="OSX"/>
+		<parameter name="os_version" value="Sierra"/>
+		<parameter name="browserName" value="firefox"/>
+		<parameter name="browserVersion" value="30.0"/>
+		<parameter name="url" value="http://automationpractice.com/index.php" />
+		
+		
+		<classes>
+			<class name = "Practice.WorkingWithExtendtReport"/>
+		</classes>
+	</test>
+
+</suite>
