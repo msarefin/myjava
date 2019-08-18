@@ -1,7 +1,7 @@
 <?xml version = "1.0" encoding = "UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
 
-<suite name="Working with Extent Report" parallel="false">
+<suite name="Working with Extent Report suite" parallel="false">
 	<test name="Tool Tip Test">
 		<parameter name="UserCloudEnv" value="false"/>
 		<parameter name="cloudEnvName" value="browserstack"/>
