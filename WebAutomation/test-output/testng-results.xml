@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testng-results ignored="0" total="1" passed="1" failed="0" skipped="0">
+<testng-results ignored="0" total="2" passed="1" failed="1" skipped="0">
   <reporter-output>
   </reporter-output>
-  <suite started-at="2019-08-15T01:08:08Z" name="Working with Extent Report" finished-at="2019-08-15T01:08:18Z" duration-ms="10133">
+  <suite started-at="2019-08-18T20:09:24Z" name="Working with Extent Report suite" finished-at="2019-08-18T20:09:28Z" duration-ms="4588">
     <groups>
     </groups>
-    <test started-at="2019-08-15T01:08:08Z" name="Tool Tip Test" finished-at="2019-08-15T01:08:18Z" duration-ms="10133">
+    <test started-at="2019-08-18T20:09:24Z" name="Tool Tip Test" finished-at="2019-08-18T20:09:28Z" duration-ms="4588">
       <class name="Practice.WorkingWithExtendtReport">
-        <test-method is-config="true" signature="setup(java.lang.String)[pri:0, instance:Practice.WorkingWithExtendtReport@71c8becc]" started-at="2019-08-15T01:08:08Z" name="setup" finished-at="2019-08-15T01:08:15Z" duration-ms="6780" status="PASS">
+        <test-method is-config="true" signature="setup(java.lang.String)[pri:0, instance:Practice.WorkingWithExtendtReport@3c0be339]" started-at="2019-08-18T20:09:24Z" name="setup" finished-at="2019-08-18T20:09:26Z" duration-ms="2263" status="PASS">
           <params>
             <param index="0">
               <value>
@@ -18,15 +18,66 @@
           <reporter-output>
           </reporter-output>
         </test-method> <!-- setup -->
-        <test-method signature="test()[pri:0, instance:Practice.WorkingWithExtendtReport@71c8becc]" started-at="2019-08-15T01:08:15Z" name="test" finished-at="2019-08-15T01:08:17Z" duration-ms="1854" status="PASS">
+        <test-method signature="test()[pri:0, instance:Practice.WorkingWithExtendtReport@3c0be339]" started-at="2019-08-18T20:09:26Z" name="test" finished-at="2019-08-18T20:09:27Z" duration-ms="656" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- test -->
-        <test-method is-config="true" signature="shutdown()[pri:0, instance:Practice.WorkingWithExtendtReport@71c8becc]" started-at="2019-08-15T01:08:17Z" name="shutdown" finished-at="2019-08-15T01:08:18Z" duration-ms="1435" status="PASS">
+        <test-method is-config="true" signature="shutdown()[pri:0, instance:Practice.WorkingWithExtendtReport@3c0be339]" started-at="2019-08-18T20:09:27Z" name="shutdown" finished-at="2019-08-18T20:09:27Z" duration-ms="136" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- shutdown -->
+        <test-method is-config="true" signature="setup(java.lang.String)[pri:0, instance:Practice.WorkingWithExtendtReport@3c0be339]" started-at="2019-08-18T20:09:27Z" name="setup" finished-at="2019-08-18T20:09:28Z" duration-ms="1378" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[http://automationpractice.com/index.php]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setup -->
+        <test-method signature="test1()[pri:0, instance:Practice.WorkingWithExtendtReport@3c0be339]" started-at="2019-08-18T20:09:28Z" name="test1" finished-at="2019-08-18T20:09:28Z" duration-ms="1" status="FAIL">
+          <exception class="java.lang.NullPointerException">
+            <full-stacktrace>
+              <![CDATA[java.lang.NullPointerException
+at Practice.WorkingWithExtendtReport.test1(WorkingWithExtendtReport.java:64)
+at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+at java.base/java.lang.reflect.Method.invoke(Method.java:564)
+at org.testng.internal.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:124)
+at org.testng.internal.Invoker.invokeMethod(Invoker.java:583)
+at org.testng.internal.Invoker.invokeTestMethod(Invoker.java:719)
+at org.testng.internal.Invoker.invokeTestMethods(Invoker.java:989)
+at org.testng.internal.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:125)
+at org.testng.internal.TestMethodWorker.run(TestMethodWorker.java:109)
+at org.testng.TestRunner.privateRun(TestRunner.java:648)
+at org.testng.TestRunner.run(TestRunner.java:505)
+at org.testng.SuiteRunner.runTest(SuiteRunner.java:455)
+at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:450)
+at org.testng.SuiteRunner.privateRun(SuiteRunner.java:415)
+at org.testng.SuiteRunner.run(SuiteRunner.java:364)
+at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:52)
+at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:84)
+at org.testng.TestNG.runSuitesSequentially(TestNG.java:1208)
+at org.testng.TestNG.runSuitesLocally(TestNG.java:1137)
+at org.testng.TestNG.runSuites(TestNG.java:1049)
+at org.testng.TestNG.run(TestNG.java:1017)
+at org.testng.remote.AbstractRemoteTestNG.run(AbstractRemoteTestNG.java:115)
+at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:251)
+at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:77)
+]]>
+            </full-stacktrace>
+          </exception> <!-- java.lang.NullPointerException -->
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- test1 -->
+        <test-method is-config="true" signature="shutdown()[pri:0, instance:Practice.WorkingWithExtendtReport@3c0be339]" started-at="2019-08-18T20:09:28Z" name="shutdown" finished-at="2019-08-18T20:09:28Z" duration-ms="116" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- shutdown -->
       </class> <!-- Practice.WorkingWithExtendtReport -->
     </test> <!-- Tool Tip Test -->
-  </suite> <!-- Working with Extent Report -->
+  </suite> <!-- Working with Extent Report suite -->
 </testng-results>
