@@ -22,6 +22,7 @@ import org.testng.annotations.AfterSuite;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.BeforeSuite;
+import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
 
 import com.relevantcodes.extentreports.ExtentReports;
@@ -62,6 +63,7 @@ public class reporting {
 	}
 
 	@BeforeMethod
+	@Parameters({""})
 	public void startExtent(Method method) {
 		String className = method.getDeclaringClass().getSimpleName();
 		String methodName = method.getName().toLowerCase();

@@ -52,8 +52,17 @@ public class WorkingPageObjectModel extends POM {
 		p.accept.click();
 		wdWait.until(ExpectedConditions.invisibilityOf(p.accept));
 
+		p.firstName.clear();
 		p.firstName.sendKeys("Alex");
+		p.lastName.click();
 		p.lastName.sendKeys("James");
+
+		POM p1 = PageFactory.initElements(driver, POM.class);
+
+		p1.firstName.clear();
+		p1.firstName.sendKeys("Nelson");
+		p1.lastName.clear();
+		p1.lastName.sendKeys("Dan");
 
 		driver.quit();
 
