@@ -8,11 +8,12 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.StringTokenizer;
+import java.util.concurrent.TimeUnit;
 
-import org.apache.commons.codec.binary.StringUtils;
+import org.apache.commons.lang3.StringUtils;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.remote.server.handler.GetTagName;
 import org.testng.ITestContext;
 import org.testng.ITestResult;
 import org.testng.Reporter;
@@ -22,6 +23,7 @@ import org.testng.annotations.AfterSuite;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.BeforeSuite;
+import org.testng.annotations.Optional;
 import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
 
@@ -29,6 +31,8 @@ import com.relevantcodes.extentreports.ExtentReports;
 import com.relevantcodes.extentreports.ExtentTest;
 import com.relevantcodes.extentreports.LogStatus;
 import com.relevantcodes.extentreports.model.ITest;
+
+import bsh.StringUtil;
 
 public class reporting {
 
@@ -57,18 +61,23 @@ public class reporting {
 	}
 
 	@BeforeClass
-	public void setup() {
+	@Parameters({ "url" })
+	public void setup(@Optional("http://www.google.com") String url) {
 		System.setProperty("webdriver.chrome.driver", chromeDriver);
 		driver = new ChromeDriver();
+		driver.manage().deleteAllCookies();
+		driver.manage().window().maximize();
+		driver.get(url);
+		driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
 	}
 
 	@BeforeMethod
-	@Parameters({""})
 	public void startExtent(Method method) {
 		String className = method.getDeclaringClass().getSimpleName();
 		String methodName = method.getName().toLowerCase();
 		ExtentTestManager.startTest(method.getName());
 		ExtentTestManager.getTest().assignCategory(className);
+
 	}
 
 	protected String getStackTrace(Throwable t) {
@@ -90,35 +99,45 @@ public class reporting {
 	public void afterEachTestMethod(ITestResult result) {
 		ExtentTestManager.getTest().getTest().setStartedTime(getTime(result.getStartMillis()));
 		ExtentTestManager.getTest().getTest().setEndedTime(getTime(result.getEndMillis()));
-		
-		for(String group: result.getMethod().getGroups()) {
+
+		for (String group : result.getMethod().getGroups()) {
 			ExtentTestManager.getTest().assignCategory(group);
 		}
-		
-		if(result.getStatus()== 1) {
-			ExtentTestManager.getTest().log(LogStatus.PASS, "Test PAssed");
-		}else if(result.getStatus()==2) {
+
+		if (result.getStatus() == 1) {
+			ExtentTestManager.getTest().log(LogStatus.PASS, "Test Passed");
+		} else if (result.getStatus() == 2) {
 			ExtentTestManager.getTest().log(LogStatus.FAIL, getStackTrace(result.getThrowable()));
-		}else if(result.getStatus()==3){
+		} else if (result.getStatus() == 3) {
 			ExtentTestManager.getTest().log(LogStatus.SKIP, "Test Skipped");
 		}
 		ExtentTestManager.endTest();
 		extent.flush();
-		
-		if(result.getStatus() == ITestResult.FAILURE) {
+
+		if (result.getStatus() == ITestResult.FAILURE) {
 			System.out.println("Test has Failed But screnshot is not acquired");
 		}
 	}
-	
+
 	@AfterSuite
 	public void generateReport() {
 		extent.close();
 	}
-	
-	
+
+	@AfterClass
+	public void EndBrowserSession() {
+		driver.quit();
+	}
+
 	@Test
-	public void test() {
-		
+	public void TestAutomationTest() {
+		String URL = driver.getCurrentUrl();
+		System.out.println(URL);
+
+		TestLogger.log(URL);
+		TestLogger.log("This Message is just a sample message from Practice.reporting.test()");
+		TestLogger.log(getClass().getSimpleName()+" : "+StringUtils.join(StringUtils.splitByCharacterTypeCamelCase(new Object() {}.getClass().getEnclosingMethod().getName()),' '));
+
 	}
 
 }
@@ -204,4 +223,8 @@ class ApplicationLog {
 	public static void epicLogger() {
 		TestLogger.log("Browser is Launching");
 	}
+}
+
+class CommonMethods{
+	
 }

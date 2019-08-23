@@ -1,12 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
-<suite name="Failed suite [Default suite]" guice-stage="DEVELOPMENT">
-  <test thread-count="5" name="Default test(failed)">
+<suite name="Failed suite [Extent Reporting with Details]" guice-stage="DEVELOPMENT">
+  <test thread-count="5" name="Sample Test(failed)">
+    <parameter name="url" value=" http://www.google.com "/>
     <classes>
       <class name="Practice.reporting">
         <methods>
-          <include name="TestAutomationTest"/>
           <include name="extentSetup"/>
+          <include name="test"/>
           <include name="generateReport"/>
           <include name="startExtent"/>
           <include name="afterEachTestMethod"/>
@@ -15,5 +16,5 @@
         </methods>
       </class> <!-- Practice.reporting -->
     </classes>
-  </test> <!-- Default test(failed) -->
-</suite> <!-- Failed suite [Default suite] -->
+  </test> <!-- Sample Test(failed) -->
+</suite> <!-- Failed suite [Extent Reporting with Details] -->

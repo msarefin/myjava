@@ -3,13 +3,17 @@
 <suite name="Failed suite [Default suite]" guice-stage="DEVELOPMENT">
   <test thread-count="5" name="Default test(failed)">
     <classes>
-      <class name="Practice.HeadlessBrowser">
+      <class name="Practice.reporting">
         <methods>
+          <include name="TestAutomationTest"/>
+          <include name="extentSetup"/>
+          <include name="generateReport"/>
+          <include name="startExtent"/>
+          <include name="afterEachTestMethod"/>
           <include name="setup"/>
-          <include name="test"/>
-          <include name="shudtdown"/>
+          <include name="EndBrowserSession"/>
         </methods>
-      </class> <!-- Practice.HeadlessBrowser -->
+      </class> <!-- Practice.reporting -->
     </classes>
   </test> <!-- Default test(failed) -->
 </suite> <!-- Failed suite [Default suite] -->

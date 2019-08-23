@@ -57,13 +57,7 @@ public class WorkingWithExtendtReport {
 
 	}
 	
-	@Test
-	private void test1() {
-		ITestContext context = null; 
-		
-		File outputDirectory  = new File(context.getOutputDirectory());
-		
-	}
+	
 
 	@AfterMethod
 	private void shutdown() {
