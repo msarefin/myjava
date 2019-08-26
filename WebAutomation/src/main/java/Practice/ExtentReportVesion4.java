@@ -2,11 +2,23 @@ package Practice;
 
 import static org.testng.Assert.assertTrue;
 
+import java.io.File;
+import java.io.IOException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.concurrent.TimeUnit;
+
+import org.apache.commons.io.FileUtils;
+import org.apache.commons.lang3.StringUtils;
 import org.openqa.selenium.By;
+import org.openqa.selenium.OutputType;
+import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
 import org.testng.Assert;
 import org.testng.ITestResult;
+import org.testng.annotations.AfterClass;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeClass;
@@ -21,7 +33,10 @@ import com.aventstack.extentreports.ExtentTest;
 import com.aventstack.extentreports.Status;
 import com.aventstack.extentreports.reporter.ExtentHtmlReporter;
 import com.aventstack.extentreports.reporter.configuration.Theme;
+import com.aventstack.extentreports.utils.FileUtil;
 import com.relevantcodes.extentreports.model.ITest;
+
+import bsh.StringUtil;
 
 public class ExtentReportVesion4 {
 
@@ -50,7 +65,7 @@ public class ExtentReportVesion4 {
 	@BeforeTest
 	public void setExtent() {
 		htmlReporter = new ExtentHtmlReporter(System.getProperty("user.dir") + "/Reports/MyExtentReport.html");
-		htmlReporter.config().setDocumentTitle("Automation Report");
+		htmlReporter.config().setDocumentTitle("Test Automation");
 		htmlReporter.config().setReportName("Functional Report");
 		htmlReporter.config().setTheme(Theme.DARK);
 
@@ -72,6 +87,12 @@ public class ExtentReportVesion4 {
 	@Parameters({ "url" })
 	public void setup(@Optional("http://www.yahoo.com") String url) {
 		System.setProperty("webdriver.chrome.driver", chromeDriver);
+		
+		ChromeOptions option = new ChromeOptions(); 
+		option.addArguments("window-size = 1400,800");
+		option.addArguments("headless");
+		
+		
 		driver = new ChromeDriver();
 		driver.manage().window().maximize();
 		driver.manage().deleteAllCookies();
@@ -79,11 +100,13 @@ public class ExtentReportVesion4 {
 
 	}
 
-	@Test
-	public void test() {
+	@Test(priority = 1)
+	public void noCommerceTitleTest() {
 		String URL = driver.getCurrentUrl();
 		String title = driver.getTitle();
-		test = extent.createTest("test");
+		test = extent.createTest(getClass().getSimpleName() + " : "
+				+ StringUtils.join(StringUtils.splitByCharacterTypeCamelCase(new Object() {
+				}.getClass().getEnclosingMethod().getName()), ' '));
 
 		System.out.println(URL);
 
@@ -91,29 +114,56 @@ public class ExtentReportVesion4 {
 
 	}
 
-	@Test
-	public void test2() {
-		test = extent.createTest("test2");
+	@Test(priority = 2)
+	public void noCommerceLogoTest() {
+		test = extent.createTest(getClass().getSimpleName() + " : "
+				+ StringUtils.join(StringUtils.splitByCharacterTypeCamelCase(new Object() {
+				}.getClass().getEnclosingMethod().getName()), ' '));
 		boolean status = driver.findElement(By.cssSelector("a#uh-logo")).isDisplayed();
 		Assert.assertTrue(status);
 
 	}
 
-	@Test
-	public void login() {
+	@Test(priority = 3)
+	public void noCommerceLoginTest() {
 
-		test = extent.createTest("logo test");
+		test = extent.createTest(getClass().getSimpleName() + " : "
+				+ StringUtils.join(StringUtils.splitByCharacterTypeCamelCase(new Object() {
+				}.getClass().getEnclosingMethod().getName()), ' '));
 		Assert.assertTrue(true);
 	}
 
 	@AfterMethod
-	public void teardown(ITestResult result) {
+	public void teardown(ITestResult result) throws IOException {
 
 		if (result.getStatus() == ITestResult.FAILURE) {
-			test.log(Status.FAIL, "Test Case is : "+result.getName());
-			test.log(Status.FAIL, "Test Case is : "+result.getThrowable());
-			
+			test.log(Status.FAIL, "Test Case is : " + result.getName());
+			test.log(Status.FAIL, "Test Case is : " + result.getThrowable());
+
+			String screenshotPath = ExtentReportVesion4.getScreenshot(driver, result.getName());
+			test.addScreenCaptureFromPath(screenshotPath);
+		} else if (result.getStatus() == ITestResult.SKIP) {
+			test.log(Status.SKIP, "Test Case SKIPPED is " + result.getName());
+
+		} else {
+			test.log(Status.PASS, "Test case PASSED is " + result.getName());
 		}
 
+		driver.manage().deleteAllCookies();
+		driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+		driver.close();
+	}
+
+	public static String getScreenshot(WebDriver driver, String ScreenshotName) throws IOException {
+
+		String dataName = new SimpleDateFormat("yyyyMMddhhmmss").format(new Date());
+		TakesScreenshot ts = (TakesScreenshot) driver;
+		File source = ts.getScreenshotAs(OutputType.FILE);
+
+		String destination = System.getProperty("user.dir") + "/ScreenShots/" + ScreenshotName + dataName + ".jpg";
+		File finalDestination = new File(destination);
+		FileUtils.copyFile(source, finalDestination);
+
+		return destination;
 	}
 }

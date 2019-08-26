@@ -1,11 +1,11 @@
 <?xml version = "1.0" encoding = "UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
 
-<suite name="My Extent Report 4 Runner" parallel=false>
+<suite name="My Extent Report 4 Runner" parallel="false">
 	<parameter name="url" value="http://www.yahoo.com" />
 	<test name="My Extent Report ">
 		<classes>
-			<class name = Practice.ExtentReportVesion4/>
+			<class name = "Practice.ExtentReportVesion4"/>
 		</classes>
 	</test>
 </suite>

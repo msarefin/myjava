@@ -2,6 +2,7 @@
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
 
 <suite name="Extent Reporting with Details" parallel="false">
+	
 	<test name="Sample Test">
 		<parameter name="url" value= " http://www.google.com " />
 		<classes>
