@@ -34,7 +34,7 @@ import com.relevantcodes.extentreports.model.ITest;
 
 import bsh.StringUtil;
 
-public class reporting {
+public class reporting {	
 
 	private static String os;
 	private static String chromeDriver;
@@ -151,7 +151,7 @@ class ExtentManager {
 		if (extent == null) {
 			File outputDirectory = new File(context.getOutputDirectory());
 			File resultDirectory = new File(outputDirectory.getParentFile(), "html");
-			extent = new ExtentReports(System.getProperty("user.dir") + "/Reports/ExtentReports.html");
+			extent = new ExtentReports(System.getProperty("user.dir") + "/Reports/Extent Reports/Copied From Mafi/ReportingExtentReports.html");
 			Reporter.log("Extent Report Directory" + resultDirectory, true);
 			extent.addSystemInfo("Hostname", "PNT").addSystemInfo("Environment", "QA").addSystemInfo("User Name",
 					"Mohammed Arefin");

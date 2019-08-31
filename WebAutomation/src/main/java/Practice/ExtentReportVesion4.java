@@ -31,6 +31,9 @@ import org.testng.annotations.Test;
 import com.aventstack.extentreports.ExtentReports;
 import com.aventstack.extentreports.ExtentTest;
 import com.aventstack.extentreports.Status;
+import com.aventstack.extentreports.markuputils.ExtentColor;
+import com.aventstack.extentreports.markuputils.Markup;
+import com.aventstack.extentreports.markuputils.MarkupHelper;
 import com.aventstack.extentreports.reporter.ExtentHtmlReporter;
 import com.aventstack.extentreports.reporter.configuration.Theme;
 import com.aventstack.extentreports.utils.FileUtil;
@@ -47,6 +50,8 @@ public class ExtentReportVesion4 {
 	public ExtentHtmlReporter htmlReporter;
 	public ExtentReports extent;
 	public ExtentTest test;
+
+	private static String category = "Test";
 
 	static {
 		os = System.getProperty("os.name").toLowerCase();
@@ -65,9 +70,10 @@ public class ExtentReportVesion4 {
 	@BeforeTest
 	public void setExtent() {
 		htmlReporter = new ExtentHtmlReporter(System.getProperty("user.dir") + "/Reports/MyExtentReport.html");
-		htmlReporter.config().setDocumentTitle("Test Automation");
+		htmlReporter.loadConfig(System.getProperty("user.dir") + "/extent-config.xml");
+		htmlReporter.config().setDocumentTitle("ExtentReportVersion4");
 		htmlReporter.config().setReportName("Functional Report");
-		htmlReporter.config().setTheme(Theme.DARK);
+		htmlReporter.config().setTheme(Theme.STANDARD);
 
 		extent = new ExtentReports();
 
@@ -87,12 +93,7 @@ public class ExtentReportVesion4 {
 	@Parameters({ "url" })
 	public void setup(@Optional("http://www.yahoo.com") String url) {
 		System.setProperty("webdriver.chrome.driver", chromeDriver);
-		
-		ChromeOptions option = new ChromeOptions(); 
-		option.addArguments("window-size = 1400,800");
-		option.addArguments("headless");
-		
-		
+
 		driver = new ChromeDriver();
 		driver.manage().window().maximize();
 		driver.manage().deleteAllCookies();
@@ -107,10 +108,10 @@ public class ExtentReportVesion4 {
 		test = extent.createTest(getClass().getSimpleName() + " : "
 				+ StringUtils.join(StringUtils.splitByCharacterTypeCamelCase(new Object() {
 				}.getClass().getEnclosingMethod().getName()), ' '));
-
+		test.assignCategory(category);
 		System.out.println(URL);
-
 		Assert.assertEquals("Yahoo", title);
+		
 
 	}
 
@@ -120,7 +121,9 @@ public class ExtentReportVesion4 {
 				+ StringUtils.join(StringUtils.splitByCharacterTypeCamelCase(new Object() {
 				}.getClass().getEnclosingMethod().getName()), ' '));
 		boolean status = driver.findElement(By.cssSelector("a#uh-logo")).isDisplayed();
+		test.assignCategory(category);
 		Assert.assertTrue(status);
+		
 
 	}
 
@@ -130,23 +133,35 @@ public class ExtentReportVesion4 {
 		test = extent.createTest(getClass().getSimpleName() + " : "
 				+ StringUtils.join(StringUtils.splitByCharacterTypeCamelCase(new Object() {
 				}.getClass().getEnclosingMethod().getName()), ' '));
-		Assert.assertTrue(true);
+		test.assignCategory(category);
+		Assert.assertTrue(false);
 	}
 
 	@AfterMethod
 	public void teardown(ITestResult result) throws IOException {
 
 		if (result.getStatus() == ITestResult.FAILURE) {
+			test.fail(MarkupHelper.createLabel(result.getName() + " Test Failed", ExtentColor.RED));
+			test.fail(result.getThrowable());
+
 			test.log(Status.FAIL, "Test Case is : " + result.getName());
 			test.log(Status.FAIL, "Test Case is : " + result.getThrowable());
+			test.log(Status.INFO, "Info");
 
 			String screenshotPath = ExtentReportVesion4.getScreenshot(driver, result.getName());
 			test.addScreenCaptureFromPath(screenshotPath);
 		} else if (result.getStatus() == ITestResult.SKIP) {
+			test.skip(MarkupHelper.createLabel(result.getName()+" Test Skipped", ExtentColor.YELLOW));
+			test.skip(result.getThrowable());
+			
 			test.log(Status.SKIP, "Test Case SKIPPED is " + result.getName());
+			test.log(Status.INFO, "Info");
 
-		} else {
+		} else if (result.getStatus() == ITestResult.SUCCESS) {
+			test.pass(MarkupHelper.createLabel(result.getName() + " Test Passed", ExtentColor.GREEN));
+
 			test.log(Status.PASS, "Test case PASSED is " + result.getName());
+			test.log(Status.INFO, "Info");
 		}
 
 		driver.manage().deleteAllCookies();
