@@ -21,6 +21,7 @@ import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
+import org.testng.annotations.TestInstance;
 
 import com.aventstack.extentreports.ExtentReports;
 import com.aventstack.extentreports.ExtentTest;
@@ -37,6 +38,7 @@ public class PracticeExtentReporting {
 	ExtentReports reports;
 	ExtentTest testInfo;
 	ExtentHtmlReporter htmlReporter;
+	ExtentTest node; 
 
 	static {
 		os = System.getProperty("os.name").toLowerCase();
@@ -53,7 +55,8 @@ public class PracticeExtentReporting {
 
 	@BeforeTest
 	public void setup() {
-		htmlReporter = new ExtentHtmlReporter(new File(System.getProperty("user.dir") + "/Reports/PracticeExtentReport.html"));
+		htmlReporter = new ExtentHtmlReporter(
+				new File(System.getProperty("user.dir") + "/Reports/PracticeExtentReport.html"));
 		htmlReporter.loadConfig(System.getProperty("user.dir") + "/extent-config.xml");
 		htmlReporter.config().setDocumentTitle("PracticeExtentReporting");
 		htmlReporter.config().setReportName("Functional Test Report");
@@ -72,7 +75,7 @@ public class PracticeExtentReporting {
 	public void methodOne() {
 		Assert.assertTrue(true);
 		testInfo.log(Status.INFO, "This is just an info");
-
+		
 	}
 
 	@Test
@@ -85,13 +88,17 @@ public class PracticeExtentReporting {
 	@BeforeMethod
 	public void register(Method method) {
 		String testName = method.getName();
-		testInfo = reports.createTest(testName);
+		testInfo = reports.createTest(testName,"Smoke Test in progress!!!!!!!!!!!!!!!!!");
 		testInfo.assignCategory("Smoke Test");
+		node =  testInfo.createNode("Test Node");
+		
 	}
 
 	@AfterMethod
 	public void captureStatus(ITestResult result) {
 		if (result.getStatus() == ITestResult.SUCCESS) {
+			node.pass("node passed888888888888");
+			testInfo.pass("Test has Passed****************");
 			testInfo.log(Status.PASS, "The test Method " + result.getName() + " is passed");
 		} else if (result.getStatus() == ITestResult.FAILURE) {
 			testInfo.log(Status.FAIL, "The test Method " + result.getName() + " is failed");
