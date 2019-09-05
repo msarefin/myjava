@@ -5,7 +5,7 @@
     <classes>
       <class name="apiTest.TweetsTest">
         <methods>
-          <include name="test"/>
+          <include name="testUserCanTweet"/>
           <include name="setup"/>
         </methods>
       </class> <!-- apiTest.TweetsTest -->
