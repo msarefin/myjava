@@ -1,6 +1,5 @@
 package graphAlgorithm;
 
-import java.awt.Adjustable;
 import java.util.LinkedList;
 
 public class Graph {
