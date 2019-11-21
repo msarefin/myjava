@@ -1,6 +1,10 @@
 package practice;
 
 public class MergeSort {
+	
+	/*
+	 * I am just practicing Merge sort
+	 */
 
 	public static void main(String[] args) {
 		int[] arr = new int[] { 9, 1, 7, 3, 6, 4, 8, 2, 5, 0, -1, -2, -3 };
