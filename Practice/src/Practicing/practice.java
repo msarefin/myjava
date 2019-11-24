@@ -95,7 +95,7 @@ public class practice {
 		System.out.println("Largest number in the array: " + maxValue);
 
 //		Determine the number of buckets
-		int avarageFactor = factor(arr.length);
+//		int avarageFactor = factor(arr.length);
 		int numberOfBuckets = (int) Math.sqrt(arr.length);
 		System.out.println("Number of buckets: " + numberOfBuckets);
 
