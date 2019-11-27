@@ -1,7 +1,7 @@
 package practice;
 
 public class MergeSort {
-	
+
 	/*
 	 * I am just practicing Merge sort
 	 */
@@ -11,54 +11,50 @@ public class MergeSort {
 
 		printArray(arr);
 		mergeSort(arr);
+		printArray(arr);
 
 	}
 
 	static void mergeSort(int[] arr) {
-		if (arr == null) {
+		if (arr == null)
 			return;
-		}
 
 		if (arr.length > 1) {
 			int mid = arr.length / 2;
 
-			int[] left = new int[mid];
-			int[] right = new int[arr.length - mid];
+			int left[] = new int[mid];
+			int right[] = new int[arr.length - mid];
 
-			for (int i = 0; i < arr.length; i++) {
-				if (i < mid) {
-					left[i] = arr[i];
-				} else {
-					right[i - mid] = arr[i];
-				}
+			for (int i = 0; i < left.length; i++) {
+				left[i] = arr[i];
 			}
 
-			System.out.println("left");
-			printArray(left);
-			System.out.println("right");
-			printArray(right);
+			for (int i = 0; i < right.length; i++) {
+				right[i] = arr[mid + i];
+			}
+
 			mergeSort(left);
 			mergeSort(right);
 
-			int i = 0, j = 0, k = 0;
+			int l = 0, r = 0, k = 0;
 
-			while (i < left.length && j < right.length) {
-				if (left[i] < right[j]) {
-					arr[k++] = left[i++];
+			while (l < left.length && r < right.length) {
+				if (left[l] < right[r]) {
+					arr[k++] = left[l++];
 				} else {
-					arr[k++] = right[j++];
+					arr[k++] = right[r++];
 				}
 			}
 
-			while (i < left.length) {
-				arr[k++] = left[i++];
+			while (l < left.length) {
+				arr[k++] = left[l++];
 			}
-			while (j < right.length) {
-				arr[k++] = right[j++];
+			while (r < right.length) {
+				arr[k++] = right[r++];
+
 			}
 
 		}
-		printArray(arr);
 	}
 
 	static void printArray(int[] arr) {

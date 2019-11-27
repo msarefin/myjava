@@ -144,6 +144,7 @@ public class practice {
 	}
 
 	static void mergeSort(int[] arr) {
+		printArray(arr);
 		if (arr == null) {
 			return;
 		}
@@ -182,7 +183,7 @@ public class practice {
 
 			}
 		}
-		printArray(arr);
+		
 	}
 
 	// ----------------------------------Other-tools------------------------------------------
