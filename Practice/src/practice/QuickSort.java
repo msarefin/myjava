@@ -23,34 +23,26 @@ public class QuickSort {
 	}
 
 	static void partitioning(int[] arr, int low, int high) {
-		if (low >= high) {
+		if (low > high) {
 			return;
 		}
-		printArray(arr);
 		int pi = low + (high - low) / 2;
 		int pivot = arr[pi];
-		System.out.println("Pivot : " + pivot);
-		System.out.println("Swapping Pivot: "+arr[pi] + " <-> " + arr[high]);
 		swap(arr, pi, high);
-		printArray(arr);
 		int i = low - 1;
 		for (int j = low; j < high; j++) {
-
 			if (arr[j] < pivot) {
 //				System.out.println(arr[j] + "<" + pivot);
 				i++;
-
 				if (i != j) {
-					System.out.println("Swapping: "+arr[i] + " <-> " + arr[j]);
+
 					swap(arr, i, j);
-					printArray(arr);
 				}
 
 			}
 		}
-		System.out.println("Swapping: "+arr[i+1] + " <-> " + arr[high]);
+//		System.out.println("Swapping: " + arr[i + 1] + " <-> " + arr[high]);
 		swap(arr, i + 1, high);
-		printArray(arr);
 		pi = i + 1;
 		partitioning(arr, low, pi - 1);
 		partitioning(arr, pi + 1, high);
