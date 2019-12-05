@@ -23,7 +23,7 @@ public class QuickSort {
 	}
 
 	static void partitioning(int[] arr, int low, int high) {
-		if (low > high) {
+		if (low >= high) {
 			return;
 		}
 		int pi = low + (high - low) / 2;
