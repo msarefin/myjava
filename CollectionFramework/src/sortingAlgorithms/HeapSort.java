@@ -5,7 +5,7 @@ import java.util.Random;
 
 public class HeapSort {
 
-	private static int arr[] = { 0,1,2,3,4,5,6,7,8,9,10,11,12,13,14 };
+	private static int arr[] = { 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14 };
 	private static int size = 15;
 	private static int bound = 100;
 
@@ -37,22 +37,21 @@ public class HeapSort {
 		int largest = i;
 		int l = 2 * i + 1;
 		int r = 2 * i + 2;
-		
 
 		if (l < n && arr[l] > arr[largest]) {
-			
+
 			largest = l;
-			
+
 		}
 
 		if (r < n && arr[r] > arr[largest]) {
-			
+
 			largest = r;
 
 		}
 
 		if (largest != i) {
-			
+
 			int swap = arr[i];
 			arr[i] = arr[largest];
 			arr[largest] = swap;
