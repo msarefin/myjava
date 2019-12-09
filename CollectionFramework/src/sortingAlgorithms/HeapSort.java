@@ -39,22 +39,13 @@ public class HeapSort {
 		int r = 2 * i + 2;
 
 		if (l < n && arr[l] > arr[largest]) {
-
 			largest = l;
-
 		}
-
 		if (r < n && arr[r] > arr[largest]) {
-
 			largest = r;
-
 		}
-
 		if (largest != i) {
-
-			int swap = arr[i];
-			arr[i] = arr[largest];
-			arr[largest] = swap;
+			swap(arr, i, largest);
 			displayArray(arr);
 			heapify(arr, n, largest);
 
@@ -62,20 +53,21 @@ public class HeapSort {
 
 	}
 
+	static void swap(int[] arr, int i, int j) {
+		int temp = arr[i];
+		arr[i] = arr[j];
+		arr[j] = temp;
+	}
+
 	private static void sort(int arr[]) {
 		int n = arr.length;
-		System.out.println("Create a heap");
 		for (int j = n / 2 - 1; j >= 0; j--) {
-			System.out.println(j);
 			heapify(arr, n, j);
-
 		}
 
 		System.out.println("delete the heap and sort");
 		for (int i = n - 1; i >= 0; i--) {
-			int temp = arr[0];
-			arr[0] = arr[i];
-			arr[i] = temp;
+			swap(arr, 0, i);
 
 			displayArray(arr);
 			heapify(arr, i, 0);
