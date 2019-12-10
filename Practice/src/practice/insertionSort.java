@@ -10,14 +10,14 @@ public class insertionSort {
 
 	static void InsertionSort(int[] arr) {
 		for (int i = 1; i < arr.length; i++) {
-			int t = arr[i];
+			int temp = arr[i];
 			int j = i-1; 
 			printArray(arr);
-			while(j>=0 && arr[j]>t) {
+			while(j>=0 && arr[j]>temp) {
 				arr[j+1] = arr[j]; 
 				j--; 
 			}
-			arr[j+1] = t; 
+			arr[j+1] = temp; 
 		}
 	}
 
