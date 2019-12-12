@@ -5,7 +5,7 @@ import java.util.LinkedList;
 public class Graph {
 
 	int v; 
-	LinkedList<Integer> adjListArray[]; 
+	LinkedList<Integer> [] adjListArray; 
 	
 	Graph (int v){
 		this.v = v; 
@@ -43,7 +43,7 @@ public class Graph {
 		graph.addEdge(graph, 3, 4);
 		graph.addEdge(graph, 4, 3);
 		
-		graph.printGraph(graph);
+		graph.printGraph(graph);	
 		
 	}
 }
