@@ -24,7 +24,7 @@ public class GraphImplementation {
 	
 	 void printGraph(GraphImplementation g) {
 		for(int v = 0; v<g.V; v++) {
-			System.out.print("head");
+			System.out.print("head : "+v );
 			for(Integer n : g.adjListArray[v]) {
 				System.out.print("->"+n);
 			}
