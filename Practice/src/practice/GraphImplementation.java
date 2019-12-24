@@ -10,7 +10,6 @@ public class GraphImplementation {
 	void Graph(int v) {
 		this.V = v;
 		adjListArray = new LinkedList[V]; // Define the size of the array - the number of vertices
-
 		for (int i = 0; i < v; i++) {
 			adjListArray[i] = new LinkedList<>(); // Initialize the with a list of vertices
 		}
