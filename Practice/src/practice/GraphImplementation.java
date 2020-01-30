@@ -1,5 +1,6 @@
 package practice;
 
+import java.util.Iterator;
 import java.util.LinkedList;
 
 public class GraphImplementation {
@@ -30,19 +31,52 @@ public class GraphImplementation {
 		}
 	}
 
+	void DFSUtil(int n, boolean visited[]) {
+		visited[n] = true;
+		System.out.print(n + " ");
+
+		Iterator<Integer> it = adjListArray[n].iterator();
+		while (it.hasNext()) {
+			int n1 = it.next();
+			if (!visited[n1]) {
+				DFSUtil(n1, visited);
+			}
+		}
+	}
+
+	void DFS(int n) {
+		boolean visited[] = new boolean[V];
+		DFSUtil(n, visited);
+	}
+
 	public static void main(String[] args) {
 		GraphImplementation g = new GraphImplementation();
 
-		g.Graph(5);
+		g.Graph(7);
 
 		g.addEdge(g, 0, 1);
-		g.addEdge(g, 0, 4);
+		g.addEdge(g, 0, 3);
 		g.addEdge(g, 1, 2);
 		g.addEdge(g, 1, 3);
-		g.addEdge(g, 1, 4);
+		g.addEdge(g, 1, 5);
+		g.addEdge(g, 1, 6);
+		g.addEdge(g, 2, 1);
 		g.addEdge(g, 2, 3);
+		g.addEdge(g, 2, 4);
+		g.addEdge(g, 2, 5);
+		g.addEdge(g, 3, 0);
+		g.addEdge(g, 3, 2);
 		g.addEdge(g, 3, 4);
+		g.addEdge(g, 4, 3);
+		g.addEdge(g, 4, 2);
+		g.addEdge(g, 5, 1);
+		g.addEdge(g, 5, 2);
+		g.addEdge(g, 6, 1);
+		g.addEdge(g, 6, 4);
+		
 
 		g.printGraph(g);
+		System.out.println("DFS");
+		g.DFS(0);
 	}
 }
