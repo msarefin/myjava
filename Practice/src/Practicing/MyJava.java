@@ -5,21 +5,54 @@ import java.util.Random;
 
 public class MyJava {
 
-//	private int[] arr = new int[] { 3, 7, 1, 9, 6, 4, 8, 2, 5, 0, -2, -5, -1, -3 };
-	private int[] ar;
-	
+	final private int[] ar = new int[] { 3, 7, 1, 9, 6, 4, 8, 2, 5, 0, -2, -5, -1, -3 };
+//	private int[] ar;
+
 	public static void main(String[] args) {
 
-		MyJava bubbleSort = new MyJava(); 
-		bubbleSort.ar = initialize(bubbleSort.ar, 10, 100);
-		printArray(bubbleSort.ar);
+		MyJava bubbleSort = new MyJava();
+		MyJava selectionSort = new MyJava();
+		MyJava insertionSort = new MyJava();
+		MyJava bucketSort = new MyJava();
+		MyJava heapSort = new MyJava();
+		MyJava shellSort = new MyJava();
+		MyJava mergeSort = new MyJava();
+		MyJava quickSort = new MyJava();
+
+//		bubbleSort.ar = initialize(bubbleSort.ar, 10, 100);
+
 		bubbleSort(bubbleSort.ar);
+		selectionSort(selectionSort.ar);
 		
 	}
-	
-	private static void bubbleSort(int [] arr) {
-		String method = new Throwable().getStackTrace()[0].getMethodName(); 
+
+	private static void bubbleSort(int[] arr) {
+		String method = new Throwable().getStackTrace()[0].getMethodName();
 		System.out.println(method.replaceAll(String.format("%s|%s|%s", "(?<=[A-Z])(?=[A-Z][a-z])","(?<=[^A-Z])(?=[A-Z])","(?<=[A-Za-z])(?=[A-Z][^A-Za-z])")," "));
+
+		printArray(arr);
+
+		for (int i = 0; i < arr.length; i++) {
+			for (int j = 0; j < arr.length - 1; j++) {
+				if (arr[j] > arr[j + 1]) {
+					swap(arr, j, j + 1);
+				}
+			}
+		}
+		printArray(arr);
+	}
+
+	private static void selectionSort(int[] arr) {
+		String method = Thread.currentThread().getStackTrace()[1].getMethodName();
+		System.out.println(method.replaceAll(String.format("%s|%s|%s", "(?<=[A-Z])(?=[A-Z][a-z])","(?<=[^A-Z])(?=[A-Z])","(?<=[A-Za-z])(?=[A-Z][^A-Za-z])")," "));
+
+	
+	}
+
+	private static void swap(int[] arr, int m, int n) {
+		int temp = arr[m];
+		arr[m] = arr[n];
+		arr[n] = temp;
 	}
 
 	private static int[] initialize(int[] arr, int size, int range) {
