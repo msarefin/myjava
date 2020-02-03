@@ -23,12 +23,13 @@ public class MyJava {
 
 		bubbleSort(bubbleSort.ar);
 		selectionSort(selectionSort.ar);
-		
+
 	}
 
 	private static void bubbleSort(int[] arr) {
 		String method = new Throwable().getStackTrace()[0].getMethodName();
-		System.out.println(method.replaceAll(String.format("%s|%s|%s", "(?<=[A-Z])(?=[A-Z][a-z])","(?<=[^A-Z])(?=[A-Z])","(?<=[A-Za-z])(?=[A-Z][^A-Za-z])")," "));
+		System.out.println(method.replaceAll(String.format("%s|%s|%s", "(?<=[A-Z])(?=[A-Z][a-z])",
+				"(?<=[^A-Z])(?=[A-Z])", "(?<=[A-Za-z])(?=[A-Z][^A-Za-z])"), " "));
 
 		printArray(arr);
 
@@ -44,9 +45,21 @@ public class MyJava {
 
 	private static void selectionSort(int[] arr) {
 		String method = Thread.currentThread().getStackTrace()[1].getMethodName();
-		System.out.println(method.replaceAll(String.format("%s|%s|%s", "(?<=[A-Z])(?=[A-Z][a-z])","(?<=[^A-Z])(?=[A-Z])","(?<=[A-Za-z])(?=[A-Z][^A-Za-z])")," "));
+		System.out.println(method.replaceAll(String.format("%s|%s|%s", "(?<=[A-Z])(?=[A-Z][a-z])",
+				"(?<=[^A-Z])(?=[A-Z])", "(?<=[A-Za-z])(?=[A-Z][^A-Za-z])"), " "));
 
-	
+		printArray(arr);
+
+		for (int i = 0; i < arr.length; i++) {
+			int p = i;
+			for (int j = i + 1; j < arr.length; j++) {
+				if (arr[j] < arr[p]) {
+					p = j;
+				}
+			}
+			swap(arr, i, p);
+		}
+		printArray(arr);
 	}
 
 	private static void swap(int[] arr, int m, int n) {
