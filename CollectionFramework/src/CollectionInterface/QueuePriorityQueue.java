@@ -1,5 +1,6 @@
 package CollectionInterface;
 
+import java.util.Iterator;
 import java.util.PriorityQueue;
 
 public class QueuePriorityQueue {
@@ -14,10 +15,15 @@ public class QueuePriorityQueue {
 		queue.add("Jai");
 		queue.add("Rahul");
 
-		System.out.println(queue.element());
+		System.out.println("queue.element(): "+queue.element());
 
-		System.out.println(queue.peek());
+		System.out.println("queue.peek(): "+queue.peek());
 		
+		Iterator it = queue.iterator(); 
+		while(it.hasNext()) {
+			System.out.print(it.next()+"\t");
+		}
+		System.out.println();
 		System.out.println(queue);
 		queue.remove(); 
 		System.out.println(queue);

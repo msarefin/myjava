@@ -14,10 +14,12 @@ public class SetHashSet {
 		set.add("Four"); 
 		set.add("Five"); 
 		
+		System.out.println(set);
+		
 		Iterator<String> iter = set.iterator(); 
 		
 		while(iter.hasNext()) {
-			System.out.println(iter.next());
+			System.out.print(iter.next()+"\t");
 		}
 		
 		System.out.println();

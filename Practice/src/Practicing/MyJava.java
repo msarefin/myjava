@@ -1,6 +1,9 @@
 package Practicing;
 
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.LinkedList;
+import java.util.List;
 import java.util.Random;
 
 public class MyJava {
@@ -23,6 +26,11 @@ public class MyJava {
 
 		bubbleSort(bubbleSort.ar);
 		selectionSort(selectionSort.ar);
+		
+//		List<String> str = new LinkedList<String>();
+//		str.add("hello"); 
+		
+//		System.out.println(str.get(0));
 
 	}
 
