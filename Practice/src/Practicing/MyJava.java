@@ -26,11 +26,6 @@ public class MyJava {
 
 		bubbleSort(bubbleSort.ar);
 		selectionSort(selectionSort.ar);
-		
-//		List<String> str = new LinkedList<String>();
-//		str.add("hello"); 
-		
-//		System.out.println(str.get(0));
 
 	}
 
@@ -50,6 +45,8 @@ public class MyJava {
 		}
 		printArray(arr);
 	}
+
+	// ------------------------------------------------------------------------------------------------------------------------
 
 	private static void selectionSort(int[] arr) {
 		String method = Thread.currentThread().getStackTrace()[1].getMethodName();

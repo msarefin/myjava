@@ -23,7 +23,7 @@ public class QueueDeque {
 		System.out.println(dq);
 		
 		dq.pollLast(); 
-		dq.pollLast(); 
+		dq.pollFirst(); 
 		
 		System.out.println(dq);
 		
