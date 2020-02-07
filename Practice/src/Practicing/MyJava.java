@@ -1,9 +1,6 @@
 package Practicing;
 
-import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.LinkedList;
-import java.util.List;
 import java.util.Random;
 
 public class MyJava {
@@ -54,6 +51,15 @@ public class MyJava {
 		System.out.println(method.replaceAll(String.format("%s|%s|%s", "(?<=[A-Z])(?=[A-Z][a-z])",
 				"(?<=[^A-Z])(?=[A-Z])", "(?<=[A-Za-z])(?=[A-Z][^A-Za-z])"), " "));
 
+		String[] r = method.split("(?=[A-Z])");
+
+		System.out.println(Arrays.toString(r));
+		
+		for(String n: r) {
+			System.out.print(n.substring(0,1).toUpperCase()+n.substring(1)+" ");
+		}
+
+		System.out.println();
 		printArray(arr);
 
 		for (int i = 0; i < arr.length; i++) {
@@ -68,8 +74,8 @@ public class MyJava {
 		printArray(arr);
 	}
 
-//	-----------------------------------------------------------------------------------------------------------------------------
-	
+//	-----------------------------------------------------------------------------------------------------------------------------  
+
 	private static void swap(int[] arr, int m, int n) {
 		int temp = arr[m];
 		arr[m] = arr[n];
