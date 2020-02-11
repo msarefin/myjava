@@ -7,23 +7,23 @@ import java.util.List;
 
 public class practice {
 
-	final static int[] arr = new int[] { 0, 5, 6, 4, 8, 2, 3, 1, 7, 9, 10, -1, -2 };
+	final static int[] arr = new int[] { 3, 7, 1, 9, 6, 4, 8, 2, 5, 0, -2, -5, -1, -3 };
 
 	public static void main(String[] args) {
 		practice p = new practice();
 		printArray(arr);
 		System.out.println();
-		int[] bubbleSort = ar(arr);
-		int[] selectionSort = ar(arr);
-		int[] insertionSort = ar(arr);
+//		int[] bubbleSort = ar(arr);
+//		int[] selectionSort = ar(arr);
+//		int[] insertionSort = ar(arr);
 		int[] bucketSort = ar(arr);
-		int[] mergeSort = ar(arr);
+//		int[] mergeSort = ar(arr);
 
 //		bubbleSort(bubbleSort);
 //		selectionSort(selectionSort);
 //		insertionSort(insertionSort);
-//		bucketSort(bucketSort);
-		mergeSort(mergeSort);
+		bucketSort(bucketSort);
+//		mergeSort(mergeSort);
 
 	}
 
