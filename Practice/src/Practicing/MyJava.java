@@ -141,7 +141,7 @@ public class MyJava {
 		int nBucket = (int) Math.sqrt(arr.length);
 		List[] bucket = new List[nBucket];
 		for (int i = 0; i < bucket.length; i++) {
-			bucket[i] = new ArrayList();
+			bucket[i] = new ArrayList<Integer>();
 		}
 		for (int n : arr) {
 			if (n <=0) {
@@ -151,18 +151,30 @@ public class MyJava {
 				bucket[bi].add(n);
 			}
 		}
-
-		for (int i = 0; i < bucket.length; i++) {
-			for (int j = 0; j < bucket[i].size(); j++) {
-				int p = j;
-				for(int k =j+1; k<bucket[i].size(); k++) {
-					if((Integer)bucket[i].get(k)<(Integer)bucket[i].get(p)) {
-						p=k; 
-					}
+		
+		for(List bkt: bucket) {
+			for(int i = 1; i<bkt.size(); i++) {
+				int temp = (int) bkt.get(i); 
+				int j = i-1; 
+				while(j>=0 && (int)bkt.get(j)>temp) {
+					bkt.set(j+1, bkt.get(j));
+					j--;
 				}
-				Collections.swap(bucket[i], j, p);
+				bkt.set(j+1, temp);
 			}
 		}
+
+//		for (int i = 0; i < bucket.length; i++) {
+//			for (int j = 0; j < bucket[i].size(); j++) {
+//				int p = j;
+//				for(int k =j+1; k<bucket[i].size(); k++) {
+//					if((int)bucket[i].get(k)< (int)bucket[i].get(p)) {
+//						p=k; 
+//					}
+//				}
+//				Collections.swap(bucket[i], j, p);
+//			}
+//		}
 
 		int index = 0;
 		for (int i = 0; i < bucket.length; i++) {
