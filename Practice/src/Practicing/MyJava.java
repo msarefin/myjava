@@ -16,6 +16,8 @@ public class MyJava {
 	final private int[] arr = new int[] { 3, 7, 1, 9, 6, 4, 8, 2, 5, 0, -2, -5, -1, -3 };
 
 	public static void main(String[] args) {
+		
+		System.out.println(System.getProperty("java.version"));
 
 		String[] algorithmName = { "bubbleSort", "selectionSort", "insertionSort", "bucketSort", "bucketSort",
 				"heapSort", "shellSort", "mergeSort", "quickSort" };
