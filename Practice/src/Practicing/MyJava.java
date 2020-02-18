@@ -1,8 +1,6 @@
 package Practicing;
 
 import java.util.List;
-import java.beans.beancontext.BeanContext;
-import java.lang.reflect.Method;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
