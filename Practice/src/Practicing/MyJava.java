@@ -139,6 +139,7 @@ public class MyJava {
 			}
 		}
 		int nBucket = (int) Math.sqrt(arr.length);
+		nBucket = new Random().nextInt(arr.length); 
 		List[] bucket = new List[nBucket];
 		for (int i = 0; i < bucket.length; i++) {
 			bucket[i] = new ArrayList<Integer>();
