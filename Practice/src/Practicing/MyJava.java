@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
+import java.util.LinkedList;
 import java.util.Random;
 
 import practice.QuickSort;
@@ -14,11 +15,11 @@ public class MyJava {
 	final private int[] arr = new int[] { 3, 7, 1, 9, 6, 4, 8, 2, 5, 0, -2, -5, -1, -3 };
 
 	public static void main(String[] args) {
-		
+
 		System.out.println(System.getProperty("java.version"));
 
-		String[] algorithmName = { "bubbleSort", "selectionSort", "insertionSort", "bucketSort", "bucketSort",
-				"heapSort", "shellSort", "mergeSort", "quickSort" };
+		String[] algorithmName = { "bubbleSort", "selectionSort", "insertionSort", "bucketSort", "heapSort",
+				"shellSort", "mergeSort", "quickSort" };
 
 		MyJava[] algorithmsArray = new MyJava[algorithmName.length];
 
@@ -128,61 +129,58 @@ public class MyJava {
 	}
 //	-------------------------------------------Bucket Sort------------------------------------------------------
 
-	private static void bucketSort(int[] arr) {
+	private static void mixedBucketSort(int[] arr) {
+		int p = 0;
+		int n = 0;
+		for (int a : arr) {
+			if (a < 0)
+				n++;
+			if (a >= 0)
+				p++;
+		}
+
+		int[] pos = new int[p];
+		int[] neg = new int[n];
+
+		int nv = 0;
+		int pv = 0;
+		for (int a : arr) {
+
+			if (a < 0) {
+				neg[nv++] = a;
+			} else {
+				pos[pv++] = a;
+			}
+		}
+
+	}
+
+	private static List[] bucketSort(int[] arr) {
 		getMethodName(1);
 		printArray(arr);
 
-		int maxValue = 0;
-		for (int i = 0; i < arr.length; i++) {
-			if (maxValue < arr[i]) {
-				maxValue = arr[i];
-			}
-		}
-		int nBucket = (int) Math.sqrt(arr.length);
-		nBucket = new Random().nextInt(arr.length); 
-		List[] bucket = new List[nBucket];
-		for (int i = 0; i < bucket.length; i++) {
-			bucket[i] = new ArrayList<Integer>();
-		}
+		int max = 0;
+
 		for (int n : arr) {
-			if (n <=0) {
-				bucket[0].add(n);
-			} else if (n > 0) {
-				int bi = n * nBucket / (maxValue + 1);
-				bucket[bi].add(n);
-			}
-		}
-		
-		for(List bkt: bucket) {
-			for(int i = 1; i<bkt.size(); i++) {
-				int temp = (int) bkt.get(i); 
-				int j = i-1; 
-				while(j>=0 && (int)bkt.get(j)>temp) {
-					bkt.set(j+1, bkt.get(j));
-					j--;
-				}
-				bkt.set(j+1, temp);
+			if (max < n) {
+				max = n;
 			}
 		}
 
-//		for (int i = 0; i < bucket.length; i++) {
-//			for (int j = 0; j < bucket[i].size(); j++) {
-//				int p = j;
-//				for(int k =j+1; k<bucket[i].size(); k++) {
-//					if((int)bucket[i].get(k)< (int)bucket[i].get(p)) {
-//						p=k; 
-//					}
-//				}
-//				Collections.swap(bucket[i], j, p);
-//			}
-//		}
+		int nBucket = (int) Math.sqrt(arr.length);
+		List[] bucket = new List[nBucket];
 
-		int index = 0;
 		for (int i = 0; i < bucket.length; i++) {
-			for (int j = 0; j < bucket[i].size(); j++) {
-				arr[index++] = (int) bucket[i].get(j);
-			}
+			bucket[i] = new ArrayList();
 		}
+
+		for (int n : arr) {
+			int bi = (n * nBucket) / (max + 1);
+			bucket[bi].add(n);
+		}
+
+		return bucket; 
+		
 	}
 //	-------------------------------------------Heap Sort------------------------------------------------------
 
