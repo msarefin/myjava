@@ -133,6 +133,7 @@ public class MyJava {
 		getMethodName(1);
 		printArray(arr);
 
+//		number of negative and positive elements
 		int neg = 0;
 		int pos = 0;
 
@@ -144,12 +145,15 @@ public class MyJava {
 			}
 		}
 
+//		Number of positive and negative buckets
 		int nb = (int) Math.sqrt(neg);
 		int pb = (int) Math.sqrt(pos);
 
+//		Declare the buckets
 		List[] negativeBucket = new List[nb];
 		List[] positiveBucket = new List[pb];
 
+//		Initialize the buckets
 		for (int i = 0; i < negativeBucket.length; i++) {
 			negativeBucket[i] = new ArrayList();
 		}
@@ -157,6 +161,7 @@ public class MyJava {
 			positiveBucket[i] = new ArrayList();
 		}
 
+//		Find the max and the min elements
 		int min = 0;
 		int max = 0;
 
@@ -172,36 +177,40 @@ public class MyJava {
 			int bi = 0;
 			if (n < 0) {
 				bi = (n * nb) / (min - 1);
+//				put the negative elements in the negative bucket
 				negativeBucket[bi].add(n);
 			} else {
 				bi = (n * pb) / (max + 1);
+//				put 0 and positive elements in the positive bucket
 				positiveBucket[bi].add(n);
 			}
 		}
 
-		for(List nbkt: negativeBucket) {
-			for(int i = 1; i<nbkt.size();i++) {
+//		Sort negative bucket
+		for (List nbkt : negativeBucket) {
+			for (int i = 1; i < nbkt.size(); i++) {
 				int t = (int) nbkt.get(i);
-				int j = i-1; 
-				while(j>=0 && (int)nbkt.get(j)>t) {
-					if((int)nbkt.get(j)>t) {
-						nbkt.set(j+1, nbkt.get(j));
+				int j = i - 1;
+				while (j >= 0 && (int) nbkt.get(j) > t) {
+					if ((int) nbkt.get(j) > t) {
+						nbkt.set(j + 1, nbkt.get(j));
 						j--;
 					}
-					nbkt.set(j+1, t);
+					nbkt.set(j + 1, t);
 				}
 			}
 		}
-		for(List pbkt: positiveBucket) {
-			for(int i = 1; i<pbkt.size(); i++) {
-				int t = (int) pbkt.get(i); 
-				int j = i-1; 
-				while(j>=0 && (int)pbkt.get(j)>t) {
-					if((int)pbkt.get(j)>t) {
-						pbkt.set(j+1, pbkt.get(j));
+//		Sort positive bucket
+		for (List pbkt : positiveBucket) {
+			for (int i = 1; i < pbkt.size(); i++) {
+				int t = (int) pbkt.get(i);
+				int j = i - 1;
+				while (j >= 0 && (int) pbkt.get(j) > t) {
+					if ((int) pbkt.get(j) > t) {
+						pbkt.set(j + 1, pbkt.get(j));
 						j--;
 					}
-					pbkt.set(j+1, t); 
+					pbkt.set(j + 1, t);
 				}
 			}
 		}
@@ -209,20 +218,19 @@ public class MyJava {
 		System.out.println(Arrays.toString(negativeBucket));
 		System.out.println(Arrays.toString(positiveBucket));
 
-		
-		int index = 0; 
-		
-		for(int i =negativeBucket.length-1; i>=0; i--) {
-			for(int j = 0; j<negativeBucket[i].size(); j++) {
-				arr[index++] = (int)negativeBucket[i].get(j);
+//		Replace the elements in the array with the sorted bucket elements
+		int index = 0;
+		for (int i = negativeBucket.length - 1; i >= 0; i--) {
+			for (int j = 0; j < negativeBucket[i].size(); j++) {
+				arr[index++] = (int) negativeBucket[i].get(j);
 			}
 		}
-		for(int i = 0; i<positiveBucket.length; i++) {
-			for(int j =0; j<positiveBucket[i].size();j++) {
-				arr[index++] = (int)positiveBucket[i].get(j);
+		for (int i = 0; i < positiveBucket.length; i++) {
+			for (int j = 0; j < positiveBucket[i].size(); j++) {
+				arr[index++] = (int) positiveBucket[i].get(j);
 			}
 		}
-		
+
 	}
 //	-------------------------------------------Heap Sort------------------------------------------------------
 
