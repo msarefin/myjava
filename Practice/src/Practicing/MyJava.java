@@ -129,57 +129,99 @@ public class MyJava {
 	}
 //	-------------------------------------------Bucket Sort------------------------------------------------------
 
-	private static void mixedBucketSort(int[] arr) {
-		int p = 0;
-		int n = 0;
-		for (int a : arr) {
-			if (a < 0)
-				n++;
-			if (a >= 0)
-				p++;
-		}
-
-		int[] pos = new int[p];
-		int[] neg = new int[n];
-
-		int nv = 0;
-		int pv = 0;
-		for (int a : arr) {
-
-			if (a < 0) {
-				neg[nv++] = a;
-			} else {
-				pos[pv++] = a;
-			}
-		}
-
-	}
-
-	private static List[] bucketSort(int[] arr) {
+	private static void bucketSort(int[] arr) {
 		getMethodName(1);
 		printArray(arr);
 
+		int neg = 0;
+		int pos = 0;
+
+		for (int n : arr) {
+			if (n < 0) {
+				neg++;
+			} else {
+				pos++;
+			}
+		}
+
+		int nb = (int) Math.sqrt(neg);
+		int pb = (int) Math.sqrt(pos);
+
+		List[] negativeBucket = new List[nb];
+		List[] positiveBucket = new List[pb];
+
+		for (int i = 0; i < negativeBucket.length; i++) {
+			negativeBucket[i] = new ArrayList();
+		}
+		for (int i = 0; i < positiveBucket.length; i++) {
+			positiveBucket[i] = new ArrayList();
+		}
+
+		int min = 0;
 		int max = 0;
 
 		for (int n : arr) {
-			if (max < n) {
+			if (min > n) {
+				min = n;
+			} else if (max < n) {
 				max = n;
 			}
 		}
 
-		int nBucket = (int) Math.sqrt(arr.length);
-		List[] bucket = new List[nBucket];
-
-		for (int i = 0; i < bucket.length; i++) {
-			bucket[i] = new ArrayList();
-		}
-
 		for (int n : arr) {
-			int bi = (n * nBucket) / (max + 1);
-			bucket[bi].add(n);
+			int bi = 0;
+			if (n < 0) {
+				bi = (n * nb) / (min - 1);
+				negativeBucket[bi].add(n);
+			} else {
+				bi = (n * pb) / (max + 1);
+				positiveBucket[bi].add(n);
+			}
 		}
 
-		return bucket; 
+		for(List nbkt: negativeBucket) {
+			for(int i = 1; i<nbkt.size();i++) {
+				int t = (int) nbkt.get(i);
+				int j = i-1; 
+				while(j>=0 && (int)nbkt.get(j)>t) {
+					if((int)nbkt.get(j)>t) {
+						nbkt.set(j+1, nbkt.get(j));
+						j--;
+					}
+					nbkt.set(j+1, t);
+				}
+			}
+		}
+		for(List pbkt: positiveBucket) {
+			for(int i = 1; i<pbkt.size(); i++) {
+				int t = (int) pbkt.get(i); 
+				int j = i-1; 
+				while(j>=0 && (int)pbkt.get(j)>t) {
+					if((int)pbkt.get(j)>t) {
+						pbkt.set(j+1, pbkt.get(j));
+						j--;
+					}
+					pbkt.set(j+1, t); 
+				}
+			}
+		}
+
+		System.out.println(Arrays.toString(negativeBucket));
+		System.out.println(Arrays.toString(positiveBucket));
+
+		
+		int index = 0; 
+		
+		for(int i =negativeBucket.length-1; i>=0; i--) {
+			for(int j = 0; j<negativeBucket[i].size(); j++) {
+				arr[index++] = (int)negativeBucket[i].get(j);
+			}
+		}
+		for(int i = 0; i<positiveBucket.length; i++) {
+			for(int j =0; j<positiveBucket[i].size();j++) {
+				arr[index++] = (int)positiveBucket[i].get(j);
+			}
+		}
 		
 	}
 //	-------------------------------------------Heap Sort------------------------------------------------------
