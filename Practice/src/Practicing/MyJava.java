@@ -12,7 +12,7 @@ import practice.Quick_sort;
 
 public class MyJava {
 
-	final private int[] arr = new int[] { 3, 7, 1, 9, 6, 4, 8, 2, 5, 0, -2, -5, -1, -3 };
+	final private int[] arr = new int[] { 3, 7, 1, 9, 6, 4, 8, 2, 5, 0, -2, -5, -1, -3, -4, -6, -8, -9, -7 };
 
 	public static void main(String[] args) {
 
@@ -214,9 +214,6 @@ public class MyJava {
 				}
 			}
 		}
-
-		System.out.println(Arrays.toString(negativeBucket));
-		System.out.println(Arrays.toString(positiveBucket));
 
 //		Replace the elements in the array with the sorted bucket elements
 		int index = 0;
