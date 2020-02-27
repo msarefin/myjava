@@ -185,6 +185,9 @@ public class MyJava {
 				positiveBucket[bi].add(n);
 			}
 		}
+		
+		System.out.println(Arrays.toString(negativeBucket));
+		System.out.println(Arrays.toString(positiveBucket));
 
 //		Sort negative bucket
 		for (List nbkt : negativeBucket) {
