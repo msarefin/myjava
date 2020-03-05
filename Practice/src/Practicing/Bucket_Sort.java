@@ -1,53 +1,93 @@
 package Practicing;
 
-import java.util.Random;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
 public class Bucket_Sort {
-	static int[] sort(int[] sequence, int maxValue) {
-		// Bucket Sort
-		int[] Bucket = new int[maxValue + 1];
-		int[] sorted_sequence = new int[sequence.length];
 
-		for (int i = 0; i < sequence.length; i++)
-			Bucket[sequence[i]]++;
+	private static int[] arr = new int[] { 5, 7, 3, 9, 1, 8, 2, 6, 4, 0, -5, -8, -2, -3, -9, -1, -6, -4, -7 };
 
-		int outPos = 0;
-		for (int i = 0; i < Bucket.length; i++)
-			for (int j = 0; j < Bucket[i]; j++)
-				sorted_sequence[outPos++] = i;
+	public static void main(String[] args) {
+		bucketSort(arr);
 
-		return sorted_sequence;
 	}
 
-	static void printSequence(int[] sorted_sequence) {
-		for (int i = 0; i < sorted_sequence.length; i++)
-			System.out.print(sorted_sequence[i] + " ");
+	private static void bucketSort(int[] arr) {
+		String method = new Throwable().getStackTrace()[0].getMethodName().toString();
+		System.out.println(method + "\n" + "=".repeat(method.length()));
+		printArray(arr);
+
+		int max = 0;
+		int min = 0;
+
+		int nas = 0;
+		int pas = 0;
+
+		for (int n : arr) {
+			if (n < 0) {
+				nas++;
+				if (min > n)
+					min = n;
+			} else {
+				pas++;
+				if (max < n)
+					max = n;
+			}
+		}
+
+		int nbs = (int) Math.sqrt(nas);
+		int pbs = (int) Math.sqrt(pas);
+
+		System.out.println("max\t" + max + "\nmin\t" + min + "\nnas\t" + nas + "\npas\t" + pas + "\nnbs\t" + nbs
+				+ "\npbs\t" + pbs);
+
+		List[] nBucket = new List[nbs];
+		List[] pBucket = new List[pbs];
+
+		for (int i = 0; i < nBucket.length; i++) {
+			nBucket[i] = new ArrayList();
+		}
+		for (int i = 0; i < pBucket.length; i++) {
+			pBucket[i] = new ArrayList();
+		}
+
+		for (int n : arr) {
+			int bi = 0;
+
+			if (n < 0) {
+				bi = (n * nbs) / (min - 1);
+				nBucket[bi].add(n);
+
+			} else {
+				bi = (n * pbs) / (max + 1);
+				pBucket[bi].add(n);
+			}
+		}
+
+		System.out.println(Arrays.toString(nBucket));
+		System.out.println(Arrays.toString(pBucket));
+
+		for (List bkt : nBucket) {
+			for (int i = 1; i < bkt.size(); i++) {
+				int t = (int) bkt.get(i);
+				int j = i - 1;
+				while (j >= 0 && (int) bkt.get(j) > t) {
+					if ((int) bkt.get(j) > t) {
+						bkt.set(j + 1, bkt.get(j));
+						j--;
+					}
+					bkt.set(j + 1, bkt.get(j));
+				}
+			}
+		}
+
+		printArray(arr);
+
 	}
 
-	static int maxValue(int[] sequence) {
-		int maxValue = 0;
-		for (int i = 0; i < sequence.length; i++)
-			if (sequence[i] > maxValue)
-				maxValue = sequence[i];
-		return maxValue;
+	private static void printArray(int[] arr) {
+		System.out.println(Arrays.toString(arr));
 	}
 
-	public static void main(String args[]) {
-		System.out.println("Sorting of randomly generated numbers using BUCKET SORT");
-		Random random = new Random();
-		int N = 20;
-		int[] sequence = new int[] { 0, 5, 6, 4, 8, 2, 3, 1, 7, 9, 10, 21 }; // creates an array of 20
-
-//		for (int i = 0; i < N; i++)
-//			sequence[i] = Math.abs(random.nextInt(100)); // sets 20 random values into sequence between 1 and 100
-
-		int maxValue = maxValue(sequence); // calls the method maxValue
-
-		System.out.println(maxValue);
-		System.out.println("\nOriginal Sequence: ");
-		printSequence(sequence);
-
-		System.out.println("\nSorted Sequence: ");
-		printSequence(sort(sequence, maxValue));
-	}
 }
