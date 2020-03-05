@@ -39,8 +39,8 @@ public class Bucket_Sort {
 		int nbs = (int) Math.sqrt(nas);
 		int pbs = (int) Math.sqrt(pas);
 
-		System.out.println("max\t" + max + "\nmin\t" + min + "\nnas\t" + nas + "\npas\t" + pas + "\nnbs\t" + nbs
-				+ "\npbs\t" + pbs);
+//		System.out.println("max\t" + max + "\nmin\t" + min + "\nnas\t" + nas + "\npas\t" + pas + "\nnbs\t" + nbs
+//				+ "\npbs\t" + pbs);
 
 		List[] nBucket = new List[nbs];
 		List[] pBucket = new List[pbs];
@@ -68,22 +68,45 @@ public class Bucket_Sort {
 		System.out.println(Arrays.toString(nBucket));
 		System.out.println(Arrays.toString(pBucket));
 
-		for (List bkt : nBucket) {
-			for (int i = 1; i < bkt.size(); i++) {
-				int t = (int) bkt.get(i);
-				int j = i - 1;
-				while (j >= 0 && (int) bkt.get(j) > t) {
-					if ((int) bkt.get(j) > t) {
-						bkt.set(j + 1, bkt.get(j));
-						j--;
+		insertionSort(nBucket);
+		insertionSort(pBucket);
+		
+		System.out.println("Sorted");
+		System.out.println(Arrays.toString(nBucket));
+		System.out.println(Arrays.toString(pBucket));
+		
+		int index = 0; 
+		
+		for(int i = nBucket.length-1; i>=0; i--) {
+			for(int j = 0; j<nBucket[i].size(); j++) {
+				arr[index++] =(int)nBucket[i].get(j);
+			}
+		}
+		
+		for(int i = 0; i<pBucket.length; i++) {
+			for (int j = 0; j < pBucket[i].size(); j++) {
+				arr[index++] = (int)pBucket[i].get(j);
+			}
+		}
+		
+		printArray(arr);
+
+	}
+	
+	private static void insertionSort(List [] bucket) {
+		for(List bkt: bucket) {
+			for(int i = 1; i<bkt.size(); i++) {
+				int temp = (int)bkt.get(i);
+				int j = i-1; 
+				while(j>=0 && (int)bkt.get(j)>temp) {
+					if((int)bkt.get(j)>temp) {
+						bkt.set(j+1, bkt.get(j));
+						j--; 
 					}
-					bkt.set(j + 1, bkt.get(j));
+					bkt.set(j+1, temp); 
 				}
 			}
 		}
-
-		printArray(arr);
-
 	}
 
 	private static void printArray(int[] arr) {
