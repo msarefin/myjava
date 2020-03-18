@@ -185,9 +185,9 @@ public class MyJava {
 				positiveBucket[bi].add(n);
 			}
 		}
-		
-		System.out.println(Arrays.toString(negativeBucket));
-		System.out.println(Arrays.toString(positiveBucket));
+
+//		System.out.println(Arrays.toString(negativeBucket));
+//		System.out.println(Arrays.toString(positiveBucket));
 
 //		Sort negative bucket
 		for (List nbkt : negativeBucket) {
@@ -251,8 +251,54 @@ public class MyJava {
 	private static void mergeSort(int[] arr) {
 		getMethodName(1);
 		printArray(arr);
+		mSort(arr);
 
 	}
+
+	private static void mSort(int[] arr) {
+		if (arr == null) {
+			return;
+		}
+		if (arr.length > 1) {
+			int mid = arr.length / 2;
+
+			int[] left = new int[mid];
+			int[] right = new int[arr.length - mid];
+
+			for (int i = 0; i < arr.length; i++) {
+				if (i < mid) {
+					left[i] = arr[i];
+				} else {
+					right[i - mid] = arr[i];
+				}
+			}
+
+			mSort(left);
+			mSort(right);
+
+			int i = 0;
+			int j = 0;
+			int k = 0;
+
+			while (i < left.length && j < right.length) {
+				if (left[i] < right[j]) {
+					arr[k++] = left[i++];
+				} else {
+					arr[k++] = right[j++];
+				}
+			}
+			while (i < left.length) {
+				arr[k++] = left[i++];
+
+			}
+			while (j < right.length) {
+				arr[k++] = right[j++];
+			}
+
+		}
+
+	}
+
 //	-------------------------------------------Quick Sort------------------------------------------------------
 
 	private static void quickSort(int[] arr) {
