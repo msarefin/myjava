@@ -73,6 +73,7 @@ public class MyJava {
 			break;
 		}
 
+		
 		printArray(arr);
 		System.out.println();
 
@@ -90,6 +91,7 @@ public class MyJava {
 				}
 			}
 		}
+		System.out.print("Sorted: ");
 	}
 
 //	-------------------------------------------Selection Sort------------------------------------------------------
@@ -107,7 +109,7 @@ public class MyJava {
 			}
 			swap(arr, i, p);
 		}
-
+		System.out.print("Sorted: ");
 	}
 
 //	-------------------------------------------Insertion Sort------------------------------------------------------
@@ -125,7 +127,7 @@ public class MyJava {
 			}
 			arr[j + 1] = t;
 		}
-
+		System.out.print("Sorted: ");
 	}
 //	-------------------------------------------Bucket Sort------------------------------------------------------
 
@@ -230,7 +232,7 @@ public class MyJava {
 				arr[index++] = (int) positiveBucket[i].get(j);
 			}
 		}
-
+		System.out.print("Sorted: ");
 	}
 //	-------------------------------------------Heap Sort------------------------------------------------------
 
@@ -252,14 +254,13 @@ public class MyJava {
 		getMethodName(1);
 		printArray(arr);
 		mSort(arr);
-
+		System.out.print("Sorted: ");
 	}
 
 	private static void mSort(int[] arr) {
-		if (arr == null) {
+		if (arr == null || arr.length <= 1) {
 			return;
-		}
-		if (arr.length > 1) {
+		} else {
 			int mid = arr.length / 2;
 
 			int[] left = new int[mid];
@@ -276,22 +277,19 @@ public class MyJava {
 			mSort(left);
 			mSort(right);
 
-			int i = 0;
-			int j = 0;
-			int k = 0;
-
-			while (i < left.length && j < right.length) {
-				if (left[i] < right[j]) {
+			int i = 0, j = 0, k = 0;
+			
+			while(i<left.length && j <right.length) {
+				if(left[i]<right[j]) {
 					arr[k++] = left[i++];
-				} else {
+				}else {
 					arr[k++] = right[j++];
 				}
 			}
-			while (i < left.length) {
+			while(i<left.length) {
 				arr[k++] = left[i++];
-
 			}
-			while (j < right.length) {
+			while(j<right.length) {
 				arr[k++] = right[j++];
 			}
 
