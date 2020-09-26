@@ -1,6 +1,11 @@
 Topics To Learn:
 ================
-
+- enum
+- Access Specifiers
+	- public
+	- protected
+	- default 
+	- private
 - OOP Concepts 
 	- Abstraction
 	- Inheritance
@@ -14,15 +19,17 @@ Topics To Learn:
 	- for each
 	- while
 	- do while
-- Error handeling 
+- Error handling 
 	- try catch 
 	- throws
-- Collection Framework
-- Sorting Algorithms
-- Design pattern 
+- Data Structure and Algorithm
+	- Collection Framework
+	- Sorting Algorithms
 - external data source and input from users
 	- user input 
 	- excel reader 
 	- google sheet
 	- JDBC
 	- MongoDB
+- Design pattern
+	- Singleton
