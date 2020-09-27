@@ -1,7 +1,7 @@
 package a_Practice;
 
 
-public class OOPConcepts implements A{
+public class OOPConcepts implements Ax{
 
 	public static void main(String[] args) {
 		
@@ -18,7 +18,7 @@ class program {
 
 //	Interface
 
-interface A{
+interface Ax{
 	
 	program p = new program();
 	
