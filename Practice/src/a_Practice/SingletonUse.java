@@ -5,6 +5,11 @@ public class SingletonUse {
 	public static void main(String[] args) {
 		singleton sing = singleton.getInstance(); 
 		singleton dbConnect = singleton.MyConnection("MyDB");
+		
+		singleton sing1 = singleton.getInstance(); 
+		
+		System.out.println(sing.hashCode());
+		System.out.println(sing1.hashCode());
 	}
 }
 
