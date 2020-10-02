@@ -33,3 +33,8 @@ Topics To Learn:
 	- MongoDB
 - Design pattern
 	- Singleton
+- String
+- StringBuffer
+- StringBuilder
+- OutputStream
+- InputStream
