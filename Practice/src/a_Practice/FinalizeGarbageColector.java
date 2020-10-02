@@ -14,11 +14,11 @@ public class FinalizeGarbageColector {
 
 			g1.justAMethod();
 			g2.justAMethod();
-			
 
 		} catch (Exception e) {
 			e.printStackTrace();
-			System.out.println("The method cannot be called using the referance variable because it is reinitialized as null!");
+			System.out.println(
+					"The method cannot be called using the referance variable because it is reinitialized as null!");
 
 		} finally {
 
