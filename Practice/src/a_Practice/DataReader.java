@@ -29,6 +29,8 @@ public class DataReader {
 		usingString(file);
 
 	}
+	
+
 
 	static void usingString(String file) {
 		try {

@@ -1,15 +1,30 @@
 package a_Practice;
 
-import java.nio.charset.Charset;
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
 
 public class JustPractice {
 
-	public static void main(String[] args) {
-		byte a[] = {71, 101, 101, 107, 115};
+	public static void main(String[] args) throws IOException {
+		FileInputStream f = new FileInputStream("/Users/sunsh/Documents/JavaProject/EclipseProject/myjava/Practice/Files/Topics.txt");
+		InputStreamReader isr = new InputStreamReader(f); 
+		BufferedReader br = new BufferedReader(isr); 
 		
-		String s = new String(a, Charset.defaultCharset());
+		int c; 
 		
-		System.out.println(s);
+		do { 
+			c = br.read(); 
+			System.out.print((char)c);
+		}while( c !=-1);
+		
+		f.close();
+		isr.close();
+		br.close();
+
 	}
 
 }
