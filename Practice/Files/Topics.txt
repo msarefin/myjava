@@ -20,7 +20,9 @@ Topics To Learn:
 	- while
 	- do while
 - Error handling 
-	- try catch 
+	- try catch
+	- Throw
+	- finally 
 	- throws
 - Data Structure and Algorithm
 	- Collection Framework
@@ -39,4 +41,4 @@ Topics To Learn:
 - OutputStream
 - InputStream
 	- FileInputStream
-	- 
+- Comparable vs Comparator 
