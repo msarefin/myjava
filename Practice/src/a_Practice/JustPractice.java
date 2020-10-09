@@ -10,21 +10,42 @@ import java.io.InputStreamReader;
 public class JustPractice {
 
 	public static void main(String[] args) throws IOException {
-		FileInputStream f = new FileInputStream("/Users/sunsh/Documents/JavaProject/EclipseProject/myjava/Practice/Files/Topics.txt");
-		InputStreamReader isr = new InputStreamReader(f); 
-		BufferedReader br = new BufferedReader(isr); 
+		System.out.println("Mutable and Immutable Object Example");
 		
-		int c; 
-		
-		do { 
-			c = br.read(); 
-			System.out.print((char)c);
-		}while( c !=-1);
-		
-		f.close();
-		isr.close();
-		br.close();
-
 	}
 
+}
+
+class Mutable{
+	private int value;
+
+	public int getValue() {
+		return value;
+	}
+
+	public void setValue(int value) {
+		this.value = value;
+	}  
+
+	public Mutable (int value) { 
+		this.value = value; 
+		
+	}
+}
+
+class Immutable{ 
+	private final int value;
+
+	public int getValue() {
+		return value;
+	}
+
+	public int settValue(int value) {
+		this.value = value; 
+	}
+	
+	public Immutable(int value ) {
+		this.value = value; 
+	}
+	
 }
