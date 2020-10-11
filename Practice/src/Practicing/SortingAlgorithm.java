@@ -10,7 +10,7 @@ import java.util.Random;
 import practice.QuickSort;
 import practice.Quick_sort;
 
-public class MyJava {
+public class SortingAlgorithm {
 
 	final private int[] arr = new int[] { 3, 7, 1, 9, 6, 4, 8, 2, 5, 0, -2, -5, -1, -3, -4, -6, -8, -9, -7 };
 
@@ -21,10 +21,10 @@ public class MyJava {
 		String[] algorithmName = { "bubbleSort", "selectionSort", "insertionSort", "bucketSort", "heapSort",
 				"shellSort", "mergeSort", "quickSort" };
 
-		MyJava[] algorithmsArray = new MyJava[algorithmName.length];
+		SortingAlgorithm[] algorithmsArray = new SortingAlgorithm[algorithmName.length];
 
 		for (int i = 0; i < algorithmsArray.length; i++) {
-			algorithmsArray[i] = new MyJava();
+			algorithmsArray[i] = new SortingAlgorithm();
 		}
 
 		for (int i = 0; i < algorithmName.length; i++) {

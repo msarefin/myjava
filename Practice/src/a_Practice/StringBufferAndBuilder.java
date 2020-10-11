@@ -6,6 +6,7 @@ public class StringBufferAndBuilder {
 		StringBuffer sb = new StringBuffer("When you heve eleminated the in impossible"); 
 		
 		String n = new String("This is just a very good text");
+		
 		System.out.println(n.hashCode());
 		n.concat(", but it is not as good as this one!!!");
 		System.out.println(n.hashCode());
