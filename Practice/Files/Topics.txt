@@ -43,5 +43,5 @@ Topics To Learn:
 	- FileInputStream
 - Comparable vs Comparator 
 - Sorting Algorithm
-	- bubble sort
-	- 
+	- Bubble Sort
+	- Selection sort
