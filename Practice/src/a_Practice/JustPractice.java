@@ -37,7 +37,7 @@ class SortingAlgorithm extends Helper implements AlgorithmList {
 		for (String x : n) {
 			msg = msg + x + " ";
 		}
-		msg = msg.trim(); 
+		msg = msg.trim();
 		System.out.println(msg + "\n" + "=".repeat(msg.length()));
 		// TODO Auto-generated method stub
 		a = initializeArray(arr);
@@ -58,11 +58,11 @@ class SortingAlgorithm extends Helper implements AlgorithmList {
 	public void SelectionSort(int[] arr) {
 		String[] n = new Throwable().getStackTrace()[0].getMethodName().split("(?=[A-Z])");
 		String msg = "";
-		for(String x:n) {
-			msg = msg+x+" ";
+		for (String x : n) {
+			msg = msg + x + " ";
 		}
-		msg = msg.trim(); 
-		System.out.println(msg+"\n"+"=".repeat(msg.length()));
+		msg = msg.trim();
+		System.out.println(msg + "\n" + "=".repeat(msg.length()));
 		a = initializeArray(arr);
 		printArray(a);
 
@@ -87,14 +87,14 @@ class SortingAlgorithm extends Helper implements AlgorithmList {
 		a = initializeArray(arr);
 		printArray(a);
 
-		for (int i = 1; i < a.length; i++) {
-			int t = a[i];
-			int j = i - 1;
-			while (j >= 0 && a[j] > t) {
-				a[j + 1] = a[j];
+		for(int i =1; i<a.length; i++) { 
+			int t = a[i]; 
+			int j = i-1; 
+			while(j>=0 && a[j]>t) {
+				a[j+1] = a[j]; 
 				j--;
 			}
-			a[j + 1] = t;
+			a[j+1]= t; 
 		}
 
 		printArray(a);
@@ -105,6 +105,12 @@ class SortingAlgorithm extends Helper implements AlgorithmList {
 	public void BucketSort(int[] arr) {
 		// TODO Auto-generated method stub
 
+		String n = getMethodName(); 
+		System.out.println(n+"\n"+"*".repeat(n.length()));
+		a = initializeArray(arr); 
+		printArray(a);
+		
+		printArray(a);
 	}
 
 	@Override
