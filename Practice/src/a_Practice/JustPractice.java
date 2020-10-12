@@ -3,6 +3,7 @@ package a_Practice;
 import java.lang.reflect.Array;
 import java.lang.reflect.Method;
 import java.util.Arrays;
+import java.util.List;
 import java.util.Random;
 
 public class JustPractice {
@@ -87,14 +88,14 @@ class SortingAlgorithm extends Helper implements AlgorithmList {
 		a = initializeArray(arr);
 		printArray(a);
 
-		for(int i =1; i<a.length; i++) { 
-			int t = a[i]; 
-			int j = i-1; 
-			while(j>=0 && a[j]>t) {
-				a[j+1] = a[j]; 
+		for (int i = 1; i < a.length; i++) {
+			int t = a[i];
+			int j = i - 1;
+			while (j >= 0 && a[j] > t) {
+				a[j + 1] = a[j];
 				j--;
 			}
-			a[j+1]= t; 
+			a[j + 1] = t;
 		}
 
 		printArray(a);
@@ -105,35 +106,76 @@ class SortingAlgorithm extends Helper implements AlgorithmList {
 	public void BucketSort(int[] arr) {
 		// TODO Auto-generated method stub
 
-		String n = getMethodName(); 
-		System.out.println(n+"\n"+"*".repeat(n.length()));
-		a = initializeArray(arr); 
+		String n = getMethodName();
+		System.out.println(n + "\n" + "*".repeat(n.length()));
+		a = initializeArray(arr);
 		printArray(a);
-		
+
+		int numberOfPositiveElements = 0;
+		int numberOfNegativeElements = 0;
+
+		for (int x : a) {
+			if (x < 0) {
+				numberOfNegativeElements++;
+			} else {
+				numberOfPositiveElements++;
+			}
+		}
+
+		int numberOfNegativeBuckets = (int) Math.sqrt(numberOfNegativeElements);
+		int numberOfPositiveBuckets = (int) Math.sqrt(numberOfPositiveElements);
+
+		List[] negativeBucket = new List[numberOfNegativeBuckets];
+		List[] positiveBucket = new List[numberOfPositiveBuckets];
+
 		printArray(a);
 	}
 
 	@Override
 	public void MergeSort(int[] arr) {
 		// TODO Auto-generated method stub
+		String n = getMethodName();
+		System.out.println(n + "\n" + "*".repeat(n.length()));
+		a = initializeArray(arr);
+		printArray(a);
+
+		printArray(a);
 
 	}
 
 	@Override
 	public void QuickSort(int[] arr) {
 		// TODO Auto-generated method stub
+		String n = getMethodName();
+		System.out.println(n + "\n" + "*".repeat(n.length()));
+		a = initializeArray(arr);
+		printArray(a);
+
+		printArray(a);
 
 	}
 
 	@Override
 	public void HeapSort(int[] arr) {
 		// TODO Auto-generated method stub
+		String n = getMethodName();
+		System.out.println(n + "\n" + "*".repeat(n.length()));
+		a = initializeArray(arr);
+		printArray(a);
+
+		printArray(a);
 
 	}
 
 	@Override
 	public void ShellSort(int[] arr) {
 		// TODO Auto-generated method stub
+		String n = getMethodName();
+		System.out.println(n + "\n" + "*".repeat(n.length()));
+		a = initializeArray(arr);
+		printArray(a);
+
+		printArray(a);
 
 	}
 
