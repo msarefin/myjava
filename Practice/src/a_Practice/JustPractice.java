@@ -12,6 +12,7 @@ public class JustPractice {
 	public static void main(String[] args) {
 
 		SortingAlgorithm sortingAlgorithm = new SortingAlgorithm(arr);
+
 		sortingAlgorithm.BubbleSort(arr);
 		sortingAlgorithm.SelectionSort(arr);
 		sortingAlgorithm.InsertionSort(arr);
@@ -31,6 +32,13 @@ class SortingAlgorithm extends Helper implements AlgorithmList {
 
 	@Override
 	public void BubbleSort(int[] arr) {
+		String[] n = new Throwable().getStackTrace()[0].getMethodName().split("(?=[A-Z])");
+		String msg = "";
+		for (String x : n) {
+			msg = msg + x + " ";
+		}
+		msg = msg.trim(); 
+		System.out.println(msg + "\n" + "=".repeat(msg.length()));
 		// TODO Auto-generated method stub
 		a = initializeArray(arr);
 		printArray(a);
@@ -48,15 +56,21 @@ class SortingAlgorithm extends Helper implements AlgorithmList {
 
 	@Override
 	public void SelectionSort(int[] arr) {
-		// TODO Auto-generated method stub
+		String[] n = new Throwable().getStackTrace()[0].getMethodName().split("(?=[A-Z])");
+		String msg = "";
+		for(String x:n) {
+			msg = msg+x+" ";
+		}
+		msg = msg.trim(); 
+		System.out.println(msg+"\n"+"=".repeat(msg.length()));
 		a = initializeArray(arr);
 		printArray(a);
 
-		for (int i = 0; i < a.length-1; i++) {
-			int min = i; 
-			for (int j = i+1; j < a.length; j++) {
-				if(a[j]<a[min]) {
-					min = j; 
+		for (int i = 0; i < a.length - 1; i++) {
+			int min = i;
+			for (int j = i + 1; j < a.length; j++) {
+				if (a[j] < a[min]) {
+					min = j;
 				}
 			}
 			swapEmelemts(a, min, i);
@@ -67,20 +81,22 @@ class SortingAlgorithm extends Helper implements AlgorithmList {
 
 	@Override
 	public void InsertionSort(int[] arr) {
+		String n = getMethodName();
+		System.out.println(n + "\n" + "*".repeat(n.length()));
 		// TODO Auto-generated method stub
-		a = initializeArray(arr); 
+		a = initializeArray(arr);
 		printArray(a);
-		
-		for(int i = 1; i<a.length; i++) {
-			int t = a[i]; 
-			int j = i-1; 
-			while(j >=0 && a[j]>t) {
-				a[j+1] = a[j];
-				j--; 
+
+		for (int i = 1; i < a.length; i++) {
+			int t = a[i];
+			int j = i - 1;
+			while (j >= 0 && a[j] > t) {
+				a[j + 1] = a[j];
+				j--;
 			}
-			a[j+1] = t; 
+			a[j + 1] = t;
 		}
-		
+
 		printArray(a);
 
 	}
@@ -186,6 +202,12 @@ class Helper {
 			System.out.println(m.getName());
 		}
 
+	}
+
+//	--------------------------------------------------------
+
+	static String getMethodName() {
+		return new Throwable().getStackTrace()[1].getMethodName();
 	}
 
 }

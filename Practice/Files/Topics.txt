@@ -45,3 +45,5 @@ Topics To Learn:
 - Sorting Algorithm
 	- Bubble Sort
 	- Selection sort
+	- Insertion Sort
+	
