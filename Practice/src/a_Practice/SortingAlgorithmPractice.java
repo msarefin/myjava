@@ -5,8 +5,6 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Random;
 
-import com.sun.tools.classfile.TypeAnnotation.Position;
-
 public class SortingAlgorithmPractice {
 
 	public static void main(String[] args) {
@@ -82,8 +80,8 @@ class sortingMethods extends HelperMethods {
 		int pos = 0;
 		int neg = 0;
 
-		for (int i = 0; i < arr.length; i++) {
-			if (arr[i] < 0) {
+		for (int n : arr) {
+			if (n < 0) {
 				neg++;
 			} else {
 				pos++;
@@ -113,24 +111,60 @@ class sortingMethods extends HelperMethods {
 				max = n;
 			}
 		}
-
-		for (int n : arr) {
-			int bi = 0;
-			if (n < 0) {
-				bi = (n*nb)/(min-1); 
+		
+		for(int n : arr) {
+			int bi = 0; 
+			if(n<0) {
+				bi = (n*nb)/(min-1);
 				nBucket[bi].add(n); 
-			}else {
-				bi = (n*pb)/(max+1);
+			}else { 
+				bi = (n* pb)/(max+1);
 				pBucket[bi].add(n); 
 			}
 		}
 		
-		for(List n: nBucket) {
-			for(int i = 1; i<n.size(); i++) {
-				
+		
+		
+		for(List nbkt: nBucket) {
+			for(int i = 1; i< nbkt.size(); i++) { 
+				int t = (int)nbkt.get(i); 
+				int j = i-1; 
+				while(j >=0 && (int)nbkt.get(j)>t) {
+					nbkt.set(j+1, nbkt.get(j)); 
+					j--; 
+				}
+				nbkt.set(j+1, t); 
+			}
+		}
+		
+		for(List pbkt: pBucket) {
+			for(int i = 1 ; i< pbkt.size(); i++) {
+				int t = (int)pbkt.get(i); 
+				int j = i-1;
+				while(j>=0 && (int)pbkt.get(j)>t) {
+					pbkt.set(j+1, pbkt.get(j));
+					j--; 
+				}
+				pbkt.set(j+1, t);
 			}
 		}
 
+//		System.out.println(Arrays.toString(nBucket));
+//		System.out.println(Arrays.toString(pBucket));
+		
+		int index =0;
+		for(int i = nBucket.length-1; i>=0; i--) {
+			for(int j = 0; j< nBucket[i].size(); j++) {
+				arr[index++] = (int)nBucket[i].get(j); 
+			}
+		}
+		
+		for(int i = 0; i< pBucket.length; i++) {
+			for(int j = 0; j< pBucket[i].size(); j++) {
+				arr[index++] =(int)pBucket[i].get(j); 
+			}
+		}
+		
 		printArray(arr);
 		System.out.println("-".repeat(Arrays.toString(arr).length()));
 	}
