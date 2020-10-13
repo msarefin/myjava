@@ -82,98 +82,55 @@ class sortingMethods extends HelperMethods {
 		int pos = 0;
 		int neg = 0;
 
-//		Determine the number of elements
-		for (int n : arr) {
-			if (n < 0) {
+		for (int i = 0; i < arr.length; i++) {
+			if (arr[i] < 0) {
 				neg++;
 			} else {
 				pos++;
 			}
 		}
 
-//		Determin the number of buckets
-		int nb = (int) squareRoot(neg);
-		int pb = (int) squareRoot(pos);
+		int nb = (int) sqrt(neg);
+		int pb = (int) sqrt(pos);
 
-//		Declare the Buckets
-		List[] negativeBuckets = new List[nb];
-		List[] positiveBuckets = new List[pb];
+		List[] nBucket = new List[nb];
+		List[] pBucket = new List[pb];
 
-//		Initialize the buckets
-		for (int i = 0; i < negativeBuckets.length; i++) {
-			negativeBuckets[i] = new ArrayList();
+		for (int i = 0; i < nBucket.length; i++) {
+			nBucket[i] = new ArrayList();
 		}
-		for (int i = 0; i < positiveBuckets.length; i++) {
-			positiveBuckets[i] = new ArrayList();
+		for (int i = 0; i < pBucket.length; i++) {
+			pBucket[i] = new ArrayList();
 		}
 
-//		Determine the max and the min 
-		int max = 0;
 		int min = 0;
+		int max = 0;
 
-		for(int n: arr) {
-			if(n<min) {
-				min = n; 
-			}else if(n>max) {
-				max = n; 
+		for (int n : arr) {
+			if (min > n) {
+				min = n;
+			} else if (max < n) {
+				max = n;
+			}
+		}
+
+		for (int n : arr) {
+			int bi = 0;
+			if (n < 0) {
+				bi = (n*nb)/(min-1); 
+				nBucket[bi].add(n); 
+			}else {
+				bi = (n*pb)/(max+1);
+				pBucket[bi].add(n); 
+			}
+		}
+		
+		for(List n: nBucket) {
+			for(int i = 1; i<n.size(); i++) {
 				
 			}
 		}
-		
-//		Put elements in the buckets
-		for(int n : arr) {
-			int bi = 0; 
-			if(n<0) {
-				bi = (n*nb)/(min-1); 
-				negativeBuckets[bi].add(n);
-			}else {
-				bi = (n*pb)/(max+1); 
-				positiveBuckets[bi].add(n);
-			}
-		}
-		
-		
-//		Sort the Bucket 
-		for(List nbkt: negativeBuckets) {
-			for(int i = 1; i< nbkt.size(); i++) {
-				int t = (int) nbkt.get(i); 
-				int j = i-1;
-				while(j>=0 && (int)nbkt.get(j)>t) {
-					nbkt.set(j+1, nbkt.get(j));
-					j--;
-				}
-				nbkt.set(j+1, t); 
-			}
-			
-		}
-		
-		
-		for(List pbkt: positiveBuckets) {
-			for(int i =1; i< pbkt.size(); i++) {
-				int t = (int)pbkt.get(i); 
-				int j = i-1; 
-				while(j>=0 && (int)pbkt.get(j)>t) {
-					pbkt.set(j+1, pbkt.get(j)); 
-					j--; 
-				}
-				pbkt.set(j+1, t); 
-			}
-		}
-		
-//		replace elements in the array 
-		int index = 0; 
-		for(int i = negativeBuckets.length-1; i>=0; i--) {
-			for(int j = 0; j< negativeBuckets[i].size(); j++) {
-				arr[index++] = (int)negativeBuckets[i].get(j);
-			}
-		}
-		
-		for(int i = 0; i< positiveBuckets.length; i++) { 
-			for(int j = 0; j< positiveBuckets[i].size(); j++) {
-				arr[index++] = (int)positiveBuckets[i].get(j); 
-			}
-		}
-		
+
 		printArray(arr);
 		System.out.println("-".repeat(Arrays.toString(arr).length()));
 	}
@@ -189,6 +146,16 @@ class HelperMethods {
 			sr = (temp + (number / temp)) / 2;
 		} while ((temp - sr) != 0);
 		return sr;
+	}
+
+	static double sqrt(int n) {
+		double t;
+		double sq = n / 2;
+		do {
+			t = sq;
+			sq = (t + (n / t)) / 2;
+		} while ((t - sq) != 0);
+		return sq;
 	}
 
 	static int[] InitializeArray(int[] arr) {
