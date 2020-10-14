@@ -195,8 +195,8 @@ class sortingMethods extends HelperMethods implements AlgorithmList {
 			}
 		}
 
-		System.out.println(Arrays.toString(nBucket));
-		System.out.println(Arrays.toString(pBucket));
+//		System.out.println(Arrays.toString(nBucket));
+//		System.out.println(Arrays.toString(pBucket));
 
 		printArray(arr);
 		System.out.println("-".repeat(Arrays.toString(arr).length()));
