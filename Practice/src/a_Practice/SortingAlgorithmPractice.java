@@ -16,6 +16,11 @@ public class SortingAlgorithmPractice {
 		s.SelectionSort(a);
 		s.InsertionSort(a);
 		s.BucketSort(a);
+		s.MergeSort(a);
+		s.QuickSort(a);
+		s.ShellSort(a);
+		s.HeapSort(a);
+		s.RedixSort(a);
 	}
 
 }
@@ -177,20 +182,20 @@ class sortingMethods extends HelperMethods implements AlgorithmList {
 				}
 			}
 		}
-		
-		int index=0; 
-		if(nBucket!=null) {
-			for(int i = nBucket.length-1; i >=0; i--) {
-				for(int j = 0; j< nBucket[i].size(); j++) {
-					arr[index++] = (int)nBucket[i].get(j);
-							
+
+		int index = 0;
+		if (nBucket != null) {
+			for (int i = nBucket.length - 1; i >= 0; i--) {
+				for (int j = 0; j < nBucket[i].size(); j++) {
+					arr[index++] = (int) nBucket[i].get(j);
+
 				}
 			}
 		}
-		if(pBucket!=null) {
-			for(List pbkt: pBucket) {
-				for(int i = 0; i<pbkt.size(); i++) {
-					arr[index++] = (int)pbkt.get(i); 
+		if (pBucket != null) {
+			for (List pbkt : pBucket) {
+				for (int i = 0; i < pbkt.size(); i++) {
+					arr[index++] = (int) pbkt.get(i);
 				}
 			}
 		}
@@ -206,33 +211,48 @@ class sortingMethods extends HelperMethods implements AlgorithmList {
 	public void MergeSort(int[] a) {
 		// TODO Auto-generated method stub
 		getMethodName();
-		int [] arr = InitializeArray(a); 
+		int[] arr = InitializeArray(a);
 		printArray(arr);
 		mSort(arr);
 		printArray(arr);
 		System.out.println("-".repeat(Arrays.toString(arr).length()));
 
 	}
-	
-	private static void mSort(int [] arr) {
-		if(arr==null) {
+
+	private static void mSort(int[] arr) {
+		if (arr == null) {
 			return;
 		}
-		if(arr.length>1) {
-			int mid = arr.length/2;
-			
-			int[] left = new int [mid];
-			int[] right = new int [arr.length-mid]; 
-			
-			for(int i =0; i< arr.length; i++) {
-				if(i< mid) {
-					left[i] = arr[i]; 
-				}else {
-					right[i-mid] = arr[i];
+		if (arr.length > 1) {
+			int mid = arr.length / 2;
+
+			int[] left = new int[mid];
+			int[] right = new int[arr.length - mid];
+
+			for (int i = 0; i < arr.length; i++) {
+				if (i < mid) {
+					left[i] = arr[i];
+				} else {
+					right[i - mid] = arr[i];
 				}
 			}
 			mSort(left);
 			mSort(right);
+
+			int i = 0, j = 0, k = 0;
+			while(i< left.length && j < right.length) {
+				if(left[i]<right[j]) {
+					arr[k++] = left[i++];
+				}else {
+					arr[k++] = right[j++];
+				}
+			}
+			while(i< left.length) {
+				arr[k++] = left[i++];
+			}
+			while(j<right.length) {
+				arr[k++] = right[j++]; 
+			}
 		}
 	}
 
@@ -251,7 +271,31 @@ class sortingMethods extends HelperMethods implements AlgorithmList {
 	@Override
 	public void ShellSort(int[] a) {
 		// TODO Auto-generated method stub
+		getMethodName();
+		int[] arr = InitializeArray(a);
+		printArray(arr);
+		
+		int n = arr.length; 
+		for (int gap = n/2; gap >0; gap/=2) {
+			for(int i = gap; i< n; i+=1) {
+				int temp = arr[i]; 
+				int j; 
+				for(j = i; j>=gap && arr[j-gap]> temp; j-=gap) {
+					arr[j] = arr[j-gap]; 
+				}
+				arr[j] = temp; 
+			}
+		}
+		
+		printArray(arr);
+		System.out.println("-".repeat(Arrays.toString(arr).length()));
+		
+	}
 
+	@Override
+	public void RedixSort(int[] a) {
+		// TODO Auto-generated method stub
+		
 	}
 }
 
@@ -271,6 +315,8 @@ interface AlgorithmList {
 	void HeapSort(int[] a);
 
 	void ShellSort(int[] a);
+	
+	void RedixSort(int [] a);
 
 }
 
