@@ -7,7 +7,7 @@ import java.util.Random;
 
 public class SortingAlgorithmPractice {
 
-	static int[] a = new int[] { 5, 6, 4, 7, 3, 8, 2, 9, 1, 0, -9, -1, -8, -2, -7, -3, -6, -4, -5 };
+	static int[] a = new int[] { 5, 6, 4, 7, 3, 8, 2, 9, 1, 0, -9, -1, -8, -2, 5, -7, -3, -6, -4, -5 };
 
 	public static void main(String[] args) {
 //		int[] a = null; 
@@ -240,20 +240,57 @@ class sortingMethods extends HelperMethods implements AlgorithmList {
 			mSort(right);
 
 			int i = 0, j = 0, k = 0;
-			while(i< left.length && j < right.length) {
-				if(left[i]<right[j]) {
+			while (i < left.length && j < right.length) {
+				if (left[i] < right[j]) {
 					arr[k++] = left[i++];
-				}else {
+				} else {
 					arr[k++] = right[j++];
 				}
 			}
-			while(i< left.length) {
+			while (i < left.length) {
 				arr[k++] = left[i++];
 			}
-			while(j<right.length) {
-				arr[k++] = right[j++]; 
+			while (j < right.length) {
+				arr[k++] = right[j++];
 			}
 		}
+	}
+
+	@Override
+	public void ShellSort(int[] a) {
+		// TODO Auto-generated method stub
+		getMethodName();
+		int[] arr = InitializeArray(a);
+		printArray(arr);
+
+		int n = arr.length;
+		for (int gap = n / 2; gap > 0; gap /= 2) {
+			for (int i = gap; i < n; i += 1) {
+				int temp = arr[i];
+				int j;
+				for (j = i; j >= gap && arr[j - gap] > temp; j -= gap) {
+					arr[j] = arr[j - gap];
+				}
+				arr[j] = temp;
+			}
+		}
+
+//		int n = arr.length; 
+//		for(int gap = n/2; gap >0; gap/=2) {
+//			for(int i= gap; i< arr.length; i++) {
+//				int t = arr[i]; 
+//				int j = i; 
+//				while(j >= gap && arr[j-gap]>t) {
+//					arr[j] = arr[j-gap]; 
+//					j-=gap; 
+//				}
+//				arr[j] = t;
+//			}
+//		}
+
+		printArray(arr);
+		System.out.println("-".repeat(Arrays.toString(arr).length()));
+
 	}
 
 	@Override
@@ -269,33 +306,9 @@ class sortingMethods extends HelperMethods implements AlgorithmList {
 	}
 
 	@Override
-	public void ShellSort(int[] a) {
-		// TODO Auto-generated method stub
-		getMethodName();
-		int[] arr = InitializeArray(a);
-		printArray(arr);
-		
-		int n = arr.length; 
-		for (int gap = n/2; gap >0; gap/=2) {
-			for(int i = gap; i< n; i+=1) {
-				int temp = arr[i]; 
-				int j; 
-				for(j = i; j>=gap && arr[j-gap]> temp; j-=gap) {
-					arr[j] = arr[j-gap]; 
-				}
-				arr[j] = temp; 
-			}
-		}
-		
-		printArray(arr);
-		System.out.println("-".repeat(Arrays.toString(arr).length()));
-		
-	}
-
-	@Override
 	public void RedixSort(int[] a) {
 		// TODO Auto-generated method stub
-		
+
 	}
 }
 
@@ -310,13 +323,13 @@ interface AlgorithmList {
 
 	void MergeSort(int[] a);
 
+	void ShellSort(int[] a);
+
 	void QuickSort(int[] a);
 
 	void HeapSort(int[] a);
 
-	void ShellSort(int[] a);
-	
-	void RedixSort(int [] a);
+	void RedixSort(int[] a);
 
 }
 
