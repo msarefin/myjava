@@ -305,7 +305,7 @@ class sortingMethods extends HelperMethods implements AlgorithmList {
 	}
 
 	private static void qSort(int[] arr, int low, int high) {
-		if(arr!=null && arr.length >0 && low < high) {
+		if(low < high) {
 			int pi = new Random().nextInt((high-low)+1)+low; 
 			SwapElements(arr, low, pi);
 			int b = low+1; 

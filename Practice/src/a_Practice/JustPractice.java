@@ -16,7 +16,7 @@ public class JustPractice {
 	}
 
 	static void sort(int[] arr, int low, int high) {
-		if (low < high && arr.length!=0 && arr != null) {
+		if (low < high) {
 			int pivot = new Random().nextInt((high - low) + 1) + low;
 			swap(arr, low, pivot);
 			int border = low + 1;
