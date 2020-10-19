@@ -305,30 +305,38 @@ class sortingMethods extends HelperMethods implements AlgorithmList {
 	}
 
 	private static void qSort(int[] arr, int low, int high) {
-		if(low < high) {
-			int p = pratition(arr, low, high); 
+		if(arr!=null && arr.length >0 && low < high) {
+			int pi = new Random().nextInt((high-low)+1)+low; 
+			SwapElements(arr, low, pi);
+			int b = low+1; 
+			for (int i = b; i <= high; i++) {
+				if(arr[i]< arr[low]) {
+					SwapElements(arr, i, b++);
+				}
+			}
+			SwapElements(arr, low, b-1);
+			int p = b-1; 
 			qSort(arr, low, p-1);
 			qSort(arr, p+1, high);
-			
 		}
 	}
 	
-	private static int pratition(int [] arr, int low, int high) {
-		int pivot  = getPivot(low, high); 
-		SwapElements(arr, low, pivot);
-		int border = low+1; 
-		for(int i = border; i<= high; i++) {
-			if(arr[i]<arr[low]) {
-				SwapElements(arr, i, border++);
-			}
-		}
-		SwapElements(arr, low, border-1); 
-		return border-1; 
-	}
-	
-	private static int getPivot(int low, int high) {
-		return new Random().nextInt((high-low)+1)+low; 
-	}
+//	private static int pratition(int [] arr, int low, int high) {
+//		int pivot  = getPivot(low, high); 
+//		SwapElements(arr, low, pivot);
+//		int border = low+1; 
+//		for(int i = border; i<= high; i++) {
+//			if(arr[i]<arr[low]) {
+//				SwapElements(arr, i, border++);
+//			}
+//		}
+//		SwapElements(arr, low, border-1); 
+//		return border-1; 
+//	}
+//	
+//	private static int getPivot(int low, int high) {
+//		return new Random().nextInt((high-low)+1)+low; 
+//	}
 
 	@Override
 	public void HeapSort(int[] a) {
