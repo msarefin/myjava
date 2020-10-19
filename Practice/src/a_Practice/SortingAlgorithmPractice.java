@@ -296,7 +296,38 @@ class sortingMethods extends HelperMethods implements AlgorithmList {
 	@Override
 	public void QuickSort(int[] a) {
 		// TODO Auto-generated method stub
+		getMethodName();
+		int[] arr = InitializeArray(a);
+		printArray(arr);
+		qSort(arr, 0 , arr.length-1);
+		printArray(arr);
+		System.out.println("-".repeat(Arrays.toString(a).length()));
+	}
 
+	private static void qSort(int[] arr, int low, int high) {
+		if(low < high) {
+			int p = pratition(arr, low, high); 
+			qSort(arr, low, p-1);
+			qSort(arr, p+1, high);
+			
+		}
+	}
+	
+	private static int pratition(int [] arr, int low, int high) {
+		int pivot  = getPivot(low, high); 
+		SwapElements(arr, low, pivot);
+		int border = low+1; 
+		for(int i = border; i<= high; i++) {
+			if(arr[i]<arr[low]) {
+				SwapElements(arr, i, border++);
+			}
+		}
+		SwapElements(arr, low, border-1); 
+		return border-1; 
+	}
+	
+	private static int getPivot(int low, int high) {
+		return new Random().nextInt((high-low)+1)+low; 
 	}
 
 	@Override
