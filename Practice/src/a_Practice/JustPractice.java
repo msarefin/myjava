@@ -17,20 +17,39 @@ public class JustPractice {
 
 	static void sort(int[] arr, int low, int high) {
 		if (low < high) {
-			int pivot = new Random().nextInt((high - low) + 1) + low;
-			swap(arr, low, pivot);
-			int border = low + 1;
-			for (int i = border; i <= high; i++) {
-				if (arr[i] < arr[low]) {
-					swap(arr, i, border++);
+			int pivotIndex = new Random().nextInt((high-low)+1)+low;
+			pivotIndex = low; 
+			int b = low - 1;
+
+			for (int i = low; i < high; i++) {
+				if (arr[i] < arr[b]) {
+					b++; 
+					swap(arr, b , i);
+					printArray(arr);
 				}
 			}
-			swap(arr, low, border-1);
-			int p = border-1; 
-			sort(arr, low, p-1);
-			sort(arr, p+1, high);
+			swap(arr, b+1, high);
+			System.out.println(b);
+			printArray(arr);
+			int pi = b+1; 
+			sort(arr, low , pi-1);
+			sort(arr, pi+1, high);
 		}
 	}
+
+//	private static int partition(int[] arr, int low, int high) {
+//		int pivot = arr[high];
+//		int i = (low - 1);
+//
+//		for (int j = low; j < high; j++) {
+//			if (arr[j] <= pivot) {
+//				i++;
+//				swap(arr, i, j);
+//			}
+//		}
+//		swap(arr, i + 1, high);
+//		return i + 1;
+//	}
 
 //------------------------------------------------------------
 	static void printArray(int[] arr) {

@@ -299,44 +299,57 @@ class sortingMethods extends HelperMethods implements AlgorithmList {
 		getMethodName();
 		int[] arr = InitializeArray(a);
 		printArray(arr);
-		qSort(arr, 0 , arr.length-1);
+		qSort(arr, 0, arr.length - 1);
 		printArray(arr);
 		System.out.println("-".repeat(Arrays.toString(a).length()));
 	}
 
 	private static void qSort(int[] arr, int low, int high) {
-		if(low < high) {
-			int pi = new Random().nextInt((high-low)+1)+low; 
+		if (low < high) {
+			int pi = new Random().nextInt((high - low) + 1) + low;
+//			pi = low;
+			System.out.println("pivot index and value :"+pi+"::"+arr[pi]);
 			SwapElements(arr, low, pi);
-			int b = low+1; 
+			printArray(arr);
+			int b = low + 1;
 			for (int i = b; i <= high; i++) {
-				if(arr[i]< arr[low]) {
+				if (arr[i] < arr[low]) {
+					System.out.println("i :"+i);
+					System.out.println("b :"+b);
+					
 					SwapElements(arr, i, b++);
+					printArray(arr);
+					
+					
 				}
 			}
-			SwapElements(arr, low, b-1);
-			int p = b-1; 
-			qSort(arr, low, p-1);
-			qSort(arr, p+1, high);
+
+			SwapElements(arr, low, b - 1);
+			printArray(arr);
+			
+			int p = b - 1;
+			qSort(arr, low, p - 1);
+			qSort(arr, p + 1, high);
 		}
 	}
-	
-//	private static int pratition(int [] arr, int low, int high) {
-//		int pivot  = getPivot(low, high); 
-//		SwapElements(arr, low, pivot);
-//		int border = low+1; 
-//		for(int i = border; i<= high; i++) {
-//			if(arr[i]<arr[low]) {
-//				SwapElements(arr, i, border++);
-//			}
-//		}
-//		SwapElements(arr, low, border-1); 
-//		return border-1; 
-//	}
-//	
-//	private static int getPivot(int low, int high) {
-//		return new Random().nextInt((high-low)+1)+low; 
-//	}
+
+	static void Qsort(int[] arr, int low, int high) {
+		if (low < high) {
+			int pivot = arr[high];
+			int i = (low - 1);
+
+			for (int j = low; j < high; j++) {
+				if (arr[j] <= pivot) {
+					i++;
+					SwapElements(arr, i, j);
+				}
+			}
+			SwapElements(arr, i + 1, high);
+			int pi = i + 1;
+			Qsort(arr, low, pi - 1);
+			Qsort(arr, pi + 1, high);
+		}
+	}
 
 	@Override
 	public void HeapSort(int[] a) {
