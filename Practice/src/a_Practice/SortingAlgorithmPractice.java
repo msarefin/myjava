@@ -306,27 +306,15 @@ class sortingMethods extends HelperMethods implements AlgorithmList {
 
 	private static void qSort(int[] arr, int low, int high) {
 		if (low < high) {
-			int pi = new Random().nextInt((high - low) + 1) + low;
-//			pi = low;
-			System.out.println("pivot index and value :"+pi+"::"+arr[pi]);
-			SwapElements(arr, low, pi);
-			printArray(arr);
+			int pivot = new Random().nextInt((high - low) + 1) + low;
+			SwapElements(arr, low, pivot);
 			int b = low + 1;
 			for (int i = b; i <= high; i++) {
 				if (arr[i] < arr[low]) {
-					System.out.println("i :"+i);
-					System.out.println("b :"+b);
-					
 					SwapElements(arr, i, b++);
-					printArray(arr);
-					
-					
 				}
 			}
-
 			SwapElements(arr, low, b - 1);
-			printArray(arr);
-			
 			int p = b - 1;
 			qSort(arr, low, p - 1);
 			qSort(arr, p + 1, high);
@@ -348,6 +336,22 @@ class sortingMethods extends HelperMethods implements AlgorithmList {
 			int pi = i + 1;
 			Qsort(arr, low, pi - 1);
 			Qsort(arr, pi + 1, high);
+		}
+	}
+	
+	static void quicksort(int[] arr, int low, int high) {
+		if(low< high) {
+			int pivot = new Random().nextInt((high-low)+1)+low;
+			SwapElements(arr, high, pivot);
+			int b = low; 
+			for(int i = b; i < high; i++) { 
+				if(arr[i]< arr[high]) { 
+					SwapElements(arr, i, b++);
+				}
+			}
+			SwapElements(arr, b, high);
+			quicksort(arr, low, b-1);
+			quicksort(arr, b+1, high);
 		}
 	}
 
