@@ -46,4 +46,8 @@ Topics To Learn:
 	- Bubble Sort
 	- Selection sort
 	- Insertion Sort
-	
+	- Bucket Sort 
+	- Merge Sort
+	- Shell Sort
+	- Quick sort
+	- Heap Sort

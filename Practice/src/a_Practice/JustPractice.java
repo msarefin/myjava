@@ -16,19 +16,19 @@ public class JustPractice {
 	}
 
 	static void sort(int[] arr, int low, int high) {
-		if(low< high) { 
-			int pivot = new Random().nextInt((high-low)+1)+low; 
-			swap(arr, high , pivot);
-			int b = low; 
-			for(int i = b; i< high; i++) { 
-				if(arr[i]<arr[high]) {
-					swap(arr, i, b++);
+		if (low < high) {
+			int pivotindex = new Random().nextInt((high - low) + 1) + low;
+			swap(arr, pivotindex, high);
+			int pointer = low; 
+			for(int i = pointer; i< high; i++) { 
+				if(arr[i]< arr[high]) {
+					swap(arr, i, pointer++);
 				}
 			}
-			swap(arr, b, high);
-			sort(arr, low, b-1);
-			sort(arr, b+1, high);
-		}	
+			swap(arr, high, pointer);
+			sort(arr, low, pointer-1);
+			sort(arr, pointer+1, high);
+		}
 	}
 
 //------------------------------------------------------------
