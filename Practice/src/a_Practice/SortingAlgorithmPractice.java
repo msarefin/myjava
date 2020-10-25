@@ -101,7 +101,7 @@ class sortingMethods extends HelperMethods implements AlgorithmList {
 //		Negative Bucket 
 		if (neg > 0) {
 //			Declare buckets
-			int nb = (int) sqrt(pos);
+			int nb = (int) sqrt(neg);
 			nBucket = new List[nb];
 
 //			Initialize the buckets
@@ -265,7 +265,7 @@ class sortingMethods extends HelperMethods implements AlgorithmList {
 
 		int n = arr.length;
 		for (int gap = n / 2; gap > 0; gap /= 2) {
-			for (int i = gap; i < n; i += 1) {
+			for (int i = gap; i < n; i ++) {
 				int temp = arr[i];
 				int j;
 				for (j = i; j >= gap && arr[j - gap] > temp; j -= gap) {

@@ -1,6 +1,8 @@
 package a_Practice;
 
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 import java.util.Random;
 
 public class JustPractice {
@@ -10,28 +12,46 @@ public class JustPractice {
 	public static void main(String[] args) {
 
 		printArray(a);
-		sort(a, 0, a.length - 1);
+		sort(a); 																																																																																																												
 		printArray(a);
 
 	}
 
 	static void sort(int[] arr, int low, int high) {
-		if (low < high) {
-			int pivotindex = new Random().nextInt((high - low) + 1) + low;
-			swap(arr, pivotindex, high);
-			int pointer = low; 
-			for(int i = pointer; i< high; i++) { 
-				if(arr[i]< arr[high]) {
-					swap(arr, i, pointer++);
+		
+	}
+
+	final private static void heapify(int [] arr, int n, int i) {
+		
+	}
+	
+	private static void sort(int[] arr) {
+		int n = arr.length; 
+		for( int gap = n/2; gap >0; gap/=2) {
+			for(int i = gap; i<n; i++) {
+				int t = arr[i]; 
+				int j = i; 
+				while(j>=gap && arr[j-gap]>t) { 
+					arr[j] = arr[j-gap]; 
+					j-=gap;
 				}
+				arr[j]= t;
 			}
-			swap(arr, high, pointer);
-			sort(arr, low, pointer-1);
-			sort(arr, pointer+1, high);
 		}
 	}
 
 //------------------------------------------------------------
+
+	private static double sqrt(double n) {
+		double t = 0;
+		double sq = n / 2;
+		do {
+			t = sq;
+			sq = (t + (n / t)) / 2;
+		} while ((t - sq) != 0);
+		return sq;
+	}
+
 	static void printArray(int[] arr) {
 		System.out.println(Arrays.toString(arr));
 	}
