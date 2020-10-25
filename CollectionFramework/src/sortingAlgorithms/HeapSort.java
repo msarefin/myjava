@@ -32,22 +32,22 @@ public class HeapSort {
 		System.out.println(Arrays.toString(arr));
 	}
 
-	private static void heapify(int arr[], int n, int i) {
+	private static void heapify(int arr[], int high, int low) {
 
-		int largest = i;
-		int l = 2 * i + 1;
-		int r = 2 * i + 2;
+		int largest = low;
+		int l = 2 * low + 1;
+		int r = 2 * low + 2;
 
-		if (l < n && arr[l] > arr[largest]) {
+		if (l < high && arr[l] > arr[largest]) {
 			largest = l;
 		}
-		if (r < n && arr[r] > arr[largest]) {
+		if (r < high && arr[r] > arr[largest]) {
 			largest = r;
 		}
-		if (largest != i) {
-			swap(arr, i, largest);
+		if (largest != low) {
+			swap(arr, low, largest);
 			displayArray(arr);
-			heapify(arr, n, largest);
+			heapify(arr, high, largest);
 
 		}
 

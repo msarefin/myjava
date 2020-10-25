@@ -12,33 +12,40 @@ public class JustPractice {
 	public static void main(String[] args) {
 
 		printArray(a);
-		sort(a); 																																																																																																												
+		sort(a);
 		printArray(a);
 
 	}
 
-	static void sort(int[] arr, int low, int high) {
-		
-	}
+	final private static void heapify(int[] arr, int high, int low) {
+		int largest = low;
+		int l = 2 * low + 1;
+		int r = 2 * low + 2;
 
-	final private static void heapify(int [] arr, int n, int i) {
-		
-	}
-	
-	private static void sort(int[] arr) {
-		int n = arr.length; 
-		for( int gap = n/2; gap >0; gap/=2) {
-			for(int i = gap; i<n; i++) {
-				int t = arr[i]; 
-				int j = i; 
-				while(j>=gap && arr[j-gap]>t) { 
-					arr[j] = arr[j-gap]; 
-					j-=gap;
-				}
-				arr[j]= t;
-			}
+		if (l < high && arr[l] > arr[largest]) {
+			largest = l;
+		}
+		if (r < high && arr[r] > arr[largest]) {
+			largest = r;
+		}
+		if (largest != low) {
+			swap(arr, low, largest);
+			heapify(arr, high, largest);
 		}
 	}
+	
+	final private static void sort(int [] arr) {
+		int n = arr.length; 
+		for(int j = n/2-1; j>=0; j--) {
+			heapify(arr, n, j);
+		}
+		
+		for(int i = n -1; i>=0; i--) {
+			swap(arr, 0, i);
+			heapify(arr, i, 0);
+		}
+	}
+	
 
 //------------------------------------------------------------
 
