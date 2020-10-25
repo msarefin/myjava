@@ -10,42 +10,42 @@ public class JustPractice {
 	static int[] a = new int[] { 5, 6, 4, 7, 3, 8, 2, 9, 1, 0, -9, -1, -8, -2, -7, -3, -6, -4, -5 };
 
 	public static void main(String[] args) {
-
-		printArray(a);
-		sort(a);
-		printArray(a);
+		a = null; 
+		int[] arr = InitializeArray(a);
+		printArray(arr);
+		sort(arr);
+//		heapify(a, a.length, 0);
+		printArray(arr);
 
 	}
 
-	final private static void heapify(int[] arr, int high, int low) {
-		int largest = low;
-		int l = 2 * low + 1;
-		int r = 2 * low + 2;
-
-		if (l < high && arr[l] > arr[largest]) {
-			largest = l;
+	final private static void sort(int[] arr) {
+		int n = arr.length;
+		for (int i = n / 2 - 1; i >= 0; i--) {
+			heapify(arr, n, i);
 		}
-		if (r < high && arr[r] > arr[largest]) {
-			largest = r;
-		}
-		if (largest != low) {
-			swap(arr, low, largest);
-			heapify(arr, high, largest);
-		}
-	}
-	
-	final private static void sort(int [] arr) {
-		int n = arr.length; 
-		for(int j = n/2-1; j>=0; j--) {
-			heapify(arr, n, j);
-		}
-		
-		for(int i = n -1; i>=0; i--) {
+		printArray(arr);
+		for (int i = n - 1; i >= 0; i--) {
 			swap(arr, 0, i);
 			heapify(arr, i, 0);
 		}
 	}
-	
+
+	final private static void heapify(int[] arr, int n, int i) {
+		int largest = i;
+		int l = 2 * i + 1;
+		int r = 2 * i + 2;
+		if (l < n && arr[l] > arr[largest]) {
+			largest = l;
+		}
+		if (r < n && arr[r] > arr[largest]) {
+			largest = r;
+		}
+		if (largest != i) {
+			swap(arr, i, largest);
+			heapify(arr, n, largest);
+		}
+	}
 
 //------------------------------------------------------------
 
@@ -70,4 +70,20 @@ public class JustPractice {
 //		System.out.println("swap index :" + m + "-->" + n + "::" + arr[m] + "-->" + arr[n]);
 	}
 
+	final private static int[] InitializeArray(int[] arr) {
+		int[] a;
+		if (arr == null || arr.length == 0) {
+			a = new int[10];
+			Random r = new Random();
+			for (int i = 0; i < a.length; i++) {
+				a[i] = r.nextInt(100);
+			}
+		} else {
+			a = new int[arr.length];
+			for (int i = 0; i < a.length; i++) {
+				a[i] = arr[i];
+			}
+		}
+		return a;
+	}
 }

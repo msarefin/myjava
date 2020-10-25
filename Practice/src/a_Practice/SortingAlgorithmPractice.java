@@ -265,7 +265,7 @@ class sortingMethods extends HelperMethods implements AlgorithmList {
 
 		int n = arr.length;
 		for (int gap = n / 2; gap > 0; gap /= 2) {
-			for (int i = gap; i < n; i ++) {
+			for (int i = gap; i < n; i++) {
 				int temp = arr[i];
 				int j;
 				for (j = i; j >= gap && arr[j - gap] > temp; j -= gap) {
@@ -304,7 +304,7 @@ class sortingMethods extends HelperMethods implements AlgorithmList {
 		System.out.println("-".repeat(Arrays.toString(a).length()));
 	}
 
-	private static void quicksort(int[] arr, int low, int high) {
+	final private static void quicksort(int[] arr, int low, int high) {
 		if (low < high) {
 			int pivot = new Random().nextInt((high - low) + 1) + low;
 			SwapElements(arr, high, pivot);
@@ -322,8 +322,37 @@ class sortingMethods extends HelperMethods implements AlgorithmList {
 
 	@Override
 	public void HeapSort(int[] a) {
-		// TODO Auto-generated method stub
+		getMethodName();
+		int [] arr = InitializeArray(a); 
+		printArray(arr);
+		
+		int n = arr.length;
+		for (int i = n / 2 - 1; i >= 0; i--) {
+			heapify(arr, n, i);
+		}
+		for (int i = n - 1; i >= 0; i--) {
+			SwapElements(arr, 0, i);
+			heapify(arr, i, 0);
+		}
+		
+		printArray(arr);
+		System.out.println("-".repeat(Arrays.toString(a).length()));
+	}
 
+	final private static void heapify(int[] arr, int n, int i) {
+		int largest = i;
+		int l = 2 * i + 1;
+		int r = 2 * i + 2;
+		if (l < n && arr[l] > arr[largest]) {
+			largest = l;
+		}
+		if (r < n && arr[r] > arr[largest]) {
+			largest = r;
+		}
+		if (largest != i) {
+			SwapElements(arr, i, largest);
+			heapify(arr, n, largest);
+		}
 	}
 
 	@Override
