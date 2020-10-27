@@ -10,40 +10,38 @@ public class JustPractice {
 	static int[] a = new int[] { 5, 6, 4, 7, 3, 8, 2, 9, 1, 0, -9, -1, -8, -2, -7, -3, -6, -4, -5 };
 
 	public static void main(String[] args) {
-		a = null; 
+//		a = null;
 		int[] arr = InitializeArray(a);
 		printArray(arr);
 		sort(arr);
-//		heapify(a, a.length, 0);
 		printArray(arr);
 
 	}
 
-	final private static void sort(int[] arr) {
-		int n = arr.length;
-		for (int i = n / 2 - 1; i >= 0; i--) {
-			heapify(arr, n, i);
+	final static void sort(int[] arr) {
+		int n = arr.length - 1;
+		for (int p = n / 2; p >= 0; p--) {
+			heapify(arr, n, p);
 		}
-		printArray(arr);
-		for (int i = n - 1; i >= 0; i--) {
+		for (int i = n; i >= 0; i--) {
 			swap(arr, 0, i);
 			heapify(arr, i, 0);
 		}
 	}
 
-	final private static void heapify(int[] arr, int n, int i) {
-		int largest = i;
+	final static void heapify(int[] arr, int n, int i) {
+		int h = i;
 		int l = 2 * i + 1;
 		int r = 2 * i + 2;
-		if (l < n && arr[l] > arr[largest]) {
-			largest = l;
+		if (l <= n && arr[l] > arr[h]) {
+			h = l;
 		}
-		if (r < n && arr[r] > arr[largest]) {
-			largest = r;
+		if (r <= n && arr[r] > arr[h]) {
+			h = r;
 		}
-		if (largest != i) {
-			swap(arr, i, largest);
-			heapify(arr, n, largest);
+		if (h != i) {
+			swap(arr, i, h);
+			heapify(arr, n, h);
 		}
 	}
 
@@ -73,10 +71,10 @@ public class JustPractice {
 	final private static int[] InitializeArray(int[] arr) {
 		int[] a;
 		if (arr == null || arr.length == 0) {
-			a = new int[10];
+			a = new int[100];
 			Random r = new Random();
 			for (int i = 0; i < a.length; i++) {
-				a[i] = r.nextInt(100);
+				a[i] = r.nextInt(1000);
 			}
 		} else {
 			a = new int[arr.length];
