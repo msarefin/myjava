@@ -19,29 +19,28 @@ public class JustPractice {
 	}
 
 	final static void sort(int[] arr) {
-		int n = arr.length - 1;
-		for (int p = n / 2; p >= 0; p--) {
+		int n = arr.length;
+		for (int p = (n - 1) / 2; p >= 0; p--) {
 			heapify(arr, n, p);
 		}
-		for (int i = n; i >= 0; i--) {
-			swap(arr, 0, i);
+		for (int i = n-1; i>=0; i--) {
+			swap(arr,0,i);
 			heapify(arr, i, 0);
 		}
 	}
 
 	final static void heapify(int[] arr, int n, int i) {
-		int h = i;
+		int greatest =i; 
 		int l = 2 * i + 1;
 		int r = 2 * i + 2;
-		if (l <= n && arr[l] > arr[h]) {
-			h = l;
+		if(l<n && arr[l]> arr[greatest]) { 
+			greatest = l; 
+		}if(r<n && arr[r]> arr[greatest]) { 
+			greatest = r; 
 		}
-		if (r <= n && arr[r] > arr[h]) {
-			h = r;
-		}
-		if (h != i) {
-			swap(arr, i, h);
-			heapify(arr, n, h);
+		if(greatest != i) { 
+			swap(arr, i , greatest);
+			heapify(arr, n, greatest);
 		}
 	}
 
