@@ -1,7 +1,9 @@
 package a_Practice;
 
 import java.io.InterruptedIOException;
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 import java.util.Random;
 
 public class JustPractice {
@@ -42,14 +44,24 @@ class helper {
 		return arr;
 	}
 
-	static final void swap(int[] a, int m, int n) {
-		int t = a[m];
-		a[m] = a[n];
-		a[n] = t;
+	static final void swap(int[] arr, int m, int n) {
+		int t = arr[m];
+		arr[m] = arr[n];
+		arr[n] = t;
 	}
 
 	static final void printArray(int[] a) {
 		System.out.println(Arrays.toString(a));
+	}
+
+	static final double sqrt(double n) {
+		double t;
+		double sq = n / 2;
+		do {
+			t = sq;
+			sq = (t + (n / t)) / 2;
+		} while ((t - sq) != 0);
+		return sq;
 	}
 }
 
@@ -118,6 +130,108 @@ class sorting extends helper {
 			int[] arr = initialize(a);
 			printArray(arr);
 
+			int neg = 0;
+			int pos = 0;
+
+			for (int n : arr) {
+				if (n < 0) {
+					neg++;
+				} else {
+					pos++;
+				}
+			}
+
+			List[] nBucket = null;
+			List[] pBucket = null;
+
+			if (neg > 0) {
+
+				int nb = (int) sqrt(neg);
+				nBucket = new List[nb];
+				for (int i = 0; i < nBucket.length; i++) {
+					nBucket[i] = new ArrayList();
+				}
+
+				int min = 0;
+				for (int n : arr) {
+					if (min > n) {
+						min = n;
+					}
+				}
+				for (int n : arr) {
+					if (n < 0) {
+						int bi = (n * nBucket.length) / (min - 1);
+						nBucket[bi].add(n);
+					}
+				}
+				
+				
+				System.out.println(Arrays.toString(nBucket));
+				for (List nbkt : nBucket) {
+					for (int i = 1; i < nbkt.size(); i++) {
+						int t = (int) nbkt.get(i);
+						int j = i - 1;
+						while (j >= 0 && (int) nbkt.get(j) > t) {
+							nbkt.set(j + 1, nbkt.get(j));
+							j--;
+						}
+						nbkt.set(j + 1, t);
+					}
+				}
+				System.out.println(Arrays.toString(nBucket));
+
+			}
+
+			if (pos > 0) {
+
+				int pb = (int) sqrt(pos);
+				pBucket = new List[pb];
+				for (int i = 0; i < pBucket.length; i++) {
+					pBucket[i] = new ArrayList();
+				}
+
+				int max = 0;
+				for (int n : arr) {
+					if (max < n) {
+						max = n;
+					}
+				}
+				for (int n : arr) {
+					if (n >= 0) {
+						int bi = (n * pBucket.length) / (max + 1);
+						pBucket[bi].add(n);
+					}
+				}
+				System.out.println(Arrays.toString(pBucket));
+				for (List pbkt : pBucket) {
+					for (int i = 1; i < pbkt.size(); i++) {
+						int t = (int) pbkt.get(i);
+						int j = i - 1;
+						while (j >= 0 && (int) pbkt.get(j) > t) {
+							pbkt.set(j + 1, pbkt.get(j));
+							j--;
+						}
+						pbkt.set(j + 1, t);
+					}
+				}
+			}
+
+			int index = 0;
+			if (nBucket != null) {
+				for (int i = nBucket.length-1; i >= 0; i--) {
+					for (int j = 0; j < nBucket[i].size(); j++) {
+						arr[index++] = (int) nBucket[i].get(j);
+					}
+				}
+			}
+			if (pBucket != null) {
+				for (List pbkt : pBucket) {
+					for (int i = 0; i < pbkt.size(); i++) {
+						arr[index++] = (int) pbkt.get(i);
+					}
+				}
+			}
+
 			printArray(arr);
 			System.out.println("=".repeat(Arrays.toString(arr).length()));
 		}
@@ -174,9 +288,26 @@ class sorting extends helper {
 			System.out.println("Quick Sort");
 			int[] arr = initialize(a);
 			printArray(arr);
-
+			quickSort(arr, 0, arr.length - 1);
 			printArray(arr);
 			System.out.println("=".repeat(Arrays.toString(arr).length()));
+		}
+
+		final private void quickSort(int[] arr, int low, int high) {
+			if (low < high) {
+				int pivotIndex = new Random().nextInt((high - low) + 1) + low;
+				swap(arr, pivotIndex, high);
+				int b = low;
+				for (int i = b; i < high; i++) {
+					if (arr[i] < arr[high]) {
+						swap(arr, i, b++);
+					}
+				}
+				swap(arr, b, high);
+				quickSort(arr, low, b - 1);
+				quickSort(arr, b + 1, high);
+
+			}
 		}
 	}
 
@@ -185,7 +316,7 @@ class sorting extends helper {
 			System.out.println("Heap Sort");
 			int[] arr = initialize(a);
 			printArray(arr);
-
+			heapSort(arr);
 			printArray(arr);
 			System.out.println("=".repeat(Arrays.toString(arr).length()));
 		}
@@ -194,7 +325,8 @@ class sorting extends helper {
 			int n = arr.length;
 			for (int p = (n - 1) / 2; p >= 0; p--) {
 				heapify(arr, n, p);
-			}for(int i = n-1; i>=0; i--) { 
+			}
+			for (int i = n - 1; i >= 0; i--) {
 				swap(arr, 0, i);
 				heapify(arr, i, 0);
 			}
@@ -225,12 +357,13 @@ class sorting extends helper {
 			printArray(arr);
 
 			int n = arr.length;
-			for (int g = n / 2; g >= 0; g /= 2) {
+			for (int g = n / 2; g > 0; g /= 2) {
 				for (int i = g; i < n; i++) {
 					int temp = arr[i];
 					int j = i;
-					while (j >= g && arr[j] > temp) {
+					while (j >= g && arr[j - g] > temp) {
 						arr[j] = arr[j - g];
+						j -= g;
 					}
 					arr[j] = temp;
 				}
@@ -240,8 +373,4 @@ class sorting extends helper {
 			System.out.println("=".repeat(Arrays.toString(arr).length()));
 		}
 	}
-}
-
-class bubble extends helper {
-
 }
