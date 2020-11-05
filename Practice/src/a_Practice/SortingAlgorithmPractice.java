@@ -69,11 +69,11 @@ public class SortingAlgorithmPractice {
 		end = System.currentTimeMillis();
 		System.out.println("Time Taken : " + (end - start) + " miliSeconds");
 		System.out.println("*".repeat(Arrays.toString(a).length()));
-		
-		
-		searchingAlgorithm sa = new searchingAlgorithm(); 
-		sa.linearSearch(a, -8);
-		
+
+		searchingAlgorithm sa = new searchingAlgorithm();
+//		sa.linearSearch(a, -8);
+		sa.binarySearch(a, -9);
+
 	}
 
 }
@@ -82,28 +82,41 @@ class searchingAlgorithm extends HelperMethods implements searchingAlgorithmsLis
 
 	@Override
 	public void linearSearch(int[] arr, int num) {
-		for(int i = 0; i< arr.length; i++) { 
-			while(arr[i]==num) { 
-				System.out.println(num+" Found at index: "+i);
-				return; 
+		for (int i = 0; i < arr.length; i++) {
+			while (arr[i] == num) {
+				System.out.println(num + " Found at index: " + i);
+				return;
 			}
 		}
-		
+
 	}
 
 	@Override
 	public void binarySearch(int[] arr, int num) {
-		// TODO Auto-generated method stub
-		
+		int l = 0;
+		int r = arr.length - 1;
+		int m = 0;
+		while (l <= r) {
+			m = l + (r - l) / 2;
+			if (arr[m] == num) {
+				System.out.println("Found element at index: " + m);
+			}
+			if (arr[m] < num) {
+				l = m + 1;
+			} else {
+				r = m - 1;
+			}
+
+		}
+//		System.out.println("Not Found!!");
+
 	}
 
 	@Override
 	public void interpolationSearch(int[] arr, int num) {
 		// TODO Auto-generated method stub
-		
-	}
 
-	
+	}
 
 }
 
