@@ -164,9 +164,6 @@ class sorting extends helper {
 						nBucket[bi].add(n);
 					}
 				}
-				
-				
-				System.out.println(Arrays.toString(nBucket));
 				for (List nbkt : nBucket) {
 					for (int i = 1; i < nbkt.size(); i++) {
 						int t = (int) nbkt.get(i);
@@ -178,8 +175,6 @@ class sorting extends helper {
 						nbkt.set(j + 1, t);
 					}
 				}
-				System.out.println(Arrays.toString(nBucket));
-
 			}
 
 			if (pos > 0) {

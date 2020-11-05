@@ -27,6 +27,14 @@ Topics To Learn:
 - Data Structure and Algorithm
 	- Collection Framework
 	- Sorting Algorithms
+		- Bubble sort 
+		- Selection Sort 
+		- Insertion Sort 
+		- Bucket Sort 
+		- Merge Sort 
+		- Quick Sort 
+		- Heap Sort 
+		- Shell Sort
 - external data source and input from users
 	- user input 
 	- excel reader 
@@ -42,12 +50,3 @@ Topics To Learn:
 - InputStream
 	- FileInputStream
 - Comparable vs Comparator 
-- Sorting Algorithm
-	- Bubble Sort
-	- Selection sort
-	- Insertion Sort
-	- Bucket Sort 
-	- Merge Sort
-	- Shell Sort
-	- Quick sort
-	- Heap Sort

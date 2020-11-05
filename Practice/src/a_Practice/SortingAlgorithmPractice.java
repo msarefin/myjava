@@ -1,5 +1,6 @@
 package a_Practice;
 
+import java.nio.file.spi.FileSystemProvider;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -8,24 +9,105 @@ import java.util.Random;
 public class SortingAlgorithmPractice {
 
 	static int[] a = new int[] { 5, 6, 4, 7, 3, 8, 2, 9, 1, 0, -9, -1, -8, -2, 5, -7, -3, -6, -4, -5 };
+	static long start = 0;
+	static long end = 0;
 
 	public static void main(String[] args) {
 //		int[] a = null; 
 		sortingMethods s = new sortingMethods();
+
+		start = System.currentTimeMillis();
 		s.BubbleSort(a);
+		end = System.currentTimeMillis();
+		System.out.println("Time Taken : " + (end - start) + " miliSeconds");
+		System.out.println("*".repeat(Arrays.toString(a).length()));
+
+		start = System.currentTimeMillis();
 		s.SelectionSort(a);
+		end = System.currentTimeMillis();
+		System.out.println("Time Taken : " + (end - start) + " miliSeconds");
+		System.out.println("*".repeat(Arrays.toString(a).length()));
+
+		start = System.currentTimeMillis();
 		s.InsertionSort(a);
+		end = System.currentTimeMillis();
+		System.out.println("Time Taken : " + (end - start) + " miliSeconds");
+		System.out.println("*".repeat(Arrays.toString(a).length()));
+
+		start = System.currentTimeMillis();
 		s.BucketSort(a);
+		end = System.currentTimeMillis();
+		System.out.println("Time Taken : " + (end - start) + " miliSeconds");
+		System.out.println("*".repeat(Arrays.toString(a).length()));
+
+		start = System.currentTimeMillis();
 		s.MergeSort(a);
+		end = System.currentTimeMillis();
+		System.out.println("Time Taken : " + (end - start) + " miliSeconds");
+		System.out.println("*".repeat(Arrays.toString(a).length()));
+
+		start = System.currentTimeMillis();
 		s.QuickSort(a);
+		end = System.currentTimeMillis();
+		System.out.println("Time Taken : " + (end - start) + " miliSeconds");
+		System.out.println("*".repeat(Arrays.toString(a).length()));
+
+		start = System.currentTimeMillis();
 		s.ShellSort(a);
+		end = System.currentTimeMillis();
+		System.out.println("Time Taken : " + (end - start) + " miliSeconds");
+		System.out.println("*".repeat(Arrays.toString(a).length()));
+
+		start = System.currentTimeMillis();
 		s.HeapSort(a);
+		end = System.currentTimeMillis();
+		System.out.println("Time Taken : " + (end - start) + " miliSeconds");
+		System.out.println("*".repeat(Arrays.toString(a).length()));
+
+		start = System.currentTimeMillis();
 		s.RedixSort(a);
+		end = System.currentTimeMillis();
+		System.out.println("Time Taken : " + (end - start) + " miliSeconds");
+		System.out.println("*".repeat(Arrays.toString(a).length()));
+		
+		
+		searchingAlgorithm sa = new searchingAlgorithm(); 
+		sa.linearSearch(a, -8);
+		
 	}
 
 }
 
-class sortingMethods extends HelperMethods implements AlgorithmList {
+class searchingAlgorithm extends HelperMethods implements searchingAlgorithmsList {
+
+	@Override
+	public void linearSearch(int[] arr, int num) {
+		for(int i = 0; i< arr.length; i++) { 
+			while(arr[i]==num) { 
+				System.out.println(num+" Found at index: "+i);
+				return; 
+			}
+		}
+		
+	}
+
+	@Override
+	public void binarySearch(int[] arr, int num) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void interpolationSearch(int[] arr, int num) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	
+
+}
+
+class sortingMethods extends HelperMethods implements SortingAlgorithmList {
 	public void BubbleSort(int[] a) {
 		getMethodName();
 		int[] arr = InitializeArray(a);
@@ -327,7 +409,7 @@ class sortingMethods extends HelperMethods implements AlgorithmList {
 		printArray(arr);
 
 		int n = arr.length;
-		for (int p = (n-1) / 2; p >= 0; p--) {
+		for (int p = (n - 1) / 2; p >= 0; p--) {
 			heapify(arr, n, p);
 		}
 		for (int i = n - 1; i >= 0; i--) {
@@ -363,7 +445,7 @@ class sortingMethods extends HelperMethods implements AlgorithmList {
 	}
 }
 
-interface AlgorithmList {
+interface SortingAlgorithmList {
 	void BubbleSort(int[] a);
 
 	void SelectionSort(int[] a);
@@ -382,6 +464,14 @@ interface AlgorithmList {
 
 	void RedixSort(int[] a);
 
+}
+
+interface searchingAlgorithmsList {
+	void linearSearch(int[] arr, int num);
+
+	void binarySearch(int[] arr, int num);
+
+	void interpolationSearch(int[] arr, int num);
 }
 
 class HelperMethods {
@@ -409,10 +499,10 @@ class HelperMethods {
 	static int[] InitializeArray(int[] arr) {
 		int[] a;
 		if (arr == null || arr.length == 0) {
-			a = new int[10];
+			a = new int[1000];
 			Random r = new Random();
 			for (int i = 0; i < a.length; i++) {
-				a[i] = r.nextInt(100);
+				a[i] = r.nextInt(10000);
 			}
 		} else {
 			a = new int[arr.length];

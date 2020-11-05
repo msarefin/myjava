@@ -21,12 +21,12 @@ public class DataReader {
 	public static void main(String[] args) {
 		String file = "/Users/sunsh/Documents/JavaProject/EclipseProject/myjava/Practice/Files/Topics.txt";
 
-//		usingBufferReader(file);
+		usingBufferReader(file);
 //		usingFileReader(file);
 //		usingScanner(file);
 //		usingScannerNoWhile(file);
 //		usingCollectionFramework(file);
-		usingString(file);
+//		usingString(file);
 
 	}
 	
