@@ -6,6 +6,8 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Random;
 
+import practice.BubbleSort;
+
 public class SortingAlgorithmPractice {
 
 	static int[] a = new int[] { 5, 6, 4, 7, 3, 8, 2, 9, 1, 0, -9, -1, -8, -2, 5, -7, -3, -6, -4, -5 };
@@ -72,7 +74,7 @@ public class SortingAlgorithmPractice {
 
 		searchingAlgorithm sa = new searchingAlgorithm();
 //		sa.linearSearch(a, -8);
-		sa.binarySearch(a, -9);
+		sa.binarySearch(a, -19);
 
 	}
 
@@ -93,6 +95,19 @@ class searchingAlgorithm extends HelperMethods implements searchingAlgorithmsLis
 
 	@Override
 	public void binarySearch(int[] arr, int num) {
+		// Sorting the array first!
+		for (int i = 0; i < arr.length; i++) {
+			for (int j = 0; j < arr.length - 1; j++) {
+				if (arr[j] > arr[j + 1]) {
+					int t = arr[j];
+					arr[j] = arr[j + 1];
+					arr[j + 1] = t;
+				}
+			}
+		}
+
+		System.out.println(Arrays.toString(arr));
+		// binary search
 		int l = 0;
 		int r = arr.length - 1;
 		int m = 0;
@@ -100,16 +115,17 @@ class searchingAlgorithm extends HelperMethods implements searchingAlgorithmsLis
 			m = l + (r - l) / 2;
 			if (arr[m] == num) {
 				System.out.println("Found element at index: " + m);
-			}
-			if (arr[m] < num) {
+				break;
+			} else if (arr[m] < num) {
 				l = m + 1;
 			} else {
 				r = m - 1;
 			}
-
+			
+			if(l>r) {
+				System.out.println("Not Found!");
+			}
 		}
-//		System.out.println("Not Found!!");
-
 	}
 
 	@Override
