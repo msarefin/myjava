@@ -65,59 +65,45 @@ class helper {
 	}
 }
 
-class searching extends sorting{
-	class linear{ 
-		linear(int [] arr, int n){ 
-			new bubble(arr); 
-			for(int i = 0; i< arr.length; i++) { 
-				while(arr[i]==n) { 
-					System.out.println(n+" Found at index "+i);
+class searching extends sorting {
+	class linear {
+		linear(int[] arr, int n) {
+			new bubble(arr);
+			for (int i = 0; i < arr.length; i++) {
+				while (arr[i] == n) {
+					System.out.println(n + " Found at index " + i);
 				}
 			}
 		}
 	}
-	class binary{
-		binary(int [] arr, int n){ 
-			new insertion(arr); 
-			int l = 0, r= arr.length-1; 
-			int m = 0; 
-			while(l< r) { 
-				m = l+(r-l)/2;
-				if(arr[m]==n) {
-					System.out.println(n+" was found at index "+m);
-				}else if(arr[m]>n) {
-					r = m-1;
-				}else { 
-					l = m+1;
+
+	class binary {
+		binary(int[] arr, int n) {
+			new insertion(arr);
+			int l = 0, r = arr.length - 1;
+			int m = 0;
+			while (l < r) {
+				m = l + (r - l) / 2;
+				if (arr[m] == n) {
+					System.out.println(n + " was found at index " + m);
+				} else if (arr[m] > n) {
+					r = m - 1;
+				} else {
+					l = m + 1;
 				}
-				
-				if(l>r)
-					System.out.println(n+" was not found in list!!");
+
+				if (l > r)
+					System.out.println(n + " was not found in list!!");
 			}
+
+		}
+
+	}
+
+	class interpolation {
+		public interpolation(int[] arr, int n) {
+			int low = 0, int high = arr.length; 
 			
-		}
-		
-	}
-	class interpolation{ 
-		public interpolation(int [] arr, int n) {
-			int l = 0 , h = arr.length-1;
-			while(l<=h && n  >=arr[l] && n<= arr[h]) {
-				if(l == h) { 
-					if(arr[l]==n) { 
-						System.out.println("element found at "+l);
-					}else {
-						System.out.println("element was not found");
-					}
-				}
-				int pos = l+((h-l)*((n-arr[l])/(arr[h]-arr[l]))); 
-				if(arr[pos]==n) { 
-					System.out.println("element found at "+pos);
-				}else if(arr[pos]<n) { 
-					l = pos+1; 
-				}else { 
-					h = pos-1; 
-				}
-			}
 		}
 	}
 }
@@ -270,7 +256,7 @@ class sorting extends helper {
 
 			int index = 0;
 			if (nBucket != null) {
-				for (int i = nBucket.length-1; i >= 0; i--) {
+				for (int i = nBucket.length - 1; i >= 0; i--) {
 					for (int j = 0; j < nBucket[i].size(); j++) {
 						arr[index++] = (int) nBucket[i].get(j);
 					}
