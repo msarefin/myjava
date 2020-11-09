@@ -1,14 +1,9 @@
 package a_Practice;
 
-import java.nio.file.spi.FileSystemProvider;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Random;
-
-import com.sun.org.apache.bcel.internal.generic.SWAP;
-
-import practice.BubbleSort;
 
 public class SortingAlgorithmPractice {
 
@@ -119,7 +114,7 @@ class searchingAlgorithm extends HelperMethods implements searchingAlgorithmsLis
 			m = l + (r - l) / 2;
 			if (arr[m] == num) {
 				System.out.println("Found element at index: " + m);
-				break;
+				return;
 			} else if (arr[m] < num) {
 				l = m + 1;
 			} else {
@@ -145,15 +140,15 @@ class searchingAlgorithm extends HelperMethods implements searchingAlgorithmsLis
 
 		int low = 0, high = arr.length - 1;
 		while (low <= high && arr[low] <= num && arr[high] >= num) {
-			if(low == high) { 
-				System.out.println("Found The number using interpolation at index "+low);
-				break; 
+			if (low == high) {
+				System.out.println("Found The number using interpolation at index " + low);
+				return;
 			}
-			
+
 			int pos = low + (((num - arr[low]) / (arr[high] - arr[low])) * (high - low));
 			if (arr[pos] == num) {
-				System.out.println("Found it using interpolation at index "+pos);
-				break; 
+				System.out.println("Found it using interpolation at index " + pos);
+				return;
 			} else if (arr[pos] > num) {
 				high = pos - 1;
 			} else {

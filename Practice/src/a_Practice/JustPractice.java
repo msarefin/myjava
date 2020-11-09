@@ -6,6 +6,8 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Random;
 
+import practice.HeapSort;
+
 public class JustPractice {
 
 	static int[] a = new int[] { 5, 6, 4, 7, 3, 8, 2, 9, 1, 0, -9, -1, -8, -2, -7, -3, -6, -4, -5 };
@@ -20,6 +22,11 @@ public class JustPractice {
 		sort.new shell(a);
 		sort.new quick(a);
 		sort.new heap(a);
+
+		searching search = new searching();
+		search.new linear(a, 5);
+		search.new binary(a, 2);
+		search.new interpolation(a, -4);
 
 	}
 }
@@ -68,32 +75,39 @@ class helper {
 class searching extends sorting {
 	class linear {
 		linear(int[] arr, int n) {
-			new bubble(arr);
+			boolean b = false; 
 			for (int i = 0; i < arr.length; i++) {
 				while (arr[i] == n) {
-					System.out.println(n + " Found at index " + i);
+					b = true; 
+					System.out.println(n + " Found  using linear search at index " + i);
+					return;
 				}
 			}
+			if(b== false ) { 
+				System.out.println("number was not found using linear search!");
+			}
+
 		}
 	}
 
 	class binary {
 		binary(int[] arr, int n) {
-			new insertion(arr);
 			int l = 0, r = arr.length - 1;
 			int m = 0;
-			while (l < r) {
+			while (l <= r) {
 				m = l + (r - l) / 2;
 				if (arr[m] == n) {
-					System.out.println(n + " was found at index " + m);
-				} else if (arr[m] > n) {
+					System.out.println(n + " was found using binary search at index " + m);
+					return;
+				} else if (arr[m] < n) {
 					r = m - 1;
 				} else {
 					l = m + 1;
 				}
 
-				if (l > r)
-					System.out.println(n + " was not found in list!!");
+				if (l > r) {
+					System.out.println(n + " was not found in list using binary search!!");
+				}
 			}
 
 		}
@@ -101,9 +115,27 @@ class searching extends sorting {
 	}
 
 	class interpolation {
-		public interpolation(int[] arr, int n) {
-			int low = 0, int high = arr.length; 
+		 interpolation(int[] arr, int n) {
+			int low = 0, high = arr.length-1;
+
+			while (low <= high && arr[low] <= n && arr[high] >= n) {
+				if (low == high) {
+					System.out.println("NUmber was found using interpolation search at index " + low);
+					return;
+				} 
+				
+				int pos = low + (((n - arr[low]) / (arr[high] - arr[low])) * (high - low));
+				if (arr[pos] == n) {
+					System.out.println("FOund the number using interpolation search at index " + pos);
+					return;
+				}  if (arr[pos]>n) {
+					high = pos - 1;
+				} else {
+					low = pos + 1;
+				}
+			}
 			
+
 		}
 	}
 }
