@@ -24,9 +24,9 @@ public class JustPractice {
 		sort.new heap(a);
 
 		searching search = new searching();
-		search.new linear(a, 5);
-		search.new binary(a, 2);
-		search.new interpolation(a, -4);
+		search.new linear(a, 51);
+		search.new binary(a, 21);
+		search.new interpolation(a, -41);
 
 	}
 }
@@ -75,6 +75,15 @@ class helper {
 class searching extends sorting {
 	class linear {
 		linear(int[] arr, int n) {
+			for(int i =0; i<arr.length; i++) { 
+				int t = i; 
+				for(int j = 1; j< arr.length; j++) {
+					if(arr[j]<arr[t]) {
+						t =j; 
+					}
+				}
+				swap(arr,i, t); 
+			}
 			boolean b = false; 
 			for (int i = 0; i < arr.length; i++) {
 				while (arr[i] == n) {
@@ -92,6 +101,13 @@ class searching extends sorting {
 
 	class binary {
 		binary(int[] arr, int n) {
+			for(int i = 0; i< arr.length; i++) {
+				for(int j = 0; j< arr.length-1;j++) {
+					if(arr[j]<arr[j+1]) {
+						swap(arr, j, j+1);
+					}
+				}
+			}
 			int l = 0, r = arr.length - 1;
 			int m = 0;
 			while (l <= r) {
@@ -116,8 +132,16 @@ class searching extends sorting {
 
 	class interpolation {
 		 interpolation(int[] arr, int n) {
+			for(int i =0; i< arr.length; i++) {
+				int t = i;
+				for(int j = i; j< arr.length;j++) {
+					if(arr[j]<arr[t]) {
+						t= j; 
+					}
+				}
+				swap(arr,i,t);
+			}
 			int low = 0, high = arr.length-1;
-
 			while (low <= high && arr[low] <= n && arr[high] >= n) {
 				if (low == high) {
 					System.out.println("NUmber was found using interpolation search at index " + low);
@@ -126,7 +150,7 @@ class searching extends sorting {
 				
 				int pos = low + (((n - arr[low]) / (arr[high] - arr[low])) * (high - low));
 				if (arr[pos] == n) {
-					System.out.println("FOund the number using interpolation search at index " + pos);
+					System.out.println("Found the number using interpolation search at index " + pos);
 					return;
 				}  if (arr[pos]>n) {
 					high = pos - 1;
@@ -134,6 +158,7 @@ class searching extends sorting {
 					low = pos + 1;
 				}
 			}
+			System.out.println("Number was not found using interpolation search!!");
 			
 
 		}
@@ -169,7 +194,7 @@ class sorting extends helper {
 				int t = i;
 				for (int j = i + 1; j < arr.length; j++) {
 					if (arr[j] < arr[t]) {
-						swap(arr, j, t);
+						t=j; 
 					}
 				}
 				swap(arr, i, t);

@@ -82,6 +82,7 @@ class searchingAlgorithm extends HelperMethods implements searchingAlgorithmsLis
 
 	@Override
 	public void linearSearch(int[] arr, int num) {
+		System.out.println("Linear search");
 		for (int i = 0; i < arr.length; i++) {
 			while (arr[i] == num) {
 				System.out.println(num + " Found at index: " + i);
@@ -105,7 +106,6 @@ class searchingAlgorithm extends HelperMethods implements searchingAlgorithmsLis
 		}
 
 		System.out.println("Binary Search");
-		System.out.println(Arrays.toString(arr));
 		// binary search
 		int l = 0;
 		int r = arr.length - 1;
@@ -137,7 +137,7 @@ class searchingAlgorithm extends HelperMethods implements searchingAlgorithmsLis
 				}
 			}
 		}
-
+		System.out.println("Interpolation Search");
 		int low = 0, high = arr.length - 1;
 		while (low <= high && arr[low] <= num && arr[high] >= num) {
 			if (low == high) {
