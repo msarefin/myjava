@@ -8,6 +8,31 @@ public class MathClass {
 		mc.nPrime(100);
 		mc.triangleNumber(100);
 		mc.factorial(20);
+		mc.palindromeCheck("dead");
+	}
+
+	static void palindromeCheck(String str) {
+		boolean b = isPlaindrome(str);
+		if (b == true) {
+			System.out.println(str + " is a palindrome");
+		} else {
+			System.out.println(str + " is not palindrome");
+		}
+
+	}
+
+	private final static boolean isPlaindrome(String str) {
+		str.toLowerCase();
+		int f = 0;
+		int l = str.length() - 1;
+		while (f < l) {
+			if (str.toLowerCase().charAt(f) != str.toLowerCase().charAt(l)) {
+				return false;
+			}
+			f++;
+			l--;
+		}
+		return true;
 	}
 
 	void nthFibunacci(int n) {
@@ -53,16 +78,15 @@ public class MathClass {
 	}
 
 	private static boolean isPrime(int n) {
-		if(n%2==0) {
-			return false; 
+		if (n % 2 == 0) {
+			return false;
 		}
-		for(int i = 3; i*i<=n; i+=2) {
-			if(n%i == 0) {
-				return false; 
+		for (int i = 3; i * i <= n; i += 2) {
+			if (n % i == 0) {
+				return false;
 			}
 		}
-		return true; 
-		
+		return true;
 
 //		if (n <= 1) {
 //			return false;
@@ -73,25 +97,25 @@ public class MathClass {
 //			}
 //		}
 //		return true;
-		
+
 	}
-	
+
 	void triangleNumber(int n) {
-		int sum = 0; 
-		for (int i = 0; i<=n ; i++) { 
-			sum = sum+i; 
+		int sum = 0;
+		for (int i = 0; i <= n; i++) {
+			sum = sum + i;
 			System.out.println(sum);
 		}
 	}
-	
+
 	void factorial(int n) {
-		if(n ==0) { 
+		if (n == 0) {
 			System.out.println(1);
 		}
-		if(n>0) {
-			long p = 1; 
-			for(int i = 1; i< n; i++) { 
-				p = p* i; 
+		if (n > 0) {
+			long p = 1;
+			for (int i = 1; i < n; i++) {
+				p = p * i;
 				System.out.println(p);
 			}
 		}
