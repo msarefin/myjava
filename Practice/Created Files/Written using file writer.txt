@@ -1,0 +1,52 @@
+Topics To Learn:
+================
+- enum
+- Access Specifiers
+	- public
+	- protected
+	- default 
+	- private
+- OOP Concepts 
+	- Abstraction
+	- Inheritance
+	- Polymorphism
+	- Encapsulation
+- Conditional Statements
+	- if - if else - nested if
+	- switch case
+- Loops
+	- for
+	- for each
+	- while
+	- do while
+- Error handling 
+	- try catch
+	- Throw
+	- finally 
+	- throws
+- Data Structure and Algorithm
+	- Collection Framework
+	- Sorting Algorithms
+		- Bubble sort 
+		- Selection Sort 
+		- Insertion Sort 
+		- Bucket Sort 
+		- Merge Sort 
+		- Quick Sort 
+		- Heap Sort 
+		- Shell Sort
+- external data source and input from users
+	- user input 
+	- excel reader 
+	- google sheet
+	- JDBC
+	- MongoDB
+- Design pattern
+	- Singleton
+- String
+- StringBuffer
+- StringBuilder
+- OutputStream
+- InputStream
+	- FileInputStream
+- Comparable vs Comparator 
