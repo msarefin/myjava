@@ -16,23 +16,22 @@ public class JustPractice {
 	public static void main(String[] args) {
 
 		try {
-			Path path = Paths.get(System.getProperty("user.dir")+"/Created Files/");
+			Path path = Paths.get(System.getProperty("user.dir") + "/Created Files/");
 			Files.createDirectories(path);
 			FileWriter fw = new FileWriter(System.getProperty("user.dir") + "/Created Files/Written.txt");
 			PrintWriter pw = new PrintWriter(fw);
 			pw.print("Text written using PrintWriter\n");
 			pw.printf("%s cost %d", "ALM Software", 25000);
-
+			
+			pw.flush();
 			pw.close();
 			fw.close();
-			
-			
+
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 
 	}
-	
-	
+
 }

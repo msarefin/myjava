@@ -1,4 +1,4 @@
-Rent Costs 1000 dollars monthlyTopics To Learn:
+Topics To Learn:
 ================
 - enum
 - Access Specifiers
