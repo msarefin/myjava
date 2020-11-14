@@ -12,10 +12,11 @@ import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.nio.file.Files;
 import java.nio.file.Paths;
+import java.util.Arrays;
 
 public class SerializeAndDeserialize {
 
-	public static void main(String[] args) throws IOException {
+	public static void main(String[] args) throws IOException, ClassNotFoundException {
 
 		File file = new File(System.getProperty("user.dir") + "/Serialization Deserialization");
 		file.mkdirs();
@@ -25,18 +26,22 @@ public class SerializeAndDeserialize {
 		FileOutputStream fos = new FileOutputStream(location);
 		ObjectOutputStream out = new ObjectOutputStream(fos);
 
-		out.writeUTF(new String(Files.readAllBytes(Paths.get(System.getProperty("user.dir") + "/Files/Topics.txt"))));
-
+		String st = new String(Files.readAllBytes(Paths.get(System.getProperty("user.dir") + "/Files/Topics.txt")));
+		
+		out.writeObject(st);
+		
 		out.close();
 		fos.close();
 
 		FileInputStream fis = new FileInputStream(location);
 		ObjectInputStream input = new ObjectInputStream(fis);
 
-		String s = input.readUTF();
+		String sb = (String)input.readObject();
+		
+		
 		String msg = "This is From Serialized file";
 		System.out.println(msg+"\n"+"=".repeat(msg.length()));
-		System.out.println(s);
+		System.out.println(sb);
 
 		input.close();
 		fis.close();
