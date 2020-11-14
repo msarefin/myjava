@@ -50,7 +50,8 @@ public class WritingToFile {
 		try {
 			RandomAccessFile raf = new RandomAccessFile(file.toString()+"/Random Access File.txt", "rw");
 			raf.seek(0);
-			raf.writeInt(300);
+			raf.write(65);
+			raf.writeInt(65);
 			raf.close();
 		} catch (FileNotFoundException e) {
 			// TODO Auto-generated catch block
