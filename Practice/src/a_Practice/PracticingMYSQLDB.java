@@ -18,6 +18,7 @@ import java.util.Properties;
 
 import javax.swing.InputMap;
 
+import com.mysql.cj.PerConnectionLRUFactory;
 import com.mysql.cj.jdbc.Driver;
 import com.mysql.cj.protocol.Resultset;
 import com.mysql.cj.xdevapi.SqlUpdateResult;
@@ -29,10 +30,12 @@ public class PracticingMYSQLDB {
 
 	public static void main(String[] args) throws Exception {
 
-		SQLInsertStatement("insert into students (name, age) values(\"Hanip\", 44)");
-		SQLUpdateStatement("update students set age = 30 where name = \"hanip\"");
-		SQLDeleteStatement("delete from students where id in (select id from (select id, row_number() over(partition by name) as 'row' from students) as t where t.row>1)");
-		SQLReadStatement("select * from students");
+//		SQLInsertStatement("insert into students (name, age) values(\"Hanip\", 44)");
+//		SQLUpdateStatement("update students set age = 30 where name = \"hanip\"");
+//		SQLDeleteStatement("delete from students where id in (select id from (select id, row_number() over(partition by name) as 'row' from students) as t where t.row>1)");
+//		SQLReadStatement("select * from students");
+//		SQLReadPreparedStatement(4);
+		SQLInsertPreparedStatement("Alexander", 122);
 	}
 
 	static void setCredentials(String propreiesFile) throws IOException {
@@ -57,21 +60,88 @@ public class PracticingMYSQLDB {
 		return connection;
 	}
 
+//	---------------------------------------------------SQL Prepared Statement---------------------------------------------------
+
+	static void SQLInsertPreparedStatement(String name, int age) throws IOException, SQLException, ClassNotFoundException {
+		InputStream inStream = new FileInputStream(System.getProperty("user.dir") + "/Files/mysql.properties");
+		Properties prop = new Properties();
+		prop.load(inStream);
+		
+		driver = prop.getProperty("MYSQLJDBC.Driver"); 
+		url = prop.getProperty("MYSQLJDBC.url"); 
+		userName = prop.getProperty("MYSQLJDBC.userName"); 
+		password = prop.getProperty("MYSQLJDBC.password");
+		
+		Class.forName(driver); 
+		Connection con = DriverManager.getConnection(url, userName, password);
+		PreparedStatement prep = con.prepareStatement("insert into students (name, age) values(?,?)");
+		
+		prep.setString(1, name);
+		prep.setInt(2, age);
+		
+		prep.execute(); 
+		
+		SQLReadStatement("select * from students;");
+		
+		prep.close();
+		con.close();
+	}
+
+	static void SQLReadPreparedStatement(int id) throws Exception {
+		InputStream inStream = new FileInputStream(System.getProperty("user.dir") + "/Files/mysql.properties");
+		Properties prop = new Properties();
+		prop.load(inStream);
+
+		driver = prop.getProperty("MYSQLJDBC.Driver");
+		url = prop.getProperty("MYSQLJDBC.url");
+		userName = prop.getProperty("MYSQLJDBC.userName");
+		password = prop.getProperty("MYSQLJDBC.password");
+		
+		prop.clear(); 
+		inStream.close();
+
+		Class.forName(driver);
+		Connection con = DriverManager.getConnection(url, userName, password);
+		PreparedStatement prepstmt = con.prepareStatement("select * from students where id = ?");
+
+		prepstmt.setInt(1, id);
+
+		ResultSet rs = prepstmt.executeQuery();
+
+		List<ArrayList> data = new ArrayList<ArrayList>();
+		while (rs.next()) {
+			ArrayList row = new ArrayList();
+			row.add(rs.getInt("id"));
+			row.add(rs.getString("name"));
+			row.add(rs.getInt("age"));
+			data.add(row);
+		}
+
+		rs.close();
+		prepstmt.close();
+		con.close();
+
+		for (int i = 0; i < data.size(); i++) {
+			System.out.println((data.get(i).toString()));
+		}
+	}
+
 //	---------------------------------------------------SQL Statement---------------------------------------------------
-	
+
 	static void SQLDeleteStatement(String sqlDeleteStatement) throws IOException, ClassNotFoundException, SQLException {
 		setCredentials(propreiesFile);
-		Connection con = registerAndGetConnection(driver, url, userName, password); 
-		Statement stmt = con.createStatement(); 
-		stmt.executeUpdate(sqlDeleteStatement); 
+		Connection con = registerAndGetConnection(driver, url, userName, password);
+		Statement stmt = con.createStatement();
+		stmt.executeUpdate(sqlDeleteStatement);
 	}
+
 	static void SQLUpdateStatement(String sqlUpdateStatement) throws IOException, ClassNotFoundException, SQLException {
 		setCredentials(propreiesFile);
-		Connection con = registerAndGetConnection(driver, url, userName, password); 
-		Statement stmt = con.createStatement(); 
+		Connection con = registerAndGetConnection(driver, url, userName, password);
+		Statement stmt = con.createStatement();
 		stmt.executeUpdate(sqlUpdateStatement);
 	}
-	
+
 	static void SQLInsertStatement(String sqlInsertStatement) throws IOException, ClassNotFoundException, SQLException {
 		setCredentials(propreiesFile);
 		Connection con = registerAndGetConnection(driver, url, userName, password);
