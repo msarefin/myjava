@@ -12,6 +12,7 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Properties;
 
@@ -19,50 +20,92 @@ import javax.swing.InputMap;
 
 import com.mysql.cj.jdbc.Driver;
 import com.mysql.cj.protocol.Resultset;
+import com.mysql.cj.xdevapi.SqlUpdateResult;
 
 public class PracticingMYSQLDB {
 
 	static String driver, url, userName, password;
+	static String propreiesFile = System.getProperty("user.dir") + "/Files/mysql.properties";
 
 	public static void main(String[] args) throws Exception {
 
-		InputStream input = new FileInputStream(System.getProperty("user.dir") + "/Files/mysql.properties");
+		SQLInsertStatement("insert into students (name, age) values(\"Hanip\", 44)");
+		SQLUpdateStatement("update students set age = 30 where name = \"hanip\"");
+		SQLDeleteStatement("delete from students where id in (select id from (select id, row_number() over(partition by name) as 'row' from students) as t where t.row>1)");
+		SQLReadStatement("select * from students");
+	}
+
+	static void setCredentials(String propreiesFile) throws IOException {
+		InputStream inStream = new FileInputStream(propreiesFile);
 		Properties prop = new Properties();
-		prop.load(input);
+		prop.load(inStream);
 
 		driver = prop.getProperty("MYSQLJDBC.Driver");
 		url = prop.getProperty("MYSQLJDBC.url");
 		userName = prop.getProperty("MYSQLJDBC.userName");
 		password = prop.getProperty("MYSQLJDBC.password");
 
+		prop.clear();
+		inStream.close();
+
+	}
+
+	static Connection registerAndGetConnection(String driver, String url, String userName, String password)
+			throws ClassNotFoundException, SQLException {
 		Class.forName(driver);
-		Connection con = DriverManager.getConnection(url, userName, password);
+		Connection connection = DriverManager.getConnection(url, userName, password);
+		return connection;
+	}
+
+//	---------------------------------------------------SQL Statement---------------------------------------------------
+	
+	static void SQLDeleteStatement(String sqlDeleteStatement) throws IOException, ClassNotFoundException, SQLException {
+		setCredentials(propreiesFile);
+		Connection con = registerAndGetConnection(driver, url, userName, password); 
+		Statement stmt = con.createStatement(); 
+		stmt.executeUpdate(sqlDeleteStatement); 
+	}
+	static void SQLUpdateStatement(String sqlUpdateStatement) throws IOException, ClassNotFoundException, SQLException {
+		setCredentials(propreiesFile);
+		Connection con = registerAndGetConnection(driver, url, userName, password); 
+		Statement stmt = con.createStatement(); 
+		stmt.executeUpdate(sqlUpdateStatement);
+	}
+	
+	static void SQLInsertStatement(String sqlInsertStatement) throws IOException, ClassNotFoundException, SQLException {
+		setCredentials(propreiesFile);
+		Connection con = registerAndGetConnection(driver, url, userName, password);
 		Statement stmt = con.createStatement();
-		String sqlInsert = "insert into Students(name, age) values(\"Mohammed\", 38)";
-		String sqlUpdate = "update Students set age = 21 where id = 3";
-		String sqlDelete = "delete from students where id>6";
-		String sql = "select * from Students";
-		int rowsEffected = stmt.executeUpdate(sqlInsert);
-		rowsEffected = stmt.executeUpdate(sqlUpdate);
-		rowsEffected = stmt.executeUpdate(sqlDelete);
-		System.out.println("Number of rows affected " + rowsEffected);
-		ResultSet re = stmt.executeQuery(sql);
+		stmt.executeUpdate(sqlInsertStatement);
 
-		List<ArrayList> result = new ArrayList<ArrayList>();
+		stmt.close();
+		con.close();
 
-		while (re.next()) {
+	}
+
+	static void SQLReadStatement(String sqlStatement) throws IOException, ClassNotFoundException, SQLException {
+		setCredentials(propreiesFile);
+
+		Connection con = registerAndGetConnection(driver, url, userName, password);
+		Statement stmt = con.createStatement();
+		ResultSet rs = stmt.executeQuery(sqlStatement);
+
+		List<ArrayList> tableDate = new ArrayList<ArrayList>();
+		while (rs.next()) {
 			ArrayList rows = new ArrayList();
-			rows.add(re.getInt("ID"));
-			rows.add(re.getString("name"));
-			rows.add(re.getInt("age"));
-			result.add(rows);
-
-		}
-		input.close();
-
-		for (int i = 0; i < result.size(); i++) {
-			System.out.println((result.get(i).toString()));
+			rows.add(rs.getInt("id"));
+			rows.add(rs.getString("name"));
+			rows.add(rs.getInt("age"));
+			tableDate.add(rows);
 		}
 
+		rs.close();
+		stmt.close();
+		con.close();
+
+		Iterator it = tableDate.iterator();
+		while (it.hasNext()) {
+			System.out.println(it.next().toString());
+		}
 	}
 }
