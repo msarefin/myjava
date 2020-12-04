@@ -32,10 +32,10 @@ public class PracticingMYSQLDB {
 
 //		SQLInsertStatement("insert into students (name, age) values(\"Hanip\", 44)");
 //		SQLUpdateStatement("update students set age = 30 where name = \"hanip\"");
-//		SQLDeleteStatement("delete from students where id in (select id from (select id, row_number() over(partition by name) as 'row' from students) as t where t.row>1)");
+		SQLDeleteStatement("delete from students where id in (select id from (select id, row_number() over(partition by name) as 'row' from students) as t where t.row>1)");
 //		SQLReadStatement("select * from students");
 //		SQLReadPreparedStatement(4);
-		SQLInsertPreparedStatement("Alexander", 122);
+//		SQLInsertPreparedStatement("Alexander", 22);
 	}
 
 	static void setCredentials(String propreiesFile) throws IOException {
