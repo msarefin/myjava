@@ -17,7 +17,8 @@ import com.mongodb.client.MongoDatabase;
 public class MongoOnline {
 
 	public static void main(String[] args) {
-		String link = "mongodb+srv://arefin:qatester@cluster0-bqtnc.mongodb.net/test?retryWrites=true&w=majority";
+		String link = ""
+				+ "mongodb+srv://automator:<password>@cluster0.ytxrr.mongodb.net/<dbname>?retryWrites=true&w=majority";
 
 		MongoClientURI uri = new MongoClientURI(link);
 

@@ -4,17 +4,21 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
+import java.sql.CallableStatement;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.SQLType;
 import java.sql.Statement;
+import java.sql.Types;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Properties;
+import java.util.concurrent.Callable;
 
 import javax.swing.InputMap;
 
@@ -32,10 +36,13 @@ public class PracticingMYSQLDB {
 
 //		SQLInsertStatement("insert into students (name, age) values(\"Hanip\", 44)");
 //		SQLUpdateStatement("update students set age = 30 where name = \"hanip\"");
-		SQLDeleteStatement("delete from students where id in (select id from (select id, row_number() over(partition by name) as 'row' from students) as t where t.row>1)");
+//		SQLDeleteStatement(
+//				"delete from students where id in (select id from (select id, row_number() over(partition by name) as 'row' from students) as t where t.row>1)");
 //		SQLReadStatement("select * from students");
 //		SQLReadPreparedStatement(4);
 //		SQLInsertPreparedStatement("Alexander", 22);
+		SQLCallableStatement_StudentCountByCountry("Bangladesh");
+		
 	}
 
 	static void setCredentials(String propreiesFile) throws IOException {
@@ -60,29 +67,59 @@ public class PracticingMYSQLDB {
 		return connection;
 	}
 
-//	---------------------------------------------------SQL Prepared Statement---------------------------------------------------
+//	---------------------------------------------------SQL Callable Statement---------------------------------------------------
 
-	static void SQLInsertPreparedStatement(String name, int age) throws IOException, SQLException, ClassNotFoundException {
+	static void SQLCallableStatement_StudentCountByCountry(String Country) throws IOException, ClassNotFoundException, SQLException {
 		InputStream inStream = new FileInputStream(System.getProperty("user.dir") + "/Files/mysql.properties");
 		Properties prop = new Properties();
 		prop.load(inStream);
-		
-		driver = prop.getProperty("MYSQLJDBC.Driver"); 
-		url = prop.getProperty("MYSQLJDBC.url"); 
-		userName = prop.getProperty("MYSQLJDBC.userName"); 
+
+		driver = prop.getProperty("MYSQLJDBC.Driver");
+		url = prop.getProperty("MYSQLJDBC.url");
+		userName = prop.getProperty("MYSQLJDBC.userName");
 		password = prop.getProperty("MYSQLJDBC.password");
+
+		prop.clear();
+		inStream.close();
 		
-		Class.forName(driver); 
+		Class.forName(driver);
+		Connection con = DriverManager.getConnection(url, userName, password); 
+		String sp_StudentByCountry = "{ call sp_StudentByCountry(?,?)}";
+		CallableStatement callstmt = con.prepareCall(sp_StudentByCountry); 
+		
+		callstmt.setString(1, Country);
+		callstmt.registerOutParameter(2,java.sql.Types.BIT);
+		callstmt.execute(); 
+		int counter = callstmt.getInt(2); 
+		System.out.println("There are "+counter+" students from "+Country);
+		
+		
+	}
+
+//	---------------------------------------------------SQL Prepared Statement---------------------------------------------------
+
+	static void SQLInsertPreparedStatement(String name, int age)
+			throws IOException, SQLException, ClassNotFoundException {
+		InputStream inStream = new FileInputStream(System.getProperty("user.dir") + "/Files/mysql.properties");
+		Properties prop = new Properties();
+		prop.load(inStream);
+
+		driver = prop.getProperty("MYSQLJDBC.Driver");
+		url = prop.getProperty("MYSQLJDBC.url");
+		userName = prop.getProperty("MYSQLJDBC.userName");
+		password = prop.getProperty("MYSQLJDBC.password");
+
+		Class.forName(driver);
 		Connection con = DriverManager.getConnection(url, userName, password);
 		PreparedStatement prep = con.prepareStatement("insert into students (name, age) values(?,?)");
-		
+
 		prep.setString(1, name);
 		prep.setInt(2, age);
-		
-		prep.execute(); 
-		
+
+		prep.execute();
+
 		SQLReadStatement("select * from students;");
-		
+
 		prep.close();
 		con.close();
 	}
@@ -96,8 +133,8 @@ public class PracticingMYSQLDB {
 		url = prop.getProperty("MYSQLJDBC.url");
 		userName = prop.getProperty("MYSQLJDBC.userName");
 		password = prop.getProperty("MYSQLJDBC.password");
-		
-		prop.clear(); 
+
+		prop.clear();
 		inStream.close();
 
 		Class.forName(driver);
