@@ -10,10 +10,12 @@ import com.mongodb.client.MongoDatabase;
 public class PracticingMongoBD {
 
 	public static void main(String[] args) {
+		
+		
 
-//		System.setProperty("jdk.tls.trustNameService", "true"); 
+		System.setProperty("jdk.tls.trustNameService", "true"); 
 
-		String connectionString = "mongodb+srv://arefin:qatester@cluster0.ytxrr.mongodb.net/?retryWrites=true&w=majority";
+		String connectionString = "mongodb+srv://arefin:qatester@cluster0.ytxrr.mongodb.net/<dbname>?retryWrites=true&w=majority";
 		MongoClientURI uri = new MongoClientURI(connectionString);
 		MongoClient client = new MongoClient(uri); 
 		
