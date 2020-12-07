@@ -18,12 +18,12 @@ public class MongoOnline {
 
 	public static void main(String[] args) {
 		String link = "mongodb+srv://arefin:qatester@cluster0-bqtnc.mongodb.net/test?retryWrites=true&w=majority";
-
+		link = "mongodb+srv://arefin:qatester@cluster0.ytxrr.mongodb.net/pnt?retryWrites=true&w=majority";
 		MongoClientURI uri = new MongoClientURI(link);
 
 		MongoClient mongoClient = new MongoClient(uri);
 		
-//		MongoCredential credential = MongoCredential.createCredential("arefin", "pnt", "qatester".toCharArray());
+		MongoCredential credential = MongoCredential.createCredential("arefin", "pnt", "qatester".toCharArray());
 		
 		MongoDatabase database = mongoClient.getDatabase("pnt");
 		
