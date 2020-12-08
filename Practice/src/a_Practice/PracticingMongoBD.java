@@ -15,7 +15,7 @@ public class PracticingMongoBD {
 
 		System.setProperty("jdk.tls.trustNameService", "true"); 
 
-		String connectionString = "mongodb+srv://arefin:qatester@cluster0.ytxrr.mongodb.net/<dbname>?retryWrites=true&w=majority";
+		String connectionString = "mongodb+srv://arefin:qatester@cluster0.ytxrr.mongodb.net/";
 		MongoClientURI uri = new MongoClientURI(connectionString);
 		MongoClient client = new MongoClient(uri); 
 		
