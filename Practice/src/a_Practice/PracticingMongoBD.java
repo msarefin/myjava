@@ -4,6 +4,7 @@ import org.bson.Document;
 
 import com.mongodb.MongoClient;
 import com.mongodb.MongoClientURI;
+import com.mongodb.MongoCredential;
 import com.mongodb.client.MongoCollection;
 import com.mongodb.client.MongoDatabase;
 
@@ -15,9 +16,10 @@ public class PracticingMongoBD {
 
 		System.setProperty("jdk.tls.trustNameService", "true"); 
 
-		String connectionString = "mongodb+srv://arefin:qatester@cluster0.ytxrr.mongodb.net/<dbname>?retryWrites=true&w=majority";
+		String connectionString = "mongodb+srv://<username>:<password>@cluster0.ytxrr.mongodb.net/<dbname>?retryWrites=true&w=majority";
 		MongoClientURI uri = new MongoClientURI(connectionString);
 		MongoClient client = new MongoClient(uri); 
+		
 		
 		MongoDatabase database= client.getDatabase("NewDatabase"); 
 		MongoCollection collection = database.getCollection("NewCollection"); 
