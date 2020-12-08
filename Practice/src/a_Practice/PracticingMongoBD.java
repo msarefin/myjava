@@ -16,15 +16,16 @@ public class PracticingMongoBD {
 
 		System.setProperty("jdk.tls.trustNameService", "true"); 
 
-		String connectionString = "mongodb+srv://<username>:<password>@cluster0.ytxrr.mongodb.net/<dbname>?retryWrites=true&w=majority";
+		String connectionString = "mongodb+srv://arefin:qatester@cluster0.ytxrr.mongodb.net/<dbname>?retryWrites=true&w=majority";
 		MongoClientURI uri = new MongoClientURI(connectionString);
 		MongoClient client = new MongoClient(uri); 
+		
 		
 		
 		MongoDatabase database= client.getDatabase("NewDatabase"); 
 		MongoCollection collection = database.getCollection("NewCollection"); 
 		
-		Document document = new Document("Name", "Arefin").append("Age", 25); 
+		Document document = new Document("Name", "Daniel Craig").append("Age", 22).append("Country", "United States"); 
 		collection.insertOne(document);
 		
 		
