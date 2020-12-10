@@ -2,7 +2,10 @@ package a_Practice;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Iterator;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 import org.bson.Document;
 
@@ -10,39 +13,56 @@ import com.mongodb.MongoClient;
 import com.mongodb.MongoClientURI;
 import com.mongodb.MongoCredential;
 import com.mongodb.ServerAddress;
+import com.mongodb.client.FindIterable;
 import com.mongodb.client.ListCollectionsIterable;
 import com.mongodb.client.MongoCollection;
+import com.mongodb.client.MongoCursor;
 import com.mongodb.client.MongoDatabase;
 import com.mongodb.client.MongoIterable;
-import com.mongodb.connection.Server;
+import com.mysql.cj.jdbc.IterateBlock;
 import com.mysql.cj.x.protobuf.MysqlxDatatypes.Array;
 
 public class PracticingMongoBD {
 
 	public static void main(String[] args) {
+		Logger.getLogger("org.mongodb.driver").setLevel(Level.WARNING);
 		System.setProperty("jdk.tls.trustNameService", "true");
 		String uriString = "mongodb+srv://arefin:qatester@cluster0.ytxrr.mongodb.net/<dbname>?retryWrites=true&w=majority";
-		MongoCredential credential = MongoCredential.createCredential("arefin", "MyMongoDB", "qatester".toCharArray()); 
-		MongoClient mongoClient = new MongoClient(new MongoClientURI(uriString)); 
-		List<String> dbName = mongoClient.getDatabaseNames();
-		for(String db : dbName) {
-			String n = mongoClient.getDatabase(db).listCollectionNames().toString();
-			System.out.println(n);
+		MongoClient mongoClient = new MongoClient(new MongoClientURI(uriString));
+		MongoIterable<String> dbName = mongoClient.listDatabaseNames();
+
+		for (String db : dbName) {
+			System.out.println("=".repeat(db.length()) + db + "=".repeat(db.length()));
+			MongoIterable<String> collection = mongoClient.getDatabase(db).listCollectionNames();
+			List colList = mongoClient.getDatabase(db).listCollectionNames().into(new ArrayList<String>());
+			System.out.println(colList);
+			for (String col : collection) {
+
+				System.out.println(col);
+				FindIterable<Document> doc = mongoClient.getDatabase(db).getCollection(col).find();
+				Iterator it = doc.iterator(); 
+				
+				while(it.hasNext()) { 
+					System.out.println(it.next());
+				}
+
+			}
 		}
-		System.out.println();
+		mongoClient.close();
 	}
 
 }
 
-class mongodbAtlas{
-	
+class mongodbAtlas {
+
 	private final static void MongoDBOnline() {
 		System.setProperty("jdk.tls.trustNameService", "true");
 
 		String connectionString = "mongodb+srv://arefin:qatester@cluster0.ytxrr.mongodb.net/<dbname>?retryWrites=true&w=majority";
 
-		MongoCredential credential = MongoCredential.createCredential("arefin", "NewDatabase", "qatester".toCharArray());
-		
+		MongoCredential credential = MongoCredential.createCredential("arefin", "NewDatabase",
+				"qatester".toCharArray());
+
 		MongoClientURI uri = new MongoClientURI(connectionString);
 		MongoClient client = new MongoClient(uri);
 
@@ -52,7 +72,7 @@ class mongodbAtlas{
 		Document document = new Document("Name", "Daniel Craig").append("Age", 22).append("Country", "United States");
 		collection.insertOne(document);
 	}
-	
+
 	private final static void MongoDBOnlineConnection() {
 
 		MongoClientURI uri = new MongoClientURI(
