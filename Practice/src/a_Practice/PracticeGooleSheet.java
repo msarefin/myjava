@@ -33,7 +33,7 @@ public class PracticeGooleSheet {
 	public static void main(String[] args) throws Exception {
 //		Connect to Google API
 		
-		JsonFactory  jsonFactory = JacksonFactory.getDefaultInstance();
+		JsonFactory  jsonF	actory = JacksonFactory.getDefaultInstance();
 		File file = new File(System.getProperty("user.dir")+"/Files/resources/client_secret.json");
 		FileDataStoreFactory dataStroeFactory = new FileDataStoreFactory(file); 
 		NetHttpTransport httpTransport = GoogleNetHttpTransport.newTrustedTransport();
