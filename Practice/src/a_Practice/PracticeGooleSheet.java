@@ -33,15 +33,17 @@ public class PracticeGooleSheet {
 	public static void main(String[] args) throws Exception {
 //		Connect to Google API
 		
-		JsonFactory  jsonF	actory = JacksonFactory.getDefaultInstance();
-		File file = new File(System.getProperty("user.dir")+"/Files/resources/client_secret.json");
+		JsonFactory  jsonFactory = JacksonFactory.getDefaultInstance();
+		System.out.println(System.getProperty("user.dir")+"/resources/client_secret.json");
+		File file = new File(System.getProperty("user.dir")+"/resources/client_secret.json");
 		FileDataStoreFactory dataStroeFactory = new FileDataStoreFactory(file); 
 		NetHttpTransport httpTransport = GoogleNetHttpTransport.newTrustedTransport();
 		InputStream inputStream = PracticeGooleSheet.class.getResourceAsStream("client_secret.json");
 		InputStreamReader credencialLocation = new InputStreamReader(inputStream); 
 		GoogleClientSecrets clientSecrets = GoogleClientSecrets.load(jsonFactory, credencialLocation); 
 		List<String> scopes = Arrays.asList(SheetsScopes.SPREADSHEETS);
-		GoogleAuthorizationCodeFlow flow = new GoogleAuthorizationCodeFlow.Builder(httpTransport, jsonFactory, clientSecrets, scopes).setDataStoreFactory(dataStroeFactory).setAccessType("offline").build();
+		GoogleAuthorizationCodeFlow flow = new GoogleAuthorizationCodeFlow.Builder(httpTransport, jsonFactory, clientSecrets, scopes)
+				.setDataStoreFactory(dataStroeFactory).setAccessType("offline").build();
 		LocalServerReceiver receiver = new LocalServerReceiver(); 
 		Credential credential = new AuthorizationCodeInstalledApp(flow, receiver).authorize("user");
 		

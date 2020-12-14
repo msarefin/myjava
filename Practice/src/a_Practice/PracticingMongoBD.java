@@ -26,6 +26,7 @@ public class PracticingMongoBD {
 
 	public static void main(String[] args) {
 		Logger.getLogger("org.mongodb.driver").setLevel(Level.WARNING);
+		
 		System.setProperty("jdk.tls.trustNameService", "true");
 		String uriString = "mongodb+srv://arefin:qatester@cluster0.ytxrr.mongodb.net/<dbname>?retryWrites=true&w=majority";
 		MongoClient mongoClient = new MongoClient(new MongoClientURI(uriString));
