@@ -1,29 +1,96 @@
 package a_Practice;
 
 import java.util.Arrays;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Map.Entry;
 
 public class PracticeStringFunctions {
 	public static void main(String[] args) {
-		new anagram("cat");
+//		new anagram("bob");
+//		String sentence = "Human brain is a biological learning machine";
+//		new longestWordInSentence(sentence);
+		String st = "Java is a programming Language. Java is also an Island of Indonesia. Java is widely used language";
+//		new duplicateWords(st);
 
-//		anagram("cat");
+		new permutation().permut( "bob");
 	}
-
-	private static void anagram(String word) {
-		char c[] = new char[word.length()];
-
-		for (int i = 0; i < c.length; i++) {
-			c[i] = word.charAt(i);
-		}
-		System.out.println(Arrays.toString(c));
-
-	}
-	
-	
-	
-	
 
 }
+
+class permutation {
+	
+	public static void permut(String str) {
+		if(str.length()==0 || str== null) { 
+			return;
+		}else if(str.length()==1){ 
+			System.out.println(str);
+			return;
+		}else {
+			perm("", str);
+		}
+	}
+
+	public static void perm(String prefix, String remaining) {
+		if(remaining.length()==0) {
+			System.out.println(prefix);
+		}else {
+			for(int i = 0; i<remaining.length(); i++) { 
+				perm(prefix+remaining.charAt(i),remaining.substring(0,i)+remaining.substring(i+1, remaining.length()));
+			}
+		}
+	}
+}
+
+	class duplicateWords {
+		public duplicateWords(String sentence) {
+			String cSentece = sentence.toLowerCase().replaceAll("[\\W]", " ");
+			String[] words = cSentece.split(" ");
+			Map<String, Integer> duplicate = new HashMap<String, Integer>();
+			for (int i = 0; i < words.length; i++) {
+				if (words[i].equals("")) {
+
+				} else {
+					int counter = 1;
+					duplicate.put(words[i], counter);
+					for (int j = i + 1; j < words.length; j++) {
+						if (words[i].equalsIgnoreCase(words[j])) {
+							counter++;
+							words[j] = "";
+						}
+					}
+					duplicate.put(words[i], counter);
+					words[i] = "";
+				}
+			}
+			for (Entry<String, Integer> m : duplicate.entrySet()) {
+				System.out.println(m.getKey() + " : " + m.getValue());
+			}
+
+		}
+	}
+
+	class longestWordInSentence {
+		public longestWordInSentence(String sentence) {
+			String s = sentence.replaceAll("[\\W]", " ");
+			String[] words = s.split(" ");
+
+			System.out.println(Arrays.toString(words));
+
+			int max = 0;
+			String longest = "";
+			for (String w : words) {
+				if (max < w.length()) {
+					max = w.length();
+					longest = w;
+				}
+			}
+
+			System.out.println(longest + "->" + max);
+
+		}
+
+	}
 
 class anagram {
 	static int size;
@@ -33,7 +100,7 @@ class anagram {
 	anagram(String word) {
 
 		String input = word;
-		size = input.length(); 
+		size = input.length();
 		arrChar = new char[size + 1];
 		for (int j = 0; j < size; j++)
 			arrChar[j] = input.charAt(j);
@@ -41,27 +108,21 @@ class anagram {
 	}
 
 	static void doAnagram(int newSize) {
-		System.out.println("new Size="+newSize);
 		if (newSize == 1) {
-			System.out.println(newSize+"=="+1+"--> get out of the loop and get back to previous recursion\n"+"^".repeat(100));
 			return;
 		}
 		for (int j = 0; j < newSize; j++) {
-			System.out.println(j+"<"+newSize);
 			doAnagram(newSize - 1);
-			System.out.println("Bcak to Previoues recursion: new Size = "+newSize);
 			if (newSize == 2) {
-				System.out.println(newSize+"=="+2+"--> Display Word");
 				displayWord();
 			}
 			rotate(newSize);
 		}
-		System.out.println("end of line -> back to Previoues recursion: new Size = "+newSize);
 	}
 
-	static void rotate(int newSize) { 
+	static void rotate(int newSize) {
 		int j;
-		int position = size - newSize; 
+		int position = size - newSize;
 		char temp = arrChar[position];
 		for (j = position + 1; j < size; j++)
 			arrChar[j - 1] = arrChar[j];
@@ -73,7 +134,7 @@ class anagram {
 		for (int j = 0; j < size; j++) {
 			System.out.print(arrChar[j]);
 		}
-		System.out.println("\n"+"-".repeat(10));
+		System.out.println();
 	}
 
 }
