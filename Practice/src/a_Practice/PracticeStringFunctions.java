@@ -12,85 +12,90 @@ public class PracticeStringFunctions {
 //		new longestWordInSentence(sentence);
 		String st = "Java is a programming Language. Java is also an Island of Indonesia. Java is widely used language";
 //		new duplicateWords(st);
+		String b = "bob";
+		new permutation().permut(b);
 
-		new permutation().permut( "bob");
+//		for (int i = 0; i < b.length(); i++) {
+//			System.out.println(b.substring(i + 1, b.length()));
+//		}
 	}
 
 }
 
 class permutation {
-	
+
 	public static void permut(String str) {
-		if(str.length()==0 || str== null) { 
+		if (str.length() == 0 || str == null) {
 			return;
-		}else if(str.length()==1){ 
+		} else if (str.length() == 1) {
 			System.out.println(str);
 			return;
-		}else {
+		} else {
 			perm("", str);
 		}
 	}
 
 	public static void perm(String prefix, String remaining) {
-		if(remaining.length()==0) {
+		if (remaining.length() == 0) {
 			System.out.println(prefix);
-		}else {
-			for(int i = 0; i<remaining.length(); i++) { 
-				perm(prefix+remaining.charAt(i),remaining.substring(0,i)+remaining.substring(i+1, remaining.length()));
+		} else {
+			for (int i = 0; i < remaining.length(); i++) {
+				perm(prefix + remaining.charAt(i),
+						remaining.substring(0, i) + remaining.substring(i + 1, remaining.length()));
 			}
 		}
 	}
 }
 
-	class duplicateWords {
-		public duplicateWords(String sentence) {
-			String cSentece = sentence.toLowerCase().replaceAll("[\\W]", " ");
-			String[] words = cSentece.split(" ");
-			Map<String, Integer> duplicate = new HashMap<String, Integer>();
-			for (int i = 0; i < words.length; i++) {
-				if (words[i].equals("")) {
+class duplicateWords {
+	public duplicateWords(String sentence) {
+		String cSentece = sentence.toLowerCase().replaceAll("[\\W]", " ");
+		String[] words = cSentece.split(" ");
+		Map<String, Integer> duplicate = new HashMap<String, Integer>();
+		for (int i = 0; i < words.length; i++) {
+			if (words[i].equals("")) {
 
-				} else {
-					int counter = 1;
-					duplicate.put(words[i], counter);
-					for (int j = i + 1; j < words.length; j++) {
-						if (words[i].equalsIgnoreCase(words[j])) {
-							counter++;
-							words[j] = "";
-						}
+			} else {
+				int counter = 1;
+				duplicate.put(words[i], counter);
+				for (int j = i + 1; j < words.length; j++) {
+					if (words[i].equalsIgnoreCase(words[j])) {
+						counter++;
+						words[j] = "";
 					}
-					duplicate.put(words[i], counter);
-					words[i] = "";
 				}
+				duplicate.put(words[i], counter);
+				words[i] = "";
 			}
-			for (Entry<String, Integer> m : duplicate.entrySet()) {
-				System.out.println(m.getKey() + " : " + m.getValue());
-			}
-
 		}
-	}
-
-	class longestWordInSentence {
-		public longestWordInSentence(String sentence) {
-			String s = sentence.replaceAll("[\\W]", " ");
-			String[] words = s.split(" ");
-
-			System.out.println(Arrays.toString(words));
-
-			int max = 0;
-			String longest = "";
-			for (String w : words) {
-				if (max < w.length()) {
-					max = w.length();
-					longest = w;
-				}
-			}
-
-			System.out.println(longest + "->" + max);
-
+		for (Entry<String, Integer> m : duplicate.entrySet()) {
+			System.out.println(m.getKey() + " : " + m.getValue());
 		}
 
 	}
+}
+
+class longestWordInSentence {
+	public longestWordInSentence(String sentence) {
+		String s = sentence.replaceAll("[\\W]", " ");
+		String[] words = s.split(" ");
+
+		System.out.println(Arrays.toString(words));
+
+		int max = 0;
+		String longest = "";
+		for (String w : words) {
+			if (max < w.length()) {
+				max = w.length();
+				longest = w;
+			}
+		}
+
+		System.out.println(longest + "->" + max);
+
+	}
+
+}
 
 class anagram {
 	static int size;
