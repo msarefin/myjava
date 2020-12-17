@@ -62,6 +62,24 @@ public class WorkingOnGoogleSheets {
 		}
 	}
 
+	public static void main(String[] args) throws IOException, GeneralSecurityException {
+		setup();
+
+		NewSheet();
+//		SingleRangeWrite();
+//      BatchUpdate();
+//      AppendingData();
+//
+//      readingMultiRange();
+//      readInRange();
+//
+//     
+//
+//		getSpreadsheetName();
+//
+//      UpdatingSheet();
+	}
+
 	public static Credential authorize(NetHttpTransport httpTransport) throws IOException, GeneralSecurityException {
 		// Google client secrets
 		InputStream is = new FileInputStream(
@@ -91,10 +109,11 @@ public class WorkingOnGoogleSheets {
 		return sheets;
 	}
 
-	// ----------------------------------Writing values to sheet---------------------------------
+	// ----------------------------------Writing values to
+	// sheet---------------------------------
 //  https://docs.google.com/spreadsheets/d/1MKR8pXipURJGeb9ZXSWVVO0JIJPK-QGQbR73DnfpYbY/edit#gid=0
 	static Sheets sheetService;
-	static String spreadSheetID = "1uN1-08PkY0ag579Dgn1qa8LP-CVjNvcGtB3cX1Ro68s";
+	static String spreadSheetID = "1PKuBhB8o-JdTTsu__wYpI8jP7Bq_CN3fxrqjOUjOawU";
 	static String ApplicationName = "Google Sheet Example";
 
 	static void setup() throws IOException, GeneralSecurityException {
@@ -246,21 +265,5 @@ public class WorkingOnGoogleSheets {
 	}
 
 	// ----------------------------------------implement-------------------------------
-	public static void main(String[] args) throws IOException, GeneralSecurityException {
-		setup();
 
-//		NewSheet();
-//      SingleRangeWrite();
-//      BatchUpdate();
-//      AppendingData();
-//
-//      readingMultiRange();
-//      readInRange();
-//
-//     
-//
-		getSpreadsheetName();
-//
-//      UpdatingSheet();
-	}
 }

@@ -22,6 +22,7 @@ public class WritingToMongodb {
 		
 		String bdName = "PTT1";
 		
+		
 //		create credenctial
 		MongoCredential credencial = MongoCredential.createCredential("arefin", bdName, "abc123".toCharArray());
 		System.out.println("mongoCredencial Created");
