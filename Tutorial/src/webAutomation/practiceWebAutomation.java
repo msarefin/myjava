@@ -9,6 +9,8 @@ import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.firefox.FirefoxOptions;
+import org.openqa.selenium.remote.DesiredCapabilities;
 
 public class practiceWebAutomation {
 
@@ -17,8 +19,12 @@ public class practiceWebAutomation {
 	public static void main(String[] args) throws InterruptedException {
 
 		System.setProperty("webdriver.gecko.driver", System.getProperty("user.dir") + "/drivers/geckodriver.exe");
-
-		WebDriver driver = new FirefoxDriver();
+		DesiredCapabilities capabilities = DesiredCapabilities.firefox(); 
+		capabilities.setCapability("marionette", true);
+		
+		FirefoxOptions options = new FirefoxOptions();
+		options.setHeadless(true); 
+		WebDriver driver = new FirefoxDriver(options);
 		driver.manage().window().maximize();
 		driver.get(url);
 		driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
