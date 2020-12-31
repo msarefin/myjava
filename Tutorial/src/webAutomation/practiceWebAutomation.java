@@ -44,7 +44,7 @@ public class practiceWebAutomation {
 		String currentURL = driver.getCurrentUrl(); 
 		System.out.println(currentURL);
 		String pageDOM = driver.getPageSource();
-		System.out.println(pageDOM);
+//		System.out.println(pageDOM);
 		
 		
 //		Thread.sleep(5000);
