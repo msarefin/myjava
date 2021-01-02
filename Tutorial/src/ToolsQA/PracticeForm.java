@@ -20,7 +20,7 @@ public class PracticeForm {
 		driver.manage().window().maximize();
 		driver.get(url);
 		
-		List<WebElement> gender = driver.findElements(By.xpath("//input[@name='gender']"));
+		List<WebElement> gender = driver.findElements(By.xpath("//label[@class='custom-control-label']"));
 		
 		for(WebElement g: gender) {
 			System.out.println(g.isSelected());
