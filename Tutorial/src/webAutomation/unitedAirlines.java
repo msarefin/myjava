@@ -19,9 +19,9 @@ public class unitedAirlines {
 		WebElement flight = driver.findElement(By.cssSelector("li#bookFlightTab h3 span"));
 		WebElement roundtrip = driver.findElement(By.cssSelector("input#roundtrip"));
 		WebElement from = driver.findElement(By.cssSelector("input#bookFlightOriginInput"));
-		List<WebElement> bookingFilghtOriginInputMenu = driver.findElements(By.cssSelector("ul#bookFlightOriginInput-menu"));
+		WebElement bookingFilghtOriginInputMenu = driver.findElement(By.cssSelector("ul#bookFlightOriginInput-menu"));
 		WebElement to = driver.findElement(By.cssSelector("input#bookFlightDestinationInput"));
-		List<WebElement> bookingFilghtDestinationInputMenu = driver.findElements(By.cssSelector("ul#bookFlightDestinationInput-menu"));
+		WebElement bookingFilghtDestinationInputMenu = driver.findElement(By.cssSelector("ul#bookFlightDestinationInput-menu"));
 		WebElement departDate = driver.findElement(By.cssSelector("input#DepartDate"));
 		WebElement returnDate = driver.findElement(By.id("ReturnDate"));
 		WebElement travelers = driver.findElement(By.xpath("//*[@id='bookFlightModel.passengers']"));
