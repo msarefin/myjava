@@ -43,7 +43,8 @@ public class ToolsQAWaits {
 		
 		System.out.println(element1.isDisplayed());
 		
-		driver.manage().timeouts().pageLoadTimeout(100, TimeUnit.SECONDS)
+		driver.manage().timeouts().pageLoadTimeout(100, TimeUnit.SECONDS); 
+		driver.manage().timeouts().setScriptTimeout(-1, TimeUnit.SECONDS); 
 		
 		driver.close();
 		driver.quit();
