@@ -33,18 +33,20 @@ public class ToolsQAActions {
 		ac.moveToElement(clickButton).click().build().perform();
 		System.out.println(driver.findElement(By.cssSelector("p#dynamicClickMessage")).getText());
 
-		Thread.sleep(5000);
+		Thread.sleep(2000);
 		
 //		Drag and Drop 
 		
 		driver.navigate().to("https://demoqa.com/droppable");
 		
 		WebElement draggableElement = driver.findElement(By.cssSelector("div#draggable"));
-		WebElement droppableElement = driver.findElement(By.cssSelector("a:contains('Drop here')"));
+		WebElement droppableElement = driver.findElement(By.cssSelector("div#simpleDropContainer  div#droppable"));
 		
-		ac.dragAndDrop(draggableElement, droppableElement);
+		ac.dragAndDrop(draggableElement, droppableElement).build().perform();
 		
-		Thread.sleep(5000); 
+		Thread.sleep(2000); 
+		
+		
 
 		driver.close();
 	}
