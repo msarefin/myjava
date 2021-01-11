@@ -16,22 +16,35 @@ public class ToolsQAActions {
 		driver.manage().window().maximize();
 		driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
 
-		driver.get("https://demoqa.com/automation-practice-form");
+		driver.get("http://demoqa.com/buttons");
 
-		WebElement firstname = driver.findElement(By.id("firstName"));
-		WebElement lastname = driver.findElement(By.id("lastName"));
-		WebElement email = driver.findElement(By.id("userEmail"));
-		WebElement mobileNumber = driver.findElement(By.id("userNumber"));
-		WebElement dateOfBirth = driver.findElement(By.id("dateOfBirthInput"));
-		WebElement subject = driver.findElement(By.id("subjectsContainer"));
-		WebElement currentAddress = driver.findElement(By.id("currentAddress"));
+		WebElement doubleClickButton = driver.findElement(By.cssSelector("button#doubleClickBtn.btn.btn-primary"));
+		WebElement rightClickButton = driver.findElement(By.cssSelector("button#rightClickBtn.btn.btn-primary"));
+		WebElement clickButton = driver.findElement(By.xpath("//button[text()='Click Me']"));
 
 		Actions ac = new Actions(driver);
+
+//		Click , double click and right click
 		
-		ac.contextClick(firstname).perform();
-		firstname.sendKeys("Danney");
-		
+		ac.moveToElement(rightClickButton).contextClick().build().perform();
+		System.out.println(driver.findElement(By.cssSelector("p#rightClickMessage")).getText());
+		ac.moveToElement(doubleClickButton).doubleClick().build().perform();
+		System.out.println(driver.findElement(By.cssSelector("p#doubleClickMessage")).getText());
+		ac.moveToElement(clickButton).click().build().perform();
+		System.out.println(driver.findElement(By.cssSelector("p#dynamicClickMessage")).getText());
+
 		Thread.sleep(5000);
+		
+//		Drag and Drop 
+		
+		driver.navigate().to("https://demoqa.com/droppable");
+		
+		WebElement draggableElement = driver.findElement(By.cssSelector("div#draggable"));
+		WebElement droppableElement = driver.findElement(By.cssSelector("a:contains('Drop here')"));
+		
+		ac.dragAndDrop(draggableElement, droppableElement);
+		
+		Thread.sleep(5000); 
 
 		driver.close();
 	}
