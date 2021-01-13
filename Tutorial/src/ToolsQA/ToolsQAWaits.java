@@ -19,7 +19,7 @@ public class ToolsQAWaits {
 	public static void main(String[] args) {
 //		new impwait(); 
 //		new expWait();
-		new flWait(); 
+		new flWait();
 	}
 }
 
@@ -27,25 +27,26 @@ class flWait {
 	flWait() {
 		System.setProperty("webdriver.chrome.driver", System.getProperty("user.dir") + "/drivers/chromedriver.exe");
 		WebDriver driver = new ChromeDriver();
-		
+
 		driver.manage().deleteAllCookies();
 		driver.manage().window().maximize();
-		
-		driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS); 
+
+		driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
 		driver.get("https://www.google.com/");
-		driver.manage().timeouts().pageLoadTimeout(5, TimeUnit.SECONDS); 
-		driver.manage().timeouts().setScriptTimeout(5, TimeUnit.SECONDS); 
-		
-		Wait<WebDriver> wait = new FluentWait<WebDriver>(driver).withTimeout(30, TimeUnit.SECONDS).pollingEvery(2,TimeUnit.SECONDS).ignoring(NoSuchElementException.class); 
-		
-		WebElement element = wait.until(new Function<WebDriver, WebElement>(){
+		driver.manage().timeouts().pageLoadTimeout(5, TimeUnit.SECONDS);
+		driver.manage().timeouts().setScriptTimeout(5, TimeUnit.SECONDS);
+
+		Wait<WebDriver> wait = new FluentWait<WebDriver>(driver).withTimeout(30, TimeUnit.SECONDS)
+				.pollingEvery(2, TimeUnit.SECONDS).ignoring(NoSuchElementException.class);
+
+		WebElement element = wait.until(new Function<WebDriver, WebElement>() {
 			public WebElement apply(WebDriver driver) {
 				return driver.findElement(By.cssSelector("input[name='q']"));
 			}
-		}); 
-		
+		});
+
 		element.sendKeys("selenium Fluentwait ", Keys.ENTER);
-		
+
 		driver.close();
 		driver.quit();
 
