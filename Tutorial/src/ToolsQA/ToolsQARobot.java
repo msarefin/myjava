@@ -2,9 +2,13 @@ package ToolsQA;
 
 import java.awt.AWTException;
 import java.awt.Robot;
+import java.awt.Toolkit;
+import java.awt.datatransfer.StringSelection;
+import java.awt.event.KeyEvent;
 import java.util.concurrent.TimeUnit;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -22,10 +26,28 @@ public class ToolsQARobot {
 		driver.get("https://demoqa.com/automation-practice-form");
 		WebElement upload = driver.findElement(By.cssSelector("input#uploadPicture"));
 		
-		Actions ac = new Actions(driver);
-		ac.moveToElement(upload).click(); 
+		
 		
 		Robot r = new Robot(); 
+		StringSelection str = new StringSelection("C:\\Users\\sunsh\\Desktop\\GoToTraining 000.png");
+		Toolkit.getDefaultToolkit().getSystemClipboard().setContents(str, null);
+		
+		r.mouseWheel(1);
+		
+		upload.sendKeys("C:\\Users\\sunsh\\Desktop\\GoToTraining 001.png");
+		
+		Actions ac = new Actions(driver);
+		ac.moveToElement(upload).click().build().perform();; 
+		
+		Thread.sleep(5000);
+		r.keyPress(KeyEvent.VK_CONTROL);
+		r.keyPress(KeyEvent.VK_V);
+		r.keyRelease(KeyEvent.VK_V);
+		r.keyRelease(KeyEvent.VK_CONTROL);
+		r.keyPress(KeyEvent.VK_ENTER);
+		r.keyRelease(KeyEvent.VK_ENTER);
+		
+		
 		
 		
 
