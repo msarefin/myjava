@@ -16,5 +16,9 @@
 	<classpathentry kind="lib" path="lib/okio-1.14.0.jar"/>
 	<classpathentry kind="lib" path="lib/selenium-server-standalone-3.141.59.jar"/>
 	<classpathentry kind="lib" path="lib/testng-6.14.3.jar"/>
+	<classpathentry kind="lib" path="lib/Log4j/log4j-api-2.14.0.jar"/>
+	<classpathentry kind="lib" path="lib/Log4j/log4j-core-2.14.0.jar"/>
+	<classpathentry kind="lib" path="lib/jUnit/hamcrest-core-1.3.jar"/>
+	<classpathentry kind="lib" path="lib/jUnit/junit-4.13.1.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
