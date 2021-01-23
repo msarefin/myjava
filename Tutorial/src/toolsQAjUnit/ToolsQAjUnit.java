@@ -8,12 +8,11 @@ import org.junit.runner.Result;
 import org.junit.runner.notification.Failure;
 import org.testng.annotations.AfterMethod;
 
-
-
 public class ToolsQAjUnit {
 	MathProvider provider;
 
 	public ToolsQAjUnit() {
+		System.out.println("ToolsQAjUnit\n"+"=".repeat(20));
 		provider = new MathProvider();
 	}
 
@@ -29,14 +28,15 @@ public class ToolsQAjUnit {
 		System.out.println("-".repeat(15));
 	}
 
-    @Test
-	public void subtract()
-	{
-		System.out.println("Starting test " + new Object(){}.getClass().getEnclosingMethod().getName());
-	    int firstNumber = 10;
-	    int secondNumber = 20;
-		assertEquals(firstNumber + secondNumber, provider.Substract(firstNumber, secondNumber));
-		System.out.println("Ending test " + new Object(){}.getClass().getEnclosingMethod().getName());
+	@Test(timeout = 5000)
+	public void subtract() {
+		System.out.println("Starting test " + new Object() {
+		}.getClass().getEnclosingMethod().getName());
+		int firstNumber = 10;
+		int secondNumber = 20;
+		assertEquals(firstNumber - secondNumber, provider.Substract(firstNumber, secondNumber));
+		System.out.println("Ending test " + new Object() {
+		}.getClass().getEnclosingMethod().getName());
 	}
 }
 
