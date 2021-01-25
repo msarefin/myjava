@@ -19,7 +19,6 @@ public class WorkingWithExcel {
 
 //		excel after 2003
 
-		
 //		Create the file
 		File xlsx = new File(System.getProperty("user.dir") + "/Files/newExcel.xlsx");
 		FileOutputStream fos = new FileOutputStream(xlsx);
@@ -33,7 +32,6 @@ public class WorkingWithExcel {
 
 		workbook.close();
 
-		
 //		update the file
 		FileInputStream fis = new FileInputStream(xlsx);
 		XSSFWorkbook xwbu = new XSSFWorkbook(fis);
@@ -44,7 +42,6 @@ public class WorkingWithExcel {
 		xwbu.close();
 		xfos.close();
 
-		
 //		Read excel sheet
 		fis = new FileInputStream(xlsx);
 
@@ -53,6 +50,8 @@ public class WorkingWithExcel {
 		String data = sheet.getRow(0).getCell(0).toString();
 
 		System.out.println(data);
+
+//		-----------------------------------------------------------------
 
 //		excel before 2003
 
@@ -69,20 +68,17 @@ public class WorkingWithExcel {
 
 		wb.close();
 
-		
 //		updating 2003
-		
-		fis = new FileInputStream(xls); 
+
+		fis = new FileInputStream(xls);
 		HSSFWorkbook hwork = new HSSFWorkbook(fis);
-		HSSFSheet hsheet = hwork.getSheetAt(0); 
+		HSSFSheet hsheet = hwork.getSheetAt(0);
 		hsheet.createRow(0).createCell(0).setCellValue("Extered for excel 2003");
 		FileOutputStream hfos = new FileOutputStream(xls);
-		hwork.write();
-		
-		
-		
+		hwork.write(hfos);
+
 //		reading excel
-		
+
 		fis = new FileInputStream(xls);
 		HSSFWorkbook wb1 = new HSSFWorkbook(fis);
 		HSSFSheet s1 = wb1.getSheetAt(0);

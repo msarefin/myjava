@@ -17,8 +17,8 @@ public class excelReaderWriter {
 
 		XSSFWorkbook workbook = new XSSFWorkbook();
 		XSSFSheet sheet = workbook.createSheet("DataTypesInJava");
-		Object[][] datatypes = { { "DataType", "Type", "Bytes" }, { "int", "primitive", 2 }, { "float", "primitive", 4 },
-				{ "double", "primitive", 8 }, { "char", "primitive", 1 },
+		Object[][] datatypes = { { "DataType", "Type", "Bytes" }, { "int", "primitive", 2 },
+				{ "float", "primitive", 4 }, { "double", "primitive", 8 }, { "char", "primitive", 1 },
 				{ "String", "non-primitive", "no-fixed size" } };
 
 		int rownum = 0;

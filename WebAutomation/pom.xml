@@ -77,7 +77,7 @@
 			<groupId>io.rest-assured</groupId>
 			<artifactId>rest-assured</artifactId>
 			<version>3.3.0</version>
-			
+
 		</dependency>
 
 		<!-- https://mvnrepository.com/artifact/com.github.scribejava/scribejava-apis -->
