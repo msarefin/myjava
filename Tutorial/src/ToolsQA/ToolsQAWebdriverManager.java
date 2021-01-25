@@ -26,8 +26,8 @@ public class ToolsQAWebdriverManager {
 
 		JavascriptExecutor js = (JavascriptExecutor) driver;
 		WebElement fullName = driver.findElement(By.id("userName"));
-		fullName = (WebElement) js.executeScript("return document.getElementById('userName') '", fullName);
-
+		fullName = (WebElement) js.executeScript("return document.getElementById('userName')", fullName);
+		js.executeScript("document.getElementById('userName').style.color='red'");
 		fullName.sendKeys("Just a Name");
 		js.executeScript("return alert('This is just an alert!!!')");
 		try {
