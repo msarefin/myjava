@@ -9,6 +9,9 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.remote.RemoteWebDriver;
 
+import com.gargoylesoftware.htmlunit.javascript.background.JavaScriptExecutor;
+import com.gargoylesoftware.htmlunit.javascript.configuration.JavaScriptConfiguration;
+
 import io.github.bonigarcia.wdm.WebDriverManager;
 
 public class ToolsQAWebdriverManager {
@@ -38,6 +41,30 @@ public class ToolsQAWebdriverManager {
 		}
 
 		driver.switchTo().alert().accept();
+		WebElement submit = null; 
+		submit = (WebElement) js.executeScript("return document.getElementById('submit')", submit);
+		submit.click();
+		
+		System.out.println("=".repeat(100));
+		System.out.println(js.executeScript("return document.getElementById('userName-label').innerText;").toString());
+		System.out.println("=".repeat(100));
+		
+		System.out.println(js.executeScript("return document.documentElement.innerText;", submit).toString());
+		
+		String n = js.executeScript("return document.title").toString();
+		System.out.println("=".repeat(100));
+		System.out.println(n);
+		
+		
+		
+		js.executeScript("return document.getElementsByClassName('header-text')[3].scrollIntoView(true);");
+		
+		try {
+			Thread.sleep(5000);
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 
 		driver.close();
 		driver.quit();
