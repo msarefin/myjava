@@ -29,6 +29,7 @@ public class ToolsQARobot {
 		
 		
 		Robot r = new Robot(); 
+		
 		StringSelection str = new StringSelection("C:\\Users\\sunsh\\Desktop\\GoToTraining 000.png");
 		Toolkit.getDefaultToolkit().getSystemClipboard().setContents(str, null);
 		
