@@ -1,5 +1,20 @@
 package Generic;
 
-public class excelTestCaseReader {
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+
+import org.apache.poi.xssf.usermodel.XSSFCell;
+import org.apache.poi.xssf.usermodel.XSSFRow;
+import org.apache.poi.xssf.usermodel.XSSFSheet;
+import org.apache.poi.xssf.usermodel.XSSFWorkbook;
+
+public class excelTestCaseReader extends base {
+
+	public static void main(String[] args) {
+		readExcelx(
+				"C:\\Users\\sunsh\\Documents\\JavaProject\\EclipseProject\\myjava\\com.demoqa\\ExcelFiles\\DemoQATest.xlsx");
+	}
 
 }

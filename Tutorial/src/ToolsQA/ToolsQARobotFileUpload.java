@@ -1,4 +1,4 @@
-package ToolsQA;
+	package ToolsQA;
 
 import java.awt.AWTException;
 import java.awt.Robot;
@@ -14,7 +14,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.interactions.Actions;
 
-public class ToolsQARobot {
+public class ToolsQARobotFileUpload {
 
 	public static void main(String[] args) throws InterruptedException, AWTException {
 		System.setProperty("webdriver.chrome.driver", System.getProperty("user.dir") + "/drivers/chromedriver.exe");
@@ -26,6 +26,7 @@ public class ToolsQARobot {
 		driver.get("https://demoqa.com/automation-practice-form");
 		WebElement upload = driver.findElement(By.cssSelector("input#uploadPicture"));
 		
+		upload.sendKeys("C:\\Users\\sunsh\\Desktop\\GoToTraining 001.png");
 		
 		
 		Robot r = new Robot(); 
@@ -35,7 +36,6 @@ public class ToolsQARobot {
 		
 		r.mouseWheel(1);
 		
-		upload.sendKeys("C:\\Users\\sunsh\\Desktop\\GoToTraining 001.png");
 		
 		Actions ac = new Actions(driver);
 		ac.moveToElement(upload).click().build().perform();; 
