@@ -13,8 +13,7 @@ import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 public class excelTestCaseReader extends base {
 
 	public static void main(String[] args) {
-		readExcelx(
-				"C:\\Users\\sunsh\\Documents\\JavaProject\\EclipseProject\\myjava\\com.demoqa\\ExcelFiles\\DemoQATest.xlsx");
+		 readExcelx(System.getProperty("user.dir")+"/ExcelFiles/DemoQATest.xlsx");
 	}
 
 }

@@ -1,13 +1,11 @@
 package Generic;
 
-import java.awt.Toolkit;
-import java.awt.datatransfer.StringSelection;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
+import java.util.Arrays;
 import java.util.Properties;
 
-import org.apache.poi.hpsf.Property;
 import org.apache.poi.xssf.usermodel.XSSFCell;
 import org.apache.poi.xssf.usermodel.XSSFRow;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
@@ -17,7 +15,6 @@ import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.interactions.Action;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.Select;
 
@@ -27,42 +24,57 @@ public class base {
 	public static WebElement element;
 	public static Properties prop;
 
+	static String description;
+
+	static String userAction;
+	static String locatorType;
+	static String locatorValue;
+	static String data;
+
+	public static void setElement(String locatorType, String locatorValue) {
+		String locator = prop.getProperty(locatorValue);
+		// F G
+		if (locatorType.equals("id")) {
+			element = driver.findElement(By.id(locator));
+		} else if (locatorType.equals("className")) {
+			element = driver.findElement(By.className(locator));
+		} else if (locatorType.equals("className")) {
+			element = driver.findElement(By.cssSelector(locator));
+		} else if (locatorType.equals("className")) {
+			element = driver.findElement(By.linkText(locator));
+		} else if (locatorType.equals("className")) {
+			element = driver.findElement(By.name(locator));
+		} else if (locatorType.equals("className")) {
+			element = driver.findElement(By.partialLinkText(locator));
+		} else if (locatorType.equals("className")) {
+			element = driver.findElement(By.tagName(locator));
+		} else if (locatorType.equals("className")) {
+			element = driver.findElement(By.xpath(locator));
+		} else if (locatorType.equals("javascriptExecuter")) {
+			JavascriptExecutor js = (JavascriptExecutor) driver;
+			js.executeAsyncScript("return " + locator + ".scrollIntoView('true')");
+			element = (WebElement) js.executeScript("return " + locator);
+		} else {
+
+		}
+
+	}
+
 	public static void launchBrowser(String BrowserName) {
 		if (BrowserName.equalsIgnoreCase("chrome")) {
 			System.setProperty("webdriver.chrome.driver", System.getProperty("user.dir") + "/driver/chromedriver.exe");
 			driver = new ChromeDriver();
+			driver.manage().deleteAllCookies();
 		}
 	}
 
-	public static void setElement(String locatorType, String locatorValue) {
-
-		if (locatorType.equals("id")) {
-			element = driver.findElement(By.id(locatorValue));
-		} else if (locatorType.equals("className")) {
-			element = driver.findElement(By.className(locatorValue));
-		} else if (locatorType.equals("className")) {
-			element = driver.findElement(By.cssSelector(locatorValue));
-		} else if (locatorType.equals("className")) {
-			element = driver.findElement(By.linkText(locatorValue));
-		} else if (locatorType.equals("className")) {
-			element = driver.findElement(By.name(locatorValue));
-		} else if (locatorType.equals("className")) {
-			element = driver.findElement(By.partialLinkText(locatorValue));
-		} else if (locatorType.equals("className")) {
-			element = driver.findElement(By.tagName(locatorValue));
-		} else if (locatorType.equals("className")) {
-			element = driver.findElement(By.xpath(locatorValue));
-		} else if (locatorType.equals("javascriptExecuter")) {
-			JavascriptExecutor js = (JavascriptExecutor) driver;
-			js.executeAsyncScript("return " + locatorValue + ".scrollIntoView('true')");
-			element = (WebElement) js.executeScript("return " + locatorType);
-		} else {
-			System.err.println("Incorrect Locator Type!");
-		}
-		new Actions(driver).moveToElement(element);
+	public static void closeBrowser() {
+		driver.close();
+		driver.quit();
 	}
 
 	public static WebElement getElement() {
+		new Actions(driver).moveToElement(element);
 		return element;
 	}
 
@@ -80,7 +92,7 @@ public class base {
 	}
 
 	public static void fileUpload(String fileLocation) {
-		element.sendKeys(fileLocation);
+		getElement().sendKeys(fileLocation);
 
 	}
 
@@ -124,29 +136,38 @@ public class base {
 		}
 	}
 
-	public static void readExcelx(String location) {
+	public static String[] excelRow(String xlsx, int rowi) {
 		XSSFWorkbook workbook;
 		XSSFSheet sheet;
 		XSSFRow row;
-		XSSFCell cell;
-		File file = new File(location);
+
+		String[] cell = new String[5];
+		File file = new File(xlsx);
 		try {
 			FileInputStream fis = new FileInputStream(file);
 			workbook = new XSSFWorkbook(fis);
 			sheet = workbook.getSheetAt(1);
 
-			for (int i = 0; i <=sheet.getLastRowNum(); i++) {
-				row = sheet.getRow(i);
-				System.out.println();
-				for (int j = 3; j < row.getLastCellNum(); j++) {
-					cell = row.getCell(j);
-					System.out.print(cell.toString() + " | ");
-				}
+			row = sheet.getRow(rowi);
+			System.out.println();
+
+			for (int i = 0; i < row.getLastCellNum() - 3; i++) {
+				cell[i] = row.getCell(i + 3).toString();
 			}
+
+//			System.out.println(Arrays.toString(cell));
+
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 
+		return cell;
+
+	}
+
+	public static void readExcelx(String xlsx) {
+		String[] rowData = excelRow(xlsx, 0);
+		System.out.println(Arrays.toString(rowData));
 	}
 }
