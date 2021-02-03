@@ -38,17 +38,17 @@ public class base {
 			element = driver.findElement(By.id(locator));
 		} else if (locatorType.equals("className")) {
 			element = driver.findElement(By.className(locator));
-		} else if (locatorType.equals("className")) {
+		} else if (locatorType.equals("cssSelector")) {
 			element = driver.findElement(By.cssSelector(locator));
-		} else if (locatorType.equals("className")) {
+		} else if (locatorType.equals("linkText")) {
 			element = driver.findElement(By.linkText(locator));
-		} else if (locatorType.equals("className")) {
+		} else if (locatorType.equals("name")) {
 			element = driver.findElement(By.name(locator));
-		} else if (locatorType.equals("className")) {
+		} else if (locatorType.equals("partialLinkText")) {
 			element = driver.findElement(By.partialLinkText(locator));
-		} else if (locatorType.equals("className")) {
+		} else if (locatorType.equals("tagName")) {
 			element = driver.findElement(By.tagName(locator));
-		} else if (locatorType.equals("className")) {
+		} else if (locatorType.equals("xpath")) {
 			element = driver.findElement(By.xpath(locator));
 		} else if (locatorType.equals("javascriptExecuter")) {
 			JavascriptExecutor js = (JavascriptExecutor) driver;
@@ -57,14 +57,16 @@ public class base {
 		} else {
 
 		}
+		
 
 	}
 
 	public static void launchBrowser(String BrowserName) {
 		if (BrowserName.equalsIgnoreCase("chrome")) {
-			System.setProperty("webdriver.chrome.driver", System.getProperty("user.dir") + "/driver/chromedriver.exe");
+			System.setProperty("webdriver.chrome.driver", System.getProperty("user.dir") + "/drivers/chromedriver.exe");
 			driver = new ChromeDriver();
 			driver.manage().deleteAllCookies();
+			driver.manage().window().maximize();
 		}
 	}
 
@@ -74,7 +76,7 @@ public class base {
 	}
 
 	public static WebElement getElement() {
-		new Actions(driver).moveToElement(element);
+		new Actions(driver).moveToElement(element).build().perform();
 		return element;
 	}
 
@@ -83,6 +85,7 @@ public class base {
 	}
 
 	public static void sendKeys(String input) {
+		getElement().clear();
 		getElement().sendKeys(input);
 	}
 
@@ -120,7 +123,7 @@ public class base {
 			navigateToUrl(prop.getProperty(data));
 			break;
 		case "sendKeys":
-			sendKeys(prop.getProperty(data));
+			sendKeys(data);
 			break;
 		case "select":
 			select(prop.getProperty(data));
@@ -167,7 +170,20 @@ public class base {
 	}
 
 	public static void readExcelx(String xlsx) {
-		String[] rowData = excelRow(xlsx, 0);
-		System.out.println(Arrays.toString(rowData));
+		getProperty(System.getProperty("user.dir")+"/PropertiesFile/locator.properties");
+		for (int i = 1; i < 16; i++) {
+			String[] rowData = excelRow(xlsx, i);
+			System.out.println(Arrays.toString(rowData));
+
+			description = rowData[0];
+			userAction = rowData[1];
+			locatorType = rowData[2];
+			locatorValue = rowData[3];
+			data = rowData[4];
+
+			setElement(locatorType, locatorValue);
+			userAction(userAction, data);
+		}
+
 	}
 }
