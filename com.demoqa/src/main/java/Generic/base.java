@@ -57,7 +57,6 @@ public class base {
 		} else {
 
 		}
-		
 
 	}
 
@@ -134,6 +133,9 @@ public class base {
 		case "click":
 			click();
 			break;
+		case "close":
+			closeBrowser();
+			break;
 		default:
 			break;
 		}
@@ -170,7 +172,7 @@ public class base {
 	}
 
 	public static void readExcelx(String xlsx) {
-		getProperty(System.getProperty("user.dir")+"/PropertiesFile/locator.properties");
+		getProperty(System.getProperty("user.dir") + "/PropertiesFile/locator.properties");
 		for (int i = 1; i < 16; i++) {
 			String[] rowData = excelRow(xlsx, i);
 			System.out.println(Arrays.toString(rowData));
