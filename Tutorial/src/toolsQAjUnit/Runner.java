@@ -2,9 +2,7 @@ package toolsQAjUnit;
 
 import org.junit.runner.JUnitCore;
 import org.junit.runner.Result;
-import org.junit.runner.RunWith;
 import org.junit.runner.notification.Failure;
-import org.junit.runners.Suite.SuiteClasses;
 
 public class Runner {
 	public static void main(String[] args) {
@@ -16,5 +14,4 @@ public class Runner {
 		}
 		System.out.println(result.wasSuccessful());
 	}
-
 }
