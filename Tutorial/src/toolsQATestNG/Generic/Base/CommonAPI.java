@@ -21,7 +21,7 @@ public class CommonAPI {
 	}
 
 	public static void setupBrowser() {
-		System.setProperty("driver.chrome.driver", System.getProperty("user.dir") + "/drivers/chromedriver.exe");
+		System.setProperty("webdriver.chrome.driver", System.getProperty("user.dir") + "/drivers/chromedriver.exe");
 		driver = new ChromeDriver();
 	}
 

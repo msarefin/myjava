@@ -1,0 +1,174 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testng-results ignored="7" total="13" passed="5" failed="1" skipped="0">
+  <reporter-output>
+  </reporter-output>
+  <suite started-at="2021-02-21T05:08:26Z" name="LearningTestNG" finished-at="2021-02-21T05:08:26Z" duration-ms="475">
+    <groups>
+      <group name="MyTestFromTest2">
+        <method signature="testsuite2.test1(java.lang.String, java.lang.String)[pri:2, instance:learningTestNG.testsuite2@4b23c30a]" name="test1" class="learningTestNG.testsuite2"/>
+        <method signature="testsuite2.test3()[pri:0, instance:learningTestNG.testsuite2@4b23c30a]" name="test3" class="learningTestNG.testsuite2"/>
+      </group> <!-- MyTestFromTest2 -->
+    </groups>
+    <test started-at="2021-02-21T05:08:26Z" name="Test" finished-at="2021-02-21T05:08:26Z" duration-ms="121">
+      <class name="learningTestNG.LearningTestNG">
+        <test-method is-config="true" signature="beforeCurrentClass()[pri:0, instance:learningTestNG.LearningTestNG@1fc32e4f]" started-at="2021-02-21T05:08:26Z" name="beforeCurrentClass" finished-at="2021-02-21T05:08:26Z" duration-ms="0" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- beforeCurrentClass -->
+        <test-method is-config="true" signature="beforeClass()[pri:0, instance:learningTestNG.LearningTestNG@1fc32e4f]" started-at="2021-02-21T05:08:26Z" name="beforeClass" finished-at="2021-02-21T05:08:26Z" duration-ms="0" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- beforeClass -->
+        <test-method is-config="true" signature="beforeMethod()[pri:0, instance:learningTestNG.LearningTestNG@1fc32e4f]" started-at="2021-02-21T05:08:26Z" name="beforeMethod" finished-at="2021-02-21T05:08:26Z" duration-ms="0" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- beforeMethod -->
+        <test-method signature="test4(java.lang.String, java.lang.String)[pri:-1, instance:learningTestNG.LearningTestNG@1fc32e4f]" started-at="2021-02-21T05:08:26Z" name="test4" finished-at="2021-02-21T05:08:26Z" duration-ms="9" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[Optional text]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA[second optional text ]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- test4 -->
+        <test-method is-config="true" signature="afterMethod()[pri:0, instance:learningTestNG.LearningTestNG@1fc32e4f]" started-at="2021-02-21T05:08:26Z" name="afterMethod" finished-at="2021-02-21T05:08:26Z" duration-ms="1" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- afterMethod -->
+        <test-method is-config="true" signature="beforeMethod()[pri:0, instance:learningTestNG.LearningTestNG@1fc32e4f]" started-at="2021-02-21T05:08:26Z" name="beforeMethod" finished-at="2021-02-21T05:08:26Z" duration-ms="0" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- beforeMethod -->
+        <test-method signature="test6()[pri:0, instance:learningTestNG.LearningTestNG@1fc32e4f]" started-at="2021-02-21T05:08:26Z" name="test6" finished-at="2021-02-21T05:08:26Z" duration-ms="10" status="FAIL">
+          <exception class="java.lang.AssertionError">
+            <message>
+              <![CDATA[expected [false] but found [true]]]>
+            </message>
+            <full-stacktrace>
+              <![CDATA[java.lang.AssertionError: expected [false] but found [true]
+at org.testng.Assert.fail(Assert.java:96)
+at org.testng.Assert.failNotEquals(Assert.java:776)
+at org.testng.Assert.assertEqualsImpl(Assert.java:137)
+at org.testng.Assert.assertEquals(Assert.java:118)
+at org.testng.Assert.assertEquals(Assert.java:568)
+at org.testng.Assert.assertEquals(Assert.java:578)
+at learningTestNG.LearningTestNG.test6(LearningTestNG.java:55)
+at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+at java.base/java.lang.reflect.Method.invoke(Method.java:564)
+at org.testng.internal.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:124)
+at org.testng.internal.Invoker.invokeMethod(Invoker.java:583)
+at org.testng.internal.Invoker.invokeTestMethod(Invoker.java:719)
+at org.testng.internal.Invoker.invokeTestMethods(Invoker.java:989)
+at org.testng.internal.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:125)
+at org.testng.internal.TestMethodWorker.run(TestMethodWorker.java:109)
+at org.testng.TestRunner.privateRun(TestRunner.java:648)
+at org.testng.TestRunner.run(TestRunner.java:505)
+at org.testng.SuiteRunner.runTest(SuiteRunner.java:455)
+at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:450)
+at org.testng.SuiteRunner.privateRun(SuiteRunner.java:415)
+at org.testng.SuiteRunner.run(SuiteRunner.java:364)
+at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:52)
+at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:84)
+at org.testng.TestNG.runSuitesSequentially(TestNG.java:1208)
+at org.testng.TestNG.runSuitesLocally(TestNG.java:1137)
+at org.testng.TestNG.runSuites(TestNG.java:1049)
+at org.testng.TestNG.run(TestNG.java:1017)
+at org.testng.remote.AbstractRemoteTestNG.run(AbstractRemoteTestNG.java:115)
+at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:251)
+at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:77)
+]]>
+            </full-stacktrace>
+          </exception> <!-- java.lang.AssertionError -->
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- test6 -->
+        <test-method is-config="true" signature="afterMethod()[pri:0, instance:learningTestNG.LearningTestNG@1fc32e4f]" started-at="2021-02-21T05:08:26Z" name="afterMethod" finished-at="2021-02-21T05:08:26Z" duration-ms="14" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- afterMethod -->
+        <test-method is-config="true" signature="beforeMethod()[pri:0, instance:learningTestNG.LearningTestNG@1fc32e4f]" started-at="2021-02-21T05:08:26Z" name="beforeMethod" finished-at="2021-02-21T05:08:26Z" duration-ms="2" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- beforeMethod -->
+        <test-method signature="test1()[pri:1, instance:learningTestNG.LearningTestNG@1fc32e4f]" started-at="2021-02-21T05:08:26Z" name="test1" finished-at="2021-02-21T05:08:26Z" duration-ms="5" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- test1 -->
+        <test-method is-config="true" signature="afterMethod()[pri:0, instance:learningTestNG.LearningTestNG@1fc32e4f]" started-at="2021-02-21T05:08:26Z" name="afterMethod" finished-at="2021-02-21T05:08:26Z" duration-ms="0" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- afterMethod -->
+        <test-method is-config="true" signature="beforeMethod()[pri:0, instance:learningTestNG.LearningTestNG@1fc32e4f]" started-at="2021-02-21T05:08:26Z" name="beforeMethod" finished-at="2021-02-21T05:08:26Z" duration-ms="0" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- beforeMethod -->
+        <test-method signature="test3()[pri:2, instance:learningTestNG.LearningTestNG@1fc32e4f]" started-at="2021-02-21T05:08:26Z" name="test3" finished-at="2021-02-21T05:08:26Z" duration-ms="2" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- test3 -->
+        <test-method is-config="true" signature="afterMethod()[pri:0, instance:learningTestNG.LearningTestNG@1fc32e4f]" started-at="2021-02-21T05:08:26Z" name="afterMethod" finished-at="2021-02-21T05:08:26Z" duration-ms="1" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- afterMethod -->
+        <test-method is-config="true" signature="afterClass()[pri:0, instance:learningTestNG.LearningTestNG@1fc32e4f]" started-at="2021-02-21T05:08:26Z" name="afterClass" finished-at="2021-02-21T05:08:26Z" duration-ms="2" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- afterClass -->
+      </class> <!-- learningTestNG.LearningTestNG -->
+      <class name="learningTestNG.beforeAfter">
+        <test-method is-config="true" signature="beforeTest()[pri:0, instance:learningTestNG.beforeAfter@4716be8b]" started-at="2021-02-21T05:08:26Z" name="beforeTest" finished-at="2021-02-21T05:08:26Z" duration-ms="6" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- beforeTest -->
+        <test-method is-config="true" signature="afterTest()[pri:0, instance:learningTestNG.beforeAfter@4716be8b]" started-at="2021-02-21T05:08:26Z" name="afterTest" finished-at="2021-02-21T05:08:26Z" duration-ms="1" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- afterTest -->
+      </class> <!-- learningTestNG.beforeAfter -->
+    </test> <!-- Test -->
+    <test started-at="2021-02-21T05:08:26Z" name="Test 2" finished-at="2021-02-21T05:08:26Z" duration-ms="82">
+      <class name="learningTestNG.beforeAfter">
+        <test-method is-config="true" signature="beforeSuite()[pri:0, instance:learningTestNG.beforeAfter@4716be8b]" started-at="2021-02-21T05:08:26Z" name="beforeSuite" finished-at="2021-02-21T05:08:26Z" duration-ms="21" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- beforeSuite -->
+        <test-method is-config="true" signature="afterSuite()[pri:0, instance:learningTestNG.beforeAfter@4716be8b]" started-at="2021-02-21T05:08:26Z" name="afterSuite" finished-at="2021-02-21T05:08:26Z" duration-ms="2" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- afterSuite -->
+      </class> <!-- learningTestNG.beforeAfter -->
+      <class name="learningTestNG.testsuite2">
+        <test-method signature="test3()[pri:0, instance:learningTestNG.testsuite2@4b23c30a]" started-at="2021-02-21T05:08:26Z" name="test3" finished-at="2021-02-21T05:08:26Z" duration-ms="11" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- test3 -->
+        <test-method signature="test1(java.lang.String, java.lang.String)[pri:2, instance:learningTestNG.testsuite2@4b23c30a]" started-at="2021-02-21T05:08:26Z" name="test1" finished-at="2021-02-21T05:08:26Z" duration-ms="3" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[Test Suite]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA[2]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- test1 -->
+      </class> <!-- learningTestNG.testsuite2 -->
+    </test> <!-- Test 2 -->
+  </suite> <!-- LearningTestNG -->
+</testng-results>
