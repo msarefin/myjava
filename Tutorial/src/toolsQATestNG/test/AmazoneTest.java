@@ -7,7 +7,7 @@ import toolsQATestNG.main.AmazonHomePage;
 
 public class AmazoneTest extends CommonAPI{
 
-	@Test
+	@Test()
 	public static void test1()	{ 
 		AmazonHomePage.getListOfAllDepartments();
 	}
