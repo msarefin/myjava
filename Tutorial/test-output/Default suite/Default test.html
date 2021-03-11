@@ -1,0 +1,246 @@
+<html>
+<head>
+<title>TestNG:  Default test</title>
+<link href="../testng.css" rel="stylesheet" type="text/css" />
+<link href="../my-testng.css" rel="stylesheet" type="text/css" />
+
+<style type="text/css">
+.log { display: none;} 
+.stack-trace { display: none;} 
+</style>
+<script type="text/javascript">
+<!--
+function flip(e) {
+  current = e.style.display;
+  if (current == 'block') {
+    e.style.display = 'none';
+    return 0;
+  }
+  else {
+    e.style.display = 'block';
+    return 1;
+  }
+}
+
+function toggleBox(szDivId, elem, msg1, msg2)
+{
+  var res = -1;  if (document.getElementById) {
+    res = flip(document.getElementById(szDivId));
+  }
+  else if (document.all) {
+    // this is the way old msie versions work
+    res = flip(document.all[szDivId]);
+  }
+  if(elem) {
+    if(res == 0) elem.innerHTML = msg1; else elem.innerHTML = msg2;
+  }
+
+}
+
+function toggleAllBoxes() {
+  if (document.getElementsByTagName) {
+    d = document.getElementsByTagName('div');
+    for (i = 0; i < d.length; i++) {
+      if (d[i].className == 'log') {
+        flip(d[i]);
+      }
+    }
+  }
+}
+
+// -->
+</script>
+
+</head>
+<body>
+<h2 align='center'>Default test</h2><table border='1' align="center">
+<tr>
+<td>Tests passed/Failed/Skipped:</td><td>32/0/0</td>
+</tr><tr>
+<td>Started on:</td><td>Wed Mar 10 20:31:08 EST 2021</td>
+</tr>
+<tr><td>Total time:</td><td>0 seconds (352 ms)</td>
+</tr><tr>
+<td>Included groups:</td><td></td>
+</tr><tr>
+<td>Excluded groups:</td><td></td>
+</tr>
+</table><p/>
+<small><i>(Hover the method name to see the test class name)</i></small><p/>
+<table width='100%' border='1' class='invocation-passed'>
+<tr><td colspan='4' align='center'><b>PASSED TESTS</b></td></tr>
+<tr><td><b>Test method</b></td>
+<td width="30%"><b>Exception</b></td>
+<td width="10%"><b>Time (seconds)</b></td>
+<td><b>Instance</b></td>
+</tr>
+<tr>
+<td title='learningTestNG.web.clearBrowser()'><b>clearBrowser</b><br>Test class: learningTestNG.web</td>
+<td></td>
+<td>0</td>
+<td>learningTestNG.web@66c61024</td></tr>
+<tr>
+<td title='learningTestNG.web.clickOnLink()'><b>clickOnLink</b><br>Test class: learningTestNG.web</td>
+<td></td>
+<td>0</td>
+<td>learningTestNG.web@66c61024</td></tr>
+<tr>
+<td title='learningTestNG.web.closeBrowser()'><b>closeBrowser</b><br>Test class: learningTestNG.web</td>
+<td></td>
+<td>0</td>
+<td>learningTestNG.web@66c61024</td></tr>
+<tr>
+<td title='learningTestNG.web.getURL()'><b>getURL</b><br>Test class: learningTestNG.web</td>
+<td></td>
+<td>0</td>
+<td>learningTestNG.web@66c61024</td></tr>
+<tr>
+<td title='learningTestNG.web.maximizeWindow()'><b>maximizeWindow</b><br>Test class: learningTestNG.web</td>
+<td></td>
+<td>0</td>
+<td>learningTestNG.web@66c61024</td></tr>
+<tr>
+<td title='learningTestNG.DP.myTest()'><b>myTest</b><br>Test class: learningTestNG.DP<br>Parameters: First-Value from DB.dpMethod1</td>
+<td></td>
+<td>0</td>
+<td>learningTestNG.DP@3adcc812</td></tr>
+<tr>
+<td title='learningTestNG.DP.myTest()'><b>myTest</b><br>Test class: learningTestNG.DP<br>Parameters: Second-Value from DB.dpMethod1</td>
+<td></td>
+<td>0</td>
+<td>learningTestNG.DP@3adcc812</td></tr>
+<tr>
+<td title='learningTestNG.web.navigate()'><b>navigate</b><br>Test class: learningTestNG.web</td>
+<td></td>
+<td>0</td>
+<td>learningTestNG.web@66c61024</td></tr>
+<tr>
+<td title='learningTestNG.web.open()'><b>open</b><br>Test class: learningTestNG.web</td>
+<td></td>
+<td>0</td>
+<td>learningTestNG.web@66c61024</td></tr>
+<tr>
+<td title='learningTestNG.DPTestSuite.test1()'><b>test1</b><br>Test class: learningTestNG.DPTestSuite<br>Parameters: First-Value from LearningTestNG.dpMethod *************</td>
+<td></td>
+<td>0</td>
+<td>learningTestNG.DPTestSuite@3abada5a</td></tr>
+<tr>
+<td title='learningTestNG.testsuite4.test1()'><b>test1</b><br>Test class: learningTestNG.testsuite4</td>
+<td></td>
+<td>0</td>
+<td>learningTestNG.testsuite4@61fe30</td></tr>
+<tr>
+<td title='learningTestNG.testsuite3.test1()'><b>test1</b><br>Test class: learningTestNG.testsuite3</td>
+<td></td>
+<td>0</td>
+<td>learningTestNG.testsuite3@c9d0d6</td></tr>
+<tr>
+<td title='learningTestNG.LearningTestNG.test1()'><b>test1</b><br>Test class: learningTestNG.LearningTestNG<br>Parameters: st1 Optional Text, St2 Optional Text<br/>
+<a href="#Output-712410124" onClick='toggleBox("Output-712410124", this, "Show output", "Hide output");'>Show output</a>
+
+<a href="#Output-712410124" onClick="toggleAllBoxes();">Show all outputs</a>
+<div class='log' id="Output-712410124">
+This is a log from LearningTestng CLASS test1 ???????<br/>
+</div>
+</td>
+<td></td>
+<td>0</td>
+<td>learningTestNG.LearningTestNG@5f9be66c</td></tr>
+<tr>
+<td title='learningTestNG.testsuite2.test1()'><b>test1</b><br>Test class: learningTestNG.testsuite2<br>Parameters: Test Suite, 2</td>
+<td></td>
+<td>0</td>
+<td>learningTestNG.testsuite2@6ccdb29f</td></tr>
+<tr>
+<td title='learningTestNG.LearningTestNG.test2()'><b>test2</b><br>Test class: learningTestNG.LearningTestNG</td>
+<td></td>
+<td>0</td>
+<td>learningTestNG.LearningTestNG@5f9be66c</td></tr>
+<tr>
+<td title='learningTestNG.testsuite4.test2()'><b>test2</b><br>Test class: learningTestNG.testsuite4</td>
+<td></td>
+<td>0</td>
+<td>learningTestNG.testsuite4@61fe30</td></tr>
+<tr>
+<td title='learningTestNG.testsuite3.test2()'><b>test2</b><br>Test class: learningTestNG.testsuite3</td>
+<td></td>
+<td>0</td>
+<td>learningTestNG.testsuite3@c9d0d6</td></tr>
+<tr>
+<td title='learningTestNG.testsuite2.test2()'><b>test2</b><br>Test class: learningTestNG.testsuite2<br>Parameters: Test Suite </td>
+<td></td>
+<td>0</td>
+<td>learningTestNG.testsuite2@6ccdb29f</td></tr>
+<tr>
+<td title='learningTestNG.testsuite4.test3()'><b>test3</b><br>Test class: learningTestNG.testsuite4</td>
+<td></td>
+<td>0</td>
+<td>learningTestNG.testsuite4@61fe30</td></tr>
+<tr>
+<td title='learningTestNG.testsuite2.test3()'><b>test3</b><br>Test class: learningTestNG.testsuite2</td>
+<td></td>
+<td>0</td>
+<td>learningTestNG.testsuite2@6ccdb29f</td></tr>
+<tr>
+<td title='learningTestNG.testsuite3.test3()'><b>test3</b><br>Test class: learningTestNG.testsuite3</td>
+<td></td>
+<td>0</td>
+<td>learningTestNG.testsuite3@c9d0d6</td></tr>
+<tr>
+<td title='learningTestNG.LearningTestNG.test3()'><b>test3</b><br>Test class: learningTestNG.LearningTestNG</td>
+<td></td>
+<td>0</td>
+<td>learningTestNG.LearningTestNG@5f9be66c</td></tr>
+<tr>
+<td title='learningTestNG.LearningTestNG.test4()'><b>test4</b><br>Test class: learningTestNG.LearningTestNG<br>Parameters: Optional text, second optional text </td>
+<td></td>
+<td>0</td>
+<td>learningTestNG.LearningTestNG@5f9be66c</td></tr>
+<tr>
+<td title='learningTestNG.testsuite4.test4()'><b>test4</b><br>Test class: learningTestNG.testsuite4</td>
+<td></td>
+<td>0</td>
+<td>learningTestNG.testsuite4@61fe30</td></tr>
+<tr>
+<td title='learningTestNG.testsuite4.test5()'><b>test5</b><br>Test class: learningTestNG.testsuite4</td>
+<td></td>
+<td>0</td>
+<td>learningTestNG.testsuite4@61fe30</td></tr>
+<tr>
+<td title='learningTestNG.testsuite3.test5()'><b>test5</b><br>Test class: learningTestNG.testsuite3</td>
+<td></td>
+<td>0</td>
+<td>learningTestNG.testsuite3@c9d0d6</td></tr>
+<tr>
+<td title='learningTestNG.LearningTestNG.test5()'><b>test5</b><br>Test class: learningTestNG.LearningTestNG</td>
+<td></td>
+<td>0</td>
+<td>learningTestNG.LearningTestNG@5f9be66c</td></tr>
+<tr>
+<td title='learningTestNG.LearningTestNG.test6()'><b>test6</b><br>Test class: learningTestNG.LearningTestNG</td>
+<td></td>
+<td>0</td>
+<td>learningTestNG.LearningTestNG@5f9be66c</td></tr>
+<tr>
+<td title='learningTestNG.testsuite4.test6()'><b>test6</b><br>Test class: learningTestNG.testsuite4</td>
+<td></td>
+<td>0</td>
+<td>learningTestNG.testsuite4@61fe30</td></tr>
+<tr>
+<td title='learningTestNG.testsuite3.test6()'><b>test6</b><br>Test class: learningTestNG.testsuite3</td>
+<td></td>
+<td>0</td>
+<td>learningTestNG.testsuite3@c9d0d6</td></tr>
+<tr>
+<td title='learningTestNG.testsuite3.test7()'><b>test7</b><br>Test class: learningTestNG.testsuite3</td>
+<td></td>
+<td>0</td>
+<td>learningTestNG.testsuite3@c9d0d6</td></tr>
+<tr>
+<td title='learningTestNG.testsuite3.test8()'><b>test8</b><br>Test class: learningTestNG.testsuite3</td>
+<td></td>
+<td>0</td>
+<td>learningTestNG.testsuite3@c9d0d6</td></tr>
+</table><p>
+</body>
+</html>
