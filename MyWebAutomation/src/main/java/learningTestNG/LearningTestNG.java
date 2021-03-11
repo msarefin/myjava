@@ -60,7 +60,7 @@ public class LearningTestNG extends beforeAfter {
 
 }
 
-class testsuite3 {
+class testsuite3 extends beforeAfter{
 
 	@Test(groups = { "group 1" }, dependsOnMethods = { "test8", "test7" })
 	public void test1() {
@@ -98,7 +98,7 @@ class testsuite3 {
 	}
 }
 
-class testsuite4 {
+class testsuite4 extends beforeAfter{
 	@Test(groups = { "g1" })
 	public void test1() {
 		System.out.println("testsuite4 test1");
@@ -132,7 +132,7 @@ class testsuite4 {
 	
 }
 
-class testsuite2 {
+class testsuite2 extends beforeAfter{
 	@Test(priority = 2, groups = { "MyTestFromTest2" })
 	@Parameters({ "p1", "p2" })
 	public void test1(@Optional("Test Suite") String test, @Optional("2") String num) {
@@ -151,7 +151,7 @@ class testsuite2 {
 	}
 }
 
-class web{
+class web extends beforeAfter{
 	@Test(groups = { "setup" })
 	public void open() {
 		System.out.println("setup Browser opened");
@@ -229,6 +229,7 @@ class beforeAfter {
 	@AfterMethod
 	public static void afterMethod() {
 		System.out.println("This method runs after each method!!!");
+		Reporter.log("This is a log that runs after each method call******");
 	}
 
 }

@@ -7,9 +7,12 @@
 			<exclude name="MyTest" />
 		</run>
 	</groups>
-	<test name="Test">
+	<test name="LearningTestNG">
+		<parameter name="p1" value="LearningTestNG" />
+		<parameter name="p2" value="LearningTestNGLearningTestNG" />
+		<parameter name = "Browser" value = "Firefox"/>
 		<classes>
-			<class name="learningTestNG.beforeAfter"/>
+			<class name="learningTestNG.beforeAfter" />
 			<class name="learningTestNG.LearningTestNG" />
 		</classes>
 	</test> <!-- Test -->
@@ -24,12 +27,11 @@
 		</classes>
 	</test>
 
-	<test name="Test3">
+	<test name="Test3" parallel = "methods" thread-count="2">
 		<classes>
 			<class name="learningTestNG.testsuite3" />
 		</classes>
 	</test>
-
 	<test name="Test4">
 		<groups>
 			<dependencies>
@@ -45,12 +47,18 @@
 	<test name="web">
 		<groups>
 			<dependencies>
-				<group name="demolision" depends-on="setup"/>
+				<group name="demolision" depends-on="setup" />
 			</dependencies>
 		</groups>
 		<classes>
-			<class name="learningTestNG.web" />
+			<class name="learningTestNG.web">
+				<methods>
+					<include name="clickOnLink" />
+				</methods>
+			</class>
 		</classes>
 	</test>
+
+	
 
 </suite> <!-- Suite -->

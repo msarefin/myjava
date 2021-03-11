@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
 <suite name="Failed suite [learningTestNG]" guice-stage="DEVELOPMENT">
-  <test thread-count="5" name="Test(failed)">
+  <test thread-count="5" name="LearningTestNG(failed)">
+    <parameter name="p1" value="LearningTestNG"/>
+    <parameter name="p2" value="LearningTestNGLearningTestNG"/>
     <groups>
       <run>
         <exclude name="MyTest"/>
@@ -23,5 +25,5 @@
         </methods>
       </class> <!-- learningTestNG.LearningTestNG -->
     </classes>
-  </test> <!-- Test(failed) -->
+  </test> <!-- LearningTestNG(failed) -->
 </suite> <!-- Failed suite [learningTestNG] -->
