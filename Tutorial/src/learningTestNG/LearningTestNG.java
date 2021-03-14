@@ -1,6 +1,15 @@
 package learningTestNG;
 
+import java.util.List;
+import java.util.Map;
+import org.junit.runners.Suite;
 import org.testng.Assert;
+import org.testng.IReporter;
+import org.testng.ISuite;
+import org.testng.ISuiteResult;
+import org.testng.ITestContext;
+import org.testng.ITestListener;
+import org.testng.ITestResult;
 import org.testng.Reporter;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.AfterMethod;
@@ -11,24 +20,27 @@ import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.BeforeSuite;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.DataProvider;
+import org.testng.annotations.Listeners;
 import org.testng.annotations.Optional;
 import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
 import org.testng.asserts.SoftAssert;
+import org.testng.xml.XmlSuite;
 
 public class LearningTestNG extends beforeAfter {
 	@DataProvider(name = "data-provider")
 	public Object[] dpMethod() {
 		return new Object[] { "First-Value from LearningTestNG.dpMethod *************" };
 	}
+
 	@Parameters("Browser")
 	@BeforeClass
 	public static void beforeCurrentClass(@Optional("Chrome") String Browser) {
 		System.out.println("\n@BeforeClass method runs before the current class!!!!**************");
 		Reporter.log(
 				"This is from the before class annotation!!!**************************************###############");
-		
-		System.out.println(Browser+"=".repeat(Browser.length()));
+
+		System.out.println(Browser + "=".repeat(Browser.length()));
 	}
 
 	@Test(priority = 1)
@@ -74,6 +86,10 @@ public class LearningTestNG extends beforeAfter {
 
 }
 
+
+
+
+
 class DPTestSuite {
 	@Test(dataProvider = "data-provider", dataProviderClass = LearningTestNG.class)
 	public void test1(String val) {
@@ -94,6 +110,7 @@ class DP {
 	}
 }
 
+@Listeners({TestNGListener.class, ListenersTestNG.class})
 class testsuite3 {
 
 	@Test(groups = { "group 1" }, dependsOnMethods = { "test8", "test7" })
