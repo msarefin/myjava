@@ -28,6 +28,7 @@ import org.testng.asserts.SoftAssert;
 import org.testng.xml.XmlSuite;
 
 public class LearningTestNG extends beforeAfter {
+
 	@DataProvider(name = "data-provider")
 	public Object[] dpMethod() {
 		return new Object[] { "First-Value from LearningTestNG.dpMethod *************" };
@@ -86,10 +87,6 @@ public class LearningTestNG extends beforeAfter {
 
 }
 
-
-
-
-
 class DPTestSuite {
 	@Test(dataProvider = "data-provider", dataProviderClass = LearningTestNG.class)
 	public void test1(String val) {
@@ -108,9 +105,21 @@ class DP {
 	public void myTest(String val) {
 		System.out.println("The value given by data provider is --->>" + val);
 	}
+
+	@Test
+	public void noNumberCounter() {
+		char c = 'A';
+		int n = (int)c; 
+		
+		int s = n/n; 
+		
+		while(s<=100) {
+			System.out.println(s++);
+		}
+	}
 }
 
-@Listeners({TestNGListener.class, ListenersTestNG.class})
+@Listeners({ TestNGListener.class, ListenersTestNG.class })
 class testsuite3 {
 
 	@Test(groups = { "group 1" }, dependsOnMethods = { "test8", "test7" })

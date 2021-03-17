@@ -81,6 +81,8 @@ public class ExcelExcelx {
 		FileOutputStream fos = new FileOutputStream(xls);
 		wb.write(fos);
 		System.out.println(excelFile + " Updated!");
+		System.out.println(s.getLastRowNum());
+		
 	}
 
 	private static void readExcel(String excelFile) throws IOException {
