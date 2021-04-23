@@ -3,13 +3,15 @@
 <suite name="Failed suite [Default suite]" guice-stage="DEVELOPMENT">
   <test thread-count="5" name="Default test(failed)">
     <classes>
-      <class name="Practice.PageObjectModel">
+      <class name="extentReportListener.ExtentReporting">
         <methods>
-          <include name="End"/>
-          <include name="TestFirstAndLastNameFields"/>
-          <include name="setup"/>
+          <include name="failTest"/>
+          <include name="startReport"/>
+          <include name="skipTest"/>
+          <include name="getResult"/>
+          <include name="endReport"/>
         </methods>
-      </class> <!-- Practice.PageObjectModel -->
+      </class> <!-- extentReportListener.ExtentReporting -->
     </classes>
   </test> <!-- Default test(failed) -->
 </suite> <!-- Failed suite [Default suite] -->

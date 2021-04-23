@@ -1,73 +1,140 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testng-results ignored="0" total="2" passed="2" failed="0" skipped="0">
+<testng-results ignored="0" total="3" passed="1" failed="1" skipped="1">
   <reporter-output>
   </reporter-output>
-  <suite started-at="2021-02-04T12:07:58Z" name="Default suite" finished-at="2021-02-04T12:07:59Z" duration-ms="1493">
+  <suite started-at="2021-04-23T00:35:37Z" name="Default suite" finished-at="2021-04-23T00:35:39Z" duration-ms="1467">
     <groups>
     </groups>
-    <test started-at="2021-02-04T12:07:58Z" name="Default test" finished-at="2021-02-04T12:07:59Z" duration-ms="1493">
-      <class name="bdd.BDDReporting">
-        <test-method is-config="true" signature="setup()[pri:0, instance:bdd.BDDReporting@1ae8bcbc]" started-at="2021-02-04T12:07:58Z" name="setup" finished-at="2021-02-04T12:07:58Z" duration-ms="517" status="PASS">
+    <test started-at="2021-04-23T00:35:37Z" name="Default test" finished-at="2021-04-23T00:35:39Z" duration-ms="1467">
+      <class name="extentReportListener.ExtentReporting">
+        <test-method is-config="true" signature="startReport()[pri:0, instance:extentReportListener.ExtentReporting@1ae8bcbc]" started-at="2021-04-23T00:35:37Z" name="startReport" finished-at="2021-04-23T00:35:38Z" duration-ms="486" status="PASS">
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- setup -->
-        <test-method is-config="true" signature="register(java.lang.reflect.Method)[pri:0, instance:bdd.BDDReporting@1ae8bcbc]" started-at="2021-02-04T12:07:58Z" name="register" finished-at="2021-02-04T12:07:58Z" duration-ms="17" status="PASS">
+        </test-method> <!-- startReport -->
+        <test-method signature="failTest()[pri:0, instance:extentReportListener.ExtentReporting@1ae8bcbc]" started-at="2021-04-23T00:35:38Z" name="failTest" finished-at="2021-04-23T00:35:38Z" duration-ms="24" status="FAIL">
+          <exception class="java.lang.AssertionError">
+            <message>
+              <![CDATA[expected [true] but found [false]]]>
+            </message>
+            <full-stacktrace>
+              <![CDATA[java.lang.AssertionError: expected [true] but found [false]
+at org.testng.Assert.fail(Assert.java:96)
+at org.testng.Assert.failNotEquals(Assert.java:776)
+at org.testng.Assert.assertTrue(Assert.java:44)
+at org.testng.Assert.assertTrue(Assert.java:54)
+at extentReportListener.ExtentReporting.failTest(ExtentReporting.java:40)
+at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+at java.base/java.lang.reflect.Method.invoke(Method.java:564)
+at org.testng.internal.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:124)
+at org.testng.internal.Invoker.invokeMethod(Invoker.java:583)
+at org.testng.internal.Invoker.invokeTestMethod(Invoker.java:719)
+at org.testng.internal.Invoker.invokeTestMethods(Invoker.java:989)
+at org.testng.internal.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:125)
+at org.testng.internal.TestMethodWorker.run(TestMethodWorker.java:109)
+at org.testng.TestRunner.privateRun(TestRunner.java:648)
+at org.testng.TestRunner.run(TestRunner.java:505)
+at org.testng.SuiteRunner.runTest(SuiteRunner.java:455)
+at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:450)
+at org.testng.SuiteRunner.privateRun(SuiteRunner.java:415)
+at org.testng.SuiteRunner.run(SuiteRunner.java:364)
+at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:52)
+at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:84)
+at org.testng.TestNG.runSuitesSequentially(TestNG.java:1208)
+at org.testng.TestNG.runSuitesLocally(TestNG.java:1137)
+at org.testng.TestNG.runSuites(TestNG.java:1049)
+at org.testng.TestNG.run(TestNG.java:1017)
+at org.testng.remote.AbstractRemoteTestNG.run(AbstractRemoteTestNG.java:115)
+at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:251)
+at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:77)
+]]>
+            </full-stacktrace>
+          </exception> <!-- java.lang.AssertionError -->
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- failTest -->
+        <test-method is-config="true" signature="getResult(org.testng.ITestResult)[pri:0, instance:extentReportListener.ExtentReporting@1ae8bcbc]" started-at="2021-04-23T00:35:38Z" name="getResult" finished-at="2021-04-23T00:35:38Z" duration-ms="13" status="PASS">
           <params>
             <param index="0">
               <value>
-                <![CDATA[public void bdd.BDDReporting.test1()]]>
+                <![CDATA[[TestResult name=failTest status=FAILURE method=ExtentReporting.failTest()[pri:0, instance:extentReportListener.ExtentReporting@1ae8bcbc] output={null}]]]>
               </value>
             </param>
           </params>
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- register -->
-        <test-method signature="test1()[pri:0, instance:bdd.BDDReporting@1ae8bcbc]" started-at="2021-02-04T12:07:58Z" name="test1" finished-at="2021-02-04T12:07:58Z" duration-ms="38" status="PASS">
+        </test-method> <!-- getResult -->
+        <test-method signature="passTest()[pri:0, instance:extentReportListener.ExtentReporting@1ae8bcbc]" started-at="2021-04-23T00:35:38Z" name="passTest" finished-at="2021-04-23T00:35:38Z" duration-ms="6" status="PASS">
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- test1 -->
-        <test-method is-config="true" signature="captureStatus(org.testng.ITestResult)[pri:0, instance:bdd.BDDReporting@1ae8bcbc]" started-at="2021-02-04T12:07:58Z" name="captureStatus" finished-at="2021-02-04T12:07:58Z" duration-ms="2" status="PASS">
+        </test-method> <!-- passTest -->
+        <test-method is-config="true" signature="getResult(org.testng.ITestResult)[pri:0, instance:extentReportListener.ExtentReporting@1ae8bcbc]" started-at="2021-04-23T00:35:38Z" name="getResult" finished-at="2021-04-23T00:35:38Z" duration-ms="0" status="PASS">
           <params>
             <param index="0">
               <value>
-                <![CDATA[[TestResult name=test1 status=SUCCESS method=BDDReporting.test1()[pri:0, instance:bdd.BDDReporting@1ae8bcbc] output={null}]]]>
+                <![CDATA[[TestResult name=passTest status=SUCCESS method=ExtentReporting.passTest()[pri:0, instance:extentReportListener.ExtentReporting@1ae8bcbc] output={null}]]]>
               </value>
             </param>
           </params>
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- captureStatus -->
-        <test-method is-config="true" signature="register(java.lang.reflect.Method)[pri:0, instance:bdd.BDDReporting@1ae8bcbc]" started-at="2021-02-04T12:07:58Z" name="register" finished-at="2021-02-04T12:07:58Z" duration-ms="1" status="PASS">
+        </test-method> <!-- getResult -->
+        <test-method signature="skipTest()[pri:0, instance:extentReportListener.ExtentReporting@1ae8bcbc]" started-at="2021-04-23T00:35:38Z" name="skipTest" finished-at="2021-04-23T00:35:38Z" duration-ms="6" status="SKIP">
+          <exception class="org.testng.SkipException">
+            <message>
+              <![CDATA[Skipping - This is not ready for testing ]]>
+            </message>
+            <full-stacktrace>
+              <![CDATA[org.testng.SkipException: Skipping - This is not ready for testing 
+at extentReportListener.ExtentReporting.skipTest(ExtentReporting.java:47)
+at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+at java.base/java.lang.reflect.Method.invoke(Method.java:564)
+at org.testng.internal.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:124)
+at org.testng.internal.Invoker.invokeMethod(Invoker.java:583)
+at org.testng.internal.Invoker.invokeTestMethod(Invoker.java:719)
+at org.testng.internal.Invoker.invokeTestMethods(Invoker.java:989)
+at org.testng.internal.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:125)
+at org.testng.internal.TestMethodWorker.run(TestMethodWorker.java:109)
+at org.testng.TestRunner.privateRun(TestRunner.java:648)
+at org.testng.TestRunner.run(TestRunner.java:505)
+at org.testng.SuiteRunner.runTest(SuiteRunner.java:455)
+at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:450)
+at org.testng.SuiteRunner.privateRun(SuiteRunner.java:415)
+at org.testng.SuiteRunner.run(SuiteRunner.java:364)
+at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:52)
+at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:84)
+at org.testng.TestNG.runSuitesSequentially(TestNG.java:1208)
+at org.testng.TestNG.runSuitesLocally(TestNG.java:1137)
+at org.testng.TestNG.runSuites(TestNG.java:1049)
+at org.testng.TestNG.run(TestNG.java:1017)
+at org.testng.remote.AbstractRemoteTestNG.run(AbstractRemoteTestNG.java:115)
+at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:251)
+at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:77)
+]]>
+            </full-stacktrace>
+          </exception> <!-- org.testng.SkipException -->
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- skipTest -->
+        <test-method is-config="true" signature="getResult(org.testng.ITestResult)[pri:0, instance:extentReportListener.ExtentReporting@1ae8bcbc]" started-at="2021-04-23T00:35:38Z" name="getResult" finished-at="2021-04-23T00:35:38Z" duration-ms="1" status="PASS">
           <params>
             <param index="0">
               <value>
-                <![CDATA[public void bdd.BDDReporting.test2()]]>
+                <![CDATA[[TestResult name=skipTest status=SKIP method=ExtentReporting.skipTest()[pri:0, instance:extentReportListener.ExtentReporting@1ae8bcbc] output={null}]]]>
               </value>
             </param>
           </params>
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- register -->
-        <test-method signature="test2()[pri:0, instance:bdd.BDDReporting@1ae8bcbc]" started-at="2021-02-04T12:07:58Z" name="test2" finished-at="2021-02-04T12:07:58Z" duration-ms="4" status="PASS">
+        </test-method> <!-- getResult -->
+        <test-method is-config="true" signature="endReport()[pri:0, instance:extentReportListener.ExtentReporting@1ae8bcbc]" started-at="2021-04-23T00:35:38Z" name="endReport" finished-at="2021-04-23T00:35:39Z" duration-ms="861" status="PASS">
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- test2 -->
-        <test-method is-config="true" signature="captureStatus(org.testng.ITestResult)[pri:0, instance:bdd.BDDReporting@1ae8bcbc]" started-at="2021-02-04T12:07:58Z" name="captureStatus" finished-at="2021-02-04T12:07:58Z" duration-ms="5" status="PASS">
-          <params>
-            <param index="0">
-              <value>
-                <![CDATA[[TestResult name=test2 status=SUCCESS method=BDDReporting.test2()[pri:0, instance:bdd.BDDReporting@1ae8bcbc] output={null}]]]>
-              </value>
-            </param>
-          </params>
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- captureStatus -->
-        <test-method is-config="true" signature="teardown()[pri:0, instance:bdd.BDDReporting@1ae8bcbc]" started-at="2021-02-04T12:07:58Z" name="teardown" finished-at="2021-02-04T12:07:59Z" duration-ms="841" status="PASS">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- teardown -->
-      </class> <!-- bdd.BDDReporting -->
+        </test-method> <!-- endReport -->
+      </class> <!-- extentReportListener.ExtentReporting -->
     </test> <!-- Default test -->
   </suite> <!-- Default suite -->
 </testng-results>
