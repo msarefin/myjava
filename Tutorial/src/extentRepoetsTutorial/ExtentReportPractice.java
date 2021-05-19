@@ -17,7 +17,7 @@ public class ExtentReportPractice {
 		test.log(LogStatus.PASS, "This is what you see if the test passed");
 		test.log(LogStatus.FAIL, "This is what you see if the test filed");
 		
-		String img = test.addScreenCapture("img-Path");
+		String img = test.addScreenCapture(System.getProperty("user.dir")+"/ScreenShot/logo.png");
 		test.log(LogStatus.INFO, "image", "Image attached"+img);
 		
 		extent.endTest(test);

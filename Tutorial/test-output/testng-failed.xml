@@ -3,20 +3,14 @@
 <suite name="Failed suite [Default suite]" guice-stage="DEVELOPMENT">
   <test thread-count="5" name="Default test(failed)">
     <classes>
-      <class name="learningTestNG.LearningTestNG">
+      <class name="extentRepoetsTutorial.ExtentReportTestNG">
         <methods>
-          <include name="beforeCurrentClass"/>
-          <include name="afterSuite"/>
-          <include name="beforeTest"/>
           <include name="afterMethod"/>
-          <include name="afterClass"/>
-          <include name="test6"/>
-          <include name="afterTest"/>
+          <include name="afterSuite"/>
           <include name="beforeSuite"/>
-          <include name="beforeMethod"/>
-          <include name="beforeClass"/>
+          <include name="interntionalFailure"/>
         </methods>
-      </class> <!-- learningTestNG.LearningTestNG -->
+      </class> <!-- extentRepoetsTutorial.ExtentReportTestNG -->
     </classes>
   </test> <!-- Default test(failed) -->
 </suite> <!-- Failed suite [Default suite] -->
