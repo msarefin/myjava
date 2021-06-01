@@ -22,6 +22,8 @@ public class ExtentReportTestNG extends BaseExample {
 	@Test
 	public void interntionalFailure() throws Exception {
 		test = extent.startTest("Intentional Failure");
+		test.log(LogStatus.FAIL, "Filed Test Intentionally!");
+		Assert.assertEquals(test.getRunStatus(), LogStatus.PASS);
 		throw new Exception("Intentional Failure successfull!!!");
 	}
 }
@@ -62,6 +64,7 @@ abstract class BaseExample {
 	@BeforeSuite
 	void beforeSuite() {
 		extent = ExtentManager.getReporter(System.getProperty("user.dir")+filePath);
+		
 	}
 
 	@AfterSuite

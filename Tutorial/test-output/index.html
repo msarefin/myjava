@@ -49,7 +49,7 @@
               <ul>
                 <li>
                   <a href="#" panel-name="test-xml-Default_suite" class="navigator-link ">
-                    <span>C:\Users\sunsh\AppData\Local\Temp\testng-eclipse-1771875690\testng-customsuite.xml</span>
+                    <span>C:\Users\sunsh\AppData\Local\Temp\testng-eclipse--1020971078\testng-customsuite.xml</span>
                   </a> <!-- navigator-link  -->
                 </li>
                 <li>
@@ -142,8 +142,13 @@
                   <a name="interntionalFailure">
                   </a> <!-- interntionalFailure -->
                   <span class="method-name">interntionalFailure</span>
-                  <div class="stack-trace">java.lang.Exception: Intentional Failure successfull!!!
-	at extentRepoetsTutorial.ExtentReportTestNG.interntionalFailure(ExtentReportTestNG.java:25)
+                  <div class="stack-trace">java.lang.AssertionError: expected [pass] but found [fail]
+	at org.testng.Assert.fail(Assert.java:96)
+	at org.testng.Assert.failNotEquals(Assert.java:776)
+	at org.testng.Assert.assertEqualsImpl(Assert.java:137)
+	at org.testng.Assert.assertEquals(Assert.java:118)
+	at org.testng.Assert.assertEquals(Assert.java:442)
+	at extentRepoetsTutorial.ExtentReportTestNG.interntionalFailure(ExtentReportTestNG.java:26)
 	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
 	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
 	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
@@ -193,7 +198,7 @@
         </div> <!-- panel Default_suite -->
         <div panel-name="test-xml-Default_suite" class="panel">
           <div class="main-panel-header rounded-window-top">
-            <span class="header-content">C:\Users\sunsh\AppData\Local\Temp\testng-eclipse-1771875690\testng-customsuite.xml</span>
+            <span class="header-content">C:\Users\sunsh\AppData\Local\Temp\testng-eclipse--1020971078\testng-customsuite.xml</span>
           </div> <!-- main-panel-header rounded-window-top -->
           <div class="main-panel-content rounded-window-bottom">
             <pre>
@@ -248,16 +253,16 @@ data.addRows(2);
 data.setCell(0, 0, 0)
 data.setCell(0, 1, 'interntionalFailure')
 data.setCell(0, 2, 'extentRepoetsTutorial.ExtentReportTestNG')
-data.setCell(0, 3, 17);
+data.setCell(0, 3, 26);
 data.setCell(1, 0, 1)
 data.setCell(1, 1, 'passTest')
 data.setCell(1, 2, 'extentRepoetsTutorial.ExtentReportTestNG')
-data.setCell(1, 3, 5);
+data.setCell(1, 3, 2);
 window.suiteTableData['Default_suite']= { tableData: data, tableDiv: 'times-div-Default_suite'}
 return data;
 }
               </script>
-              <span class="suite-total-time">Total running time: 22 ms</span>
+              <span class="suite-total-time">Total running time: 28 ms</span>
               <div id="times-div-Default_suite">
               </div> <!-- times-div-Default_suite -->
             </div> <!-- times-div -->
@@ -292,23 +297,23 @@ return data;
                 <img src="failed.png">
                 </img>
                 <span class="method-name">interntionalFailure</span>
-                <span class="method-start">638 ms</span>
+                <span class="method-start">524 ms</span>
               </div> <!-- test-method -->
               <div class="configuration-method after">
                 <span class="method-name">afterMethod([TestResult name=interntionalFailure status=FAILURE method=ExtentReportTestNG.interntionalFailure()[...)</span>
-                <span class="method-start">662 ms</span>
+                <span class="method-start">556 ms</span>
               </div> <!-- configuration-method after -->
               <div class="test-method">
                 <span class="method-name">passTest</span>
-                <span class="method-start">1458 ms</span>
+                <span class="method-start">1231 ms</span>
               </div> <!-- test-method -->
               <div class="configuration-method after">
                 <span class="method-name">afterMethod([TestResult name=passTest status=SUCCESS method=ExtentReportTestNG.passTest()[pri:0, instance:extent...)</span>
-                <span class="method-start">1466 ms</span>
+                <span class="method-start">1240 ms</span>
               </div> <!-- configuration-method after -->
               <div class="configuration-suite after">
                 <span class="method-name">afterSuite</span>
-                <span class="method-start">1760 ms</span>
+                <span class="method-start">1397 ms</span>
               </div> <!-- configuration-suite after -->
           </div> <!-- main-panel-content rounded-window-bottom -->
         </div> <!-- panel -->
