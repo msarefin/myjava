@@ -10,7 +10,7 @@ public class Practice {
 		
 		System.out.println("Please Enter you name:");
 		
-		String name = "Hello," + sc.nextLine()+"! welcome to learning Core Java!"; 
+		String name = "Hello," + sc.nextLine()+"! \nsWelcome to learning Core Java!"; 
 		
 		System.out.println(name);
 	}
