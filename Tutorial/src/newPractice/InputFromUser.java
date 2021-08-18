@@ -13,8 +13,6 @@ public class InputFromUser {
 		System.out.println("Hello, " + n + " !");
 	}
 
-	private static void userInput(int n) {
-
-	}
+	 
 
 }
