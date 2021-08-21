@@ -1,5 +1,6 @@
 package com.tomcat;
 
-public class AddServlet {
+public class AddServlet extends HttpServerImpl{
 
+	
 }
