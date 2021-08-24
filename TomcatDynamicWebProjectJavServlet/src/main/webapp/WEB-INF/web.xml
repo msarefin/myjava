@@ -16,12 +16,21 @@
 
 
 	<servlet>
-		<servlet-name>abc</servlet-name>
+		<servlet-name>addServlet</servlet-name>
 		<servlet-class>com.tomcat.AddServlet</servlet-class>
 	</servlet>
 	<servlet-mapping>
-		<servlet-name>abc</servlet-name>
+		<servlet-name>addServlet</servlet-name>
 		<url-pattern>/add</url-pattern>
+	</servlet-mapping>
+
+	<servlet>
+		<servlet-name>sqServlet</servlet-name>
+		<servlet-class>com.tomcat.SqServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>sqServlet</servlet-name>
+		<url-pattern>/sq</url-pattern>
 	</servlet-mapping>
 
 </web-app>
