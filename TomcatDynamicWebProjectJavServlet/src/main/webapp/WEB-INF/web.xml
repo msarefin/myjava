@@ -32,5 +32,14 @@
 		<servlet-name>sqServlet</servlet-name>
 		<url-pattern>/sq</url-pattern>
 	</servlet-mapping>
+	
+	<servlet>
+		<servlet-name>divServlet</servlet-name>
+		<servlet-class>com.tomcat.divServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>divServlet</servlet-name>
+		<url-pattern>/div</url-pattern>
+	</servlet-mapping>
 
 </web-app>

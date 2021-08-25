@@ -4,9 +4,11 @@ import java.io.*;
 
 import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletException;
+import jakarta.servlet.http.Cookie;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpSession;
 
 
 
@@ -32,12 +34,27 @@ public class AddServlet extends HttpServlet {
 		PrintWriter out = res.getWriter();
 		out.println("Your Sum is :" + sum);
 		
-		int k = sum *sum; 
+//		int k = sum *sum; 
+//		
+//		req.setAttribute("k", k);
+//		
+//		RequestDispatcher rd  = req.getRequestDispatcher("sq");
+//		rd.forward(req, res);
 		
-		req.setAttribute("k", k);
+		int d = i/j; 
+//		
+//		res.sendRedirect("div?d="+d);
 		
-		RequestDispatcher rd  = req.getRequestDispatcher("sq");
-		rd.forward(req, res);
+		
+//		HttpSession session = req.getSession();
+//		session.setAttribute("d", d);
+//		res.sendRedirect("div");
+		
+		Cookie cookie = new Cookie("d", d+"");
+		res.addCookie(cookie);
+		
+		res.sendRedirect("div");
+		
 	}
 
 //	public void doPost(HttpServletRequest req, HttpServletResponse res) throws IOException {
