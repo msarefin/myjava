@@ -10,10 +10,13 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
 
-
-
-
 public class AddServlet extends HttpServlet {
+
+	String initializeText = "";
+
+	public void init() {
+		initializeText = "The Server has been initialized";
+	}
 
 //	public void service(HttpServletRequest req, HttpServletResponse res) throws IOException {
 //		int i = Integer.parseInt(req.getParameter("num1"));
@@ -31,30 +34,35 @@ public class AddServlet extends HttpServlet {
 
 		int sum = i + j;
 
-		PrintWriter out = res.getWriter();
-		out.println("Your Sum is :" + sum);
+		res.setContentType("text/html");
+
 		
+		
+		PrintWriter out = res.getWriter();
+		out.println("<H2>Your Sum is :" + sum + "</H1>");
+		
+		
+
 //		int k = sum *sum; 
 //		
 //		req.setAttribute("k", k);
 //		
 //		RequestDispatcher rd  = req.getRequestDispatcher("sq");
 //		rd.forward(req, res);
-		
-		int d = i/j; 
+
+		int d = i / j;
 //		
 //		res.sendRedirect("div?d="+d);
-		
-		
+
 //		HttpSession session = req.getSession();
 //		session.setAttribute("d", d);
 //		res.sendRedirect("div");
-		
-		Cookie cookie = new Cookie("d", d+"");
+
+		Cookie cookie = new Cookie("d", d + "");
 		res.addCookie(cookie);
-		
+
 		res.sendRedirect("div");
-		
+
 	}
 
 //	public void doPost(HttpServletRequest req, HttpServletResponse res) throws IOException {
@@ -66,4 +74,8 @@ public class AddServlet extends HttpServlet {
 //		PrintWriter out = res.getWriter();
 //		out.println("Your Sum is :" + sum);
 //	}
+
+	public void destroy() {
+
+	}
 }
