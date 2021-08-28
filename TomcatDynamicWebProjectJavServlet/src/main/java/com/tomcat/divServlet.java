@@ -39,10 +39,10 @@ public class divServlet extends HttpServlet {
 			};
 		}
 		
-		res.setContentType("text'html");
+		res.setContentType("text/html");
 		
 		PrintWriter out = res.getWriter(); 
-		out.println("<h1>The value of d is "+div+"</h1>");
+		out.println("<H1>The value of d is "+div+"</H1>");
 		
 		System.out.println("divServlet Called!");
 	}
