@@ -37,6 +37,7 @@ public class AddServlet extends HttpServlet {
 		res.setContentType("text/html");
 
 		
+		req.setAttribute("initializeText", initializeText);
 		
 		PrintWriter out = res.getWriter();
 		out.println("<H2>Your Sum is :" + sum + "</H1>");
@@ -58,7 +59,11 @@ public class AddServlet extends HttpServlet {
 //		session.setAttribute("d", d);
 //		res.sendRedirect("div");
 
+		RequestDispatcher reqD = req.getRequestDispatcher("div");
+		reqD.forward(req, res);
+		
 		Cookie cookie = new Cookie("d", d + "");
+		
 		res.addCookie(cookie);
 
 		res.sendRedirect("div");

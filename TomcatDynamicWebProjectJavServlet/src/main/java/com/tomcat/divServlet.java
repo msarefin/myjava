@@ -26,7 +26,9 @@ public class divServlet extends HttpServlet {
 //		PrintWriter out = res.getWriter(); 
 //		out.println("The value of div is :"+div);
 		
+		String value = req.getParameter("initializeText");
 		
+		res.getWriter().println(value);
 		
 		Cookie cookies[] =req.getCookies(); 
 		int div = 0; 
