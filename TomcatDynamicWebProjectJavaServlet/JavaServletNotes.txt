@@ -1,0 +1,10 @@
+Install Apache Tomcat Server
+Configure eclipse with Apache tomcat server
+create DynamicWebProject
+
+create a webpage under src/main/webapp
+
+html form with action = "add" method = "get" - this will show the input parameters
+html form with action = "add" method = "post" - this will not show the input parameter
+
+
