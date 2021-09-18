@@ -15,8 +15,6 @@ public class SqServlet extends HttpServlet {
 		// using Http Session
 
 		HttpSession session = req.getSession();
-		
-//		session.remo
 
 		int k = (int) session.getAttribute("k");
 
