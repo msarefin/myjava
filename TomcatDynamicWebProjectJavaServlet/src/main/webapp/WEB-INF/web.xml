@@ -31,4 +31,15 @@
 	</servlet-mapping>
 	
 	
+	<context-param>
+		<param-name>name</param-name>
+		<param-value>Java</param-value>
+	</context-param>
+	
+	<context-param>
+		<param-name>phone</param-name>
+		<param-value>Android</param-value>
+	</context-param>
+	
+	
 </web-app>
