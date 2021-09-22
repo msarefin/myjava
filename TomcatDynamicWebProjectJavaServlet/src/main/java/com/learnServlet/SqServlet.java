@@ -15,7 +15,7 @@ import jakarta.servlet.http.HttpSession;
 public class SqServlet extends HttpServlet {
 	
 	
-	public void doGet(HttpServletRequest req, HttpServletResponse res) {
+	public void doGet(HttpServletRequest req, HttpServletResponse res) throws IOException {
 		
 	}
 	

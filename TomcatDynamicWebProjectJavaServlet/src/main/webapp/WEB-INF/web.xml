@@ -15,6 +15,11 @@
 	<servlet>
 		<servlet-name>addingServlet</servlet-name>
 		<servlet-class>com.learnServlet.AddServlet</servlet-class>
+		
+		<init-param>
+			<param-name>name</param-name>
+			<param-value>Java Programmer!</param-value>
+		</init-param>
 	</servlet>
 	<servlet-mapping>
 		<servlet-name>addingServlet</servlet-name>
