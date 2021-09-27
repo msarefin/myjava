@@ -1,8 +1,15 @@
 package newPractice;
 
+import java.util.Date;
+
 public class Practice {
 	public static void main(String[] args) {
 		
+		Date date = new Date(); 
+		
+		System.out.printf("%tT%n", date);
+		System.out.printf("%1$tH:%1$tM:%1$tS %1$tp %1$tL %1$tN %1$tz %n", date);
+	
 //        if (args.length != 1) {
 //            System.err.println("Usage: java Planet <earth_weight>");
 //            System.exit(-1);
