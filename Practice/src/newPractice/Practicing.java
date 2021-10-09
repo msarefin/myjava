@@ -46,6 +46,7 @@ public class Practicing {
 		StringBuffer sb = new StringBuffer("The Fish fingers are good!");
 		StringBuffer sb1 = new StringBuffer();
 		StringBuffer sb2 = new StringBuffer(0);
+		
 		System.out.println(sb.capacity());
 		System.out.println(sb1.capacity());
 		System.out.println(sb2.capacity());
