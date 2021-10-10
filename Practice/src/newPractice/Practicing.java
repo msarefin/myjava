@@ -65,6 +65,14 @@ public class Practicing {
 		sb.insert(21, "not ");
 		System.out.println(sb);
 		System.out.println(sb.length()); 
+		
+		
+		StringBuffer stB = new StringBuffer(5); 
+		
+		System.out.println("The capacity of the declared string Buffer is : "+ stB.capacity());
+		
+		stB.append("This append is");
+		System.out.println("The Capacity of the string Buffer after appending is :"+stB.capacity());
 
 	}
 
